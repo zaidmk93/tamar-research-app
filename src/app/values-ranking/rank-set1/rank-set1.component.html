@@ -1,0 +1,278 @@
+<div class="containter" *ngIf="stage<=11">
+    <app-value-dialog #valueDialog (clicked)="$event == null ? playSound() : valueConfirmed($event)"></app-value-dialog>
+    <app-pyramid-view #pyramidView [setValues]="orderedValues" [culture]="culture"
+        (clicked)="$event ? nextScene() : stepback()"></app-pyramid-view>
+    <div class="values-container">
+        <div class="pyramid-container">
+            <table class="pyramid-table">
+                <tr class="pyramid-row">
+                    <td style="width:37%">
+                        <h1 style="text-align: center;">{{culture === 'jewish' ? 'חשוב מאוד' : 'مهمّ جدًّا'}}</h1>
+                    </td>
+                    <td class="pyramid-cell">
+                        <div class="pyramid-square">
+                            <div class="pyramid-cell-data" *ngIf="orderedValues.veryvery != null">
+                                <img class="pyramid-img"
+                                    [src]="'../../assets/values-ranking/values_img/'+orderedValues.veryvery.imgLink">
+                                <div class="text">
+                                    {{orderedValues.veryvery.text}}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width:37%"></td>
+                </tr>
+                <tr class="pyramid-row">
+                    <td class="pyramid-cell">
+                    </td>
+                    <td class="pyramid-cell">
+                        <div class="pyramid-square">
+                            <div class="pyramid-cell-data" *ngIf="orderedValues.very2 != null">
+                                <img class="pyramid-img"
+                                    [src]="'../../assets/values-ranking/values_img/'+orderedValues.very2.imgLink">
+                                <div class="text">
+                                    {{orderedValues.very2.text}}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="pyramid-cell">
+                        <div class="pyramid-square">
+                            <div class="pyramid-cell-data" *ngIf="orderedValues.very1 != null">
+                                <img class="pyramid-img"
+                                    [src]="'../../assets/values-ranking/values_img/'+orderedValues.very1.imgLink">
+                                <div class="text">
+                                    {{orderedValues.very1.text}}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="pyramid-cell">
+                    </td>
+                </tr>
+                <tr class="pyramid-row">
+                    <td class="pyramid-cell">
+                        <div class="pyramid-square">
+                            <div class="pyramid-cell-data" *ngIf="orderedValues.average4 != null">
+                                <img class="pyramid-img"
+                                    [src]="'../../assets/values-ranking/values_img/'+orderedValues.average4.imgLink">
+                                <div class="text">
+                                    {{orderedValues.average4.text}}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="pyramid-cell">
+                        <div class="pyramid-square">
+                            <div class="pyramid-cell-data" *ngIf="orderedValues.average3 != null">
+                                <img class="pyramid-img"
+                                    [src]="'../../assets/values-ranking/values_img/'+orderedValues.average3.imgLink">
+                                <div class="text">
+                                    {{orderedValues.average3.text}}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="pyramid-cell">
+                        <div class="pyramid-square">
+                            <div class="pyramid-cell-data" *ngIf="orderedValues.average2 != null">
+                                <img class="pyramid-img"
+                                    [src]="'../../assets/values-ranking/values_img/'+orderedValues.average2.imgLink">
+                                <div class="text">
+                                    {{orderedValues.average2.text}}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="pyramid-cell">
+                        <div class="pyramid-square">
+                            <div class="pyramid-cell-data" *ngIf="orderedValues.average1 != null">
+                                <img class="pyramid-img"
+                                    [src]="'../../assets/values-ranking/values_img/'+orderedValues.average1.imgLink">
+                                <div class="text">
+                                    {{orderedValues.average1.text}}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="pyramid-row">
+                    <td class="pyramid-cell">
+                    </td>
+                    <td class="pyramid-cell">
+                        <div class="pyramid-square">
+                            <div class="pyramid-cell-data" *ngIf="orderedValues.not2 != null">
+                                <img class="pyramid-img"
+                                    [src]="'../../assets/values-ranking/values_img/'+orderedValues.not2.imgLink">
+                                <div class="text">
+                                    {{orderedValues.not2.text}}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="pyramid-cell">
+                        <div class="pyramid-square">
+                            <div class="pyramid-cell-data" *ngIf="orderedValues.not1 != null">
+                                <img class="pyramid-img"
+                                    [src]="'../../assets/values-ranking/values_img/'+orderedValues.not1.imgLink">
+                                <div class="text">
+                                    {{orderedValues.not1.text}}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="pyramid-cell">
+                    </td>
+                </tr>
+                <tr class="pyramid-row">
+                    <td style="width:37%">
+                        <h1 style="text-align: center;">{{culture === 'jewish' ? 'כלל לא חשוב' : 'غير مهمّ أبدًا'}}</h1>
+                    </td>
+                    <td class="pyramid-cell">
+                        <div class="pyramid-square">
+                            <div class="pyramid-cell-data" *ngIf="orderedValues.notnot != null">
+                                <img class="pyramid-img"
+                                    [src]="'../../assets/values-ranking/values_img/'+orderedValues.notnot.imgLink">
+                                <div class="text">
+                                    {{orderedValues.notnot.text}}
+                                </div>
+                            </div>
+
+                        </div>
+                    </td>
+                    <td class="button-cell">
+                        <div class="button-cell2">
+                            <button mat-raised-button color="warn" (click)="stepback()"
+                                [disabled]="calculating || stage < 2">
+                                {{culture === 'jewish' ? 'צעד אחורה' : 'للرجوع للخلف'}}
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="stock-container">
+            <!-- <div class="accept-button" *ngIf="stage>=10">
+                <button mat-raised-button color="primary" (click)="this.gotRanking.emit(true);">
+                    <h1>
+                        {{culture === 'jewish' ? 'אני מרוצה' : this.isMale ? 'استمر' : 'استمري'}}
+                    </h1>
+                </button>
+            </div> -->
+            <table class="stock-table" *ngIf="stage<10">
+                <tr class="stock-row">
+                    <td class="stock-cell">
+                        <mat-card class="stock-card" *ngIf="dataService.pbvs4.isStock"
+                            (click)="valueClick(dataService.pbvs4)">
+                            <img class="stock-img"
+                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs4.imgLink">
+                            <div class="text">
+                                {{dataService.pbvs4.text}}
+                            </div>
+                        </mat-card>
+                    </td>
+                    <td class="stock-cell">
+                        <mat-card class="stock-card" *ngIf="dataService.pbvs3.isStock"
+                            (click)="valueClick(dataService.pbvs3)">
+                            <img class="stock-img"
+                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs3.imgLink">
+                            <div class="text">
+                                {{dataService.pbvs3.text}}
+                            </div>
+                        </mat-card>
+                    </td>
+                    <td class="stock-cell">
+                        <mat-card class="stock-card" *ngIf="dataService.pbvs2.isStock"
+                            (click)="valueClick(dataService.pbvs2)">
+                            <img class="stock-img"
+                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs2.imgLink">
+                            <div class="text">
+                                {{dataService.pbvs2.text}}
+                            </div>
+                        </mat-card>
+                    </td>
+                    <td class="stock-cell">
+                        <mat-card class="stock-card" *ngIf="dataService.pbvs1.isStock"
+                            (click)="valueClick(dataService.pbvs1)">
+                            <img class="stock-img"
+                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs1.imgLink">
+                            <div class="text">
+                                {{dataService.pbvs1.text}}
+                            </div>
+                        </mat-card>
+                    </td>
+                </tr>
+                <tr class="stock-row">
+                    <td class="stock-cell">
+                        <mat-card class="stock-card" *ngIf="dataService.pbvs8.isStock"
+                            (click)="valueClick(dataService.pbvs8)">
+                            <img class="stock-img"
+                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs8.imgLink">
+                            <div class="text">
+                                {{dataService.pbvs8.text}}
+                            </div>
+                        </mat-card>
+                    </td>
+                    <td class="stock-cell">
+                        <mat-card class="stock-card" *ngIf="dataService.pbvs7.isStock"
+                            (click)="valueClick(dataService.pbvs7)">
+                            <img class="stock-img"
+                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs7.imgLink">
+                            <div class="text">
+                                {{dataService.pbvs7.text}}
+                            </div>
+                        </mat-card>
+                    </td>
+                    <td class="stock-cell">
+                        <mat-card class="stock-card" *ngIf="dataService.pbvs6.isStock"
+                            (click)="valueClick(dataService.pbvs6)">
+                            <img class="stock-img"
+                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs6.imgLink">
+                            <div class="text">
+                                {{dataService.pbvs6.text}}
+                            </div>
+                        </mat-card>
+                    </td>
+                    <td class="stock-cell">
+                        <mat-card class="stock-card" *ngIf="dataService.pbvs5.isStock"
+                            (click)="valueClick(dataService.pbvs5)">
+                            <img class="stock-img"
+                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs5.imgLink">
+                            <div class="text">
+                                {{dataService.pbvs5.text}}
+                            </div>
+                        </mat-card>
+                    </td>
+                </tr>
+                <tr class="stock-row">
+                    <td class="stock-cell">
+
+                    </td>
+                    <td class="stock-cell">
+
+                    </td>
+                    <td class="stock-cell">
+                        <mat-card class="stock-card" *ngIf="dataService.pbvs10.isStock"
+                            (click)="valueClick(dataService.pbvs10)">
+                            <img class="stock-img"
+                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs10.imgLink">
+                            <div class="text">
+                                {{dataService.pbvs10.text}}
+                            </div>
+                        </mat-card>
+                    </td>
+                    <td class="stock-cell">
+                        <mat-card class="stock-card" *ngIf="dataService.pbvs9.isStock"
+                            (click)="valueClick(dataService.pbvs9)">
+                            <img class="stock-img"
+                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs9.imgLink">
+                            <div class="text">
+                                {{dataService.pbvs9.text}}
+                            </div>
+                        </mat-card>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="main-div">
+    <mat-card style="padding: 40px; max-width: 600px; align-items: center;">
+        <mat-card-content>
+            <h2 class="example-h2">{{this.culture === 'jewish' ? 'כניסה' : 'الدخول'}}</h2>
+            <p>{{this.culture === 'jewish' ? 'נא הקלידו את מספר המשפחה' : 'الرجاء إدخال رقم العائلة'}}</p>
+            <hr>
+            <table>
+                <tr>
+                    <td>
+                        <b>{{this.culture === 'jewish' ? 'קבוצה' : ' المجموعة'}}</b>
+                        <br>
+                        <span>{{this.culture === 'jewish' ? 'הקלידו בבקשה את מספר הקבוצה' : 'الرجاء إدخال رقم المجموعة'}}</span>
+                    </td>
+                    <td style="width:20px;"></td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input [formControl]="schoolID" matInput>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>{{this.culture === 'jewish' ? 'ילד' : 'ولد'}}</b>
+                        <br>
+                        <span>{{this.culture === 'jewish' ? 'הקלידו בבקשה את מספר הילד' : 'الرجاء إدخال رقم المشترك/ المشتركة'}}</span>
+                    </td>
+                    <td style="width:20px;"></td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input [formControl]="childID" matInput>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>{{this.culture === 'jewish' ? 'בן או בת?' : 'ولد أو بنت ؟'}}</b>
+                    </td>
+                    <td></td>
+                    <td>
+                        <mat-radio-group [(ngModel)]="creds.gender">
+                            <table style="width:100%">
+                                <td class="data-cell">
+                                    <img src="../../../assets/images/boy.png">
+                                    <br>
+                                    <mat-radio-button color="primary" class="selection" value="M"></mat-radio-button>
+                                </td>
+                                <td class="gap-cell"></td>
+                                <td class="data-cell">
+                                    <img src="../../../assets/images/girl.png">
+                                    <br>
+                                    <mat-radio-button color="primary" class="selection" value="F">
+                                    </mat-radio-button>
+                                </td>
+                            </table>
+                        </mat-radio-group>
+                    </td>
+                </tr>
+            </table>
+            <button mat-raised-button color="primary" (click)="start()">{{this.culture === 'jewish' ? 'היכנסו למשחק' :
+                'الدخول إلى اللعبة'}}</button>
+            <p *ngIf="invalidSchoolIDFlag" style="color:red; font-weight: bold;">מספר בית הספר אינו מתאים</p>
+            <p *ngIf="invalidChildIDFlag" style="color:red; font-weight: bold;">מספר הילד אינו מתאים</p>
+        </mat-card-content>
+    </mat-card>
+</div>

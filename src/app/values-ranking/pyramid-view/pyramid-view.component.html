@@ -1,0 +1,147 @@
+<ng-template class="containter">
+  <div class="pyramid-container">
+    <table class="pyramid-table">
+      <tr class="pyramid-row">
+        <td style="width:37%">
+          <h1 style="text-align: center;">{{culture === 'jewish' ? 'חשוב מאוד' : 'مهمّ جدًّا'}}</h1>
+        </td>
+        <td class="pyramid-cell">
+          <div class="pyramid-square">
+            <div class="pyramid-cell-data" *ngIf="values.veryvery != null">
+              <img class="pyramid-img" [src]="'../../assets/values-ranking/values_img/'+values.veryvery.imgLink">
+              <p>
+                {{values.veryvery.text}}
+              </p>
+            </div>
+          </div>
+        </td>
+        <td style="width:37%"></td>
+      </tr>
+      <tr class="pyramid-row">
+        <td class="pyramid-cell">
+        </td>
+        <td class="pyramid-cell">
+          <div class="pyramid-square">
+            <div class="pyramid-cell-data" *ngIf="values.very2 != null">
+              <img class="pyramid-img" [src]="'../../assets/values-ranking/values_img/'+values.very2.imgLink">
+              <p>
+                {{values.very2.text}}
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="pyramid-cell">
+          <div class="pyramid-square">
+            <div class="pyramid-cell-data" *ngIf="values.very1 != null">
+              <img class="pyramid-img" [src]="'../../assets/values-ranking/values_img/'+values.very1.imgLink">
+              <p>
+                {{values.very1.text}}
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="pyramid-cell">
+        </td>
+      </tr>
+      <tr class="pyramid-row">
+        <td class="pyramid-cell">
+          <div class="pyramid-square">
+            <div class="pyramid-cell-data" *ngIf="values.average4 != null">
+              <img class="pyramid-img" [src]="'../../assets/values-ranking/values_img/'+values.average4.imgLink">
+              <p>
+                {{values.average4.text}}
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="pyramid-cell">
+          <div class="pyramid-square">
+            <div class="pyramid-cell-data" *ngIf="values.average3 != null">
+              <img class="pyramid-img" [src]="'../../assets/values-ranking/values_img/'+values.average3.imgLink">
+              <p>
+                {{values.average3.text}}
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="pyramid-cell">
+          <div class="pyramid-square">
+            <div class="pyramid-cell-data" *ngIf="values.average2 != null">
+              <img class="pyramid-img" [src]="'../../assets/values-ranking/values_img/'+values.average2.imgLink">
+              <p>
+                {{values.average2.text}}
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="pyramid-cell">
+          <div class="pyramid-square">
+            <div class="pyramid-cell-data" *ngIf="values.average1 != null">
+              <img class="pyramid-img" [src]="'../../assets/values-ranking/values_img/'+values.average1.imgLink">
+              <p>
+                {{values.average1.text}}
+              </p>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr class="pyramid-row">
+        <td class="pyramid-cell">
+        </td>
+        <td class="pyramid-cell">
+          <div class="pyramid-square">
+            <div class="pyramid-cell-data" *ngIf="values.not2 != null">
+              <img class="pyramid-img" [src]="'../../assets/values-ranking/values_img/'+values.not2.imgLink">
+              <p>
+                {{values.not2.text}}
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="pyramid-cell">
+          <div class="pyramid-square">
+            <div class="pyramid-cell-data" *ngIf="values.not1 != null">
+              <img class="pyramid-img" [src]="'../../assets/values-ranking/values_img/'+values.not1.imgLink">
+              <p>
+                {{values.not1.text}}
+              </p>
+            </div>
+          </div>
+        </td>
+        <td class="pyramid-cell">
+        </td>
+      </tr>
+      <tr class="pyramid-row">
+        <td style="width:37%">
+          <div>
+            <h1 style="text-align: center;">{{culture === 'jewish' ? 'כלל לא חשוב' : 'غير مهمّ أبدًا'}}</h1>
+          </div>
+          <div>
+            <button mat-button color="warn" (click)="confirm()">
+              <mat-icon style="color: green">done</mat-icon>
+            </button>
+          </div>
+        </td>
+        <td class="pyramid-cell">
+          <div class="pyramid-square">
+            <div class="pyramid-cell-data" *ngIf="values.notnot != null">
+              <img class="pyramid-img" [src]="'../../assets/values-ranking/values_img/'+values.notnot.imgLink">
+              <p>
+                {{values.notnot.text}}
+              </p>
+            </div>
+
+          </div>
+        </td>
+        <td style="width:37%">
+          <button mat-button (click)="cancel()">
+            <mat-icon style="color: red">clear</mat-icon>
+          </button>
+          <!-- <button mat-raised-button color="warn" (click)="stepback()" [disabled]="calculating || stage < 2">
+              {{culture === 'jewish' ? 'צעד אחורה' : 'للرجوع للخلف'}}
+            </button> -->
+        </td>
+      </tr>
+    </table>
+  </div>
+</ng-template>

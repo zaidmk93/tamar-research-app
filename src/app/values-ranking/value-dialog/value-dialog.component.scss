@@ -1,0 +1,37 @@
+.container {
+  height: 90vh;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  overflow: scroll;
+}
+
+.dialog-main {
+  height: 80vh;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.dialog-footer {
+  height: 10vh;
+  width: 80vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+// .img-box {
+//   height: 50vh;
+//   width: 70vw;
+//   display: flex;
+// }
+
+.img {
+  height: 70vh;
+  max-width: 80vw;
+  max-height: 70vh;
+}

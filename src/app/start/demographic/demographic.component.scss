@@ -1,0 +1,81 @@
+
+.gap-cell {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+ 
+  }
+  
+  .data-cell {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+ 
+  }
+  
+  .main-div {
+    width: 100vw;
+    height: 100vh;
+    padding: 8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: normal;
+    align-content: center;
+    align-items: center;
+    background-color: skyblue;
+    text-align: center;
+ 
+
+  
+  }
+  
+  .td {
+    padding-bottom: 50px;
+    font-size: 18px;
+    margin-left: 50%;
+    margin-right: 50%;
+    text-align: center;
+ 
+  }
+  
+  .mat-raised-button {
+    color: primary;
+    margin-left: 50%;
+    margin-right: 50%;
+    
+    
+  }
+  .example-form {
+    // min-width: 100px;
+    // max-width: 400px;
+    width:100%;
+    margin: 10px 100px 0px 0;
+  
+    
+
+  }
+  
+  .example-full-width {
+    width: 100%;
+    
+  }
+  
+  .example-form{
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    margin-right: 0px;
+  }
+  
+.mat-card-content{
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  
+

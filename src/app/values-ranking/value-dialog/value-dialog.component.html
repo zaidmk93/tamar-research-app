@@ -1,0 +1,18 @@
+<ng-template>
+  <div class="container">
+    <div class="dialog-main">
+      <img class="img" [src]="'../../assets/values-ranking/values_img/'+value.imgLink">
+      <h1 style="text-align: center;">
+        {{value.text}}
+      </h1>
+    </div>
+    <div class="dialog-footer">
+      <button mat-raised-button color="warn" (click)="confirm()">
+        <mat-icon style="color: green">done</mat-icon>
+      </button>
+      <button mat-raised-button (click)="cancel()">
+        <mat-icon style="color: red">clear</mat-icon>
+      </button>
+    </div>
+  </div>
+</ng-template>

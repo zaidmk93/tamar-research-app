@@ -1,0 +1,17 @@
+<div class="main-div">
+    <mat-card style="padding: 40px; align-items: center;">
+        <mat-card-content class="card-container">
+            <div *ngIf="!!imgLink">
+                <img [src]="imgLink" style="height: 50vh;">
+            </div>
+            <div *ngIf="!!imgLink && !!subtitle">
+                <hr>
+            </div>
+            <div *ngIf="!!subtitle">
+                <h1 [innerHTML]="this.subtitle" style="text-align: center;"></h1>
+            </div>
+            <button *ngIf="vs2Stage==12" mat-raised-button color="primary"
+                (click)="this.openingEnded.emit(true);">{{culture === 'jewish' ? 'המשך' : this.dataService.gender === 'M' ? 'استمر' : 'استمري'}}</button>
+        </mat-card-content>
+    </mat-card>
+</div>

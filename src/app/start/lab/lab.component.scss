@@ -1,0 +1,25 @@
+.lab {
+    width: 100vw;
+    height: 100vh;
+    padding: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    background-color: skyblue;
+    
+    
+  }
+  .button-box {
+    margin: 0;
+    padding: 5vh;
+    position: relative;
+    top: 40%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);;
+  
+    
+  
+  }
+  
