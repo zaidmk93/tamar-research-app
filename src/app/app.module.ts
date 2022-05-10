@@ -19,11 +19,10 @@ import { ValueDialogComponent } from './values-ranking/value-dialog/value-dialog
 import { PyramidViewComponent } from './values-ranking/pyramid-view/pyramid-view.component';
 import { ConcentComponent } from './start/concent/concent.component';
 import { DemographicComponent } from './start/demographic/demographic.component';
-import { AttentiontaskComponent } from './values-ranking/attention-task/Attention-task.component';
+import { AttentiontaskComponent } from './values-ranking/Attention-task/Attention-task.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -45,16 +44,15 @@ import { RouterModule } from '@angular/router';
     AttentiontaskComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     CommonModule,
     SharedModule,
-    AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatInputModule,
     MatFormFieldModule,
-    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent],

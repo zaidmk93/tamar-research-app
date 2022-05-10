@@ -8,7 +8,6 @@ import { ValuesRankingComponent } from './values-ranking/values-ranking.componen
 import { DemographicComponent } from './start/demographic/demographic.component';
 
 
-
 const routes: Routes = [
   {
     path: '',
