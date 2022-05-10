@@ -24,6 +24,20 @@ export class EnteringFormComponent implements OnInit {
     schoolID: '',
     childID: 'a',
     gender: 'M',
+    childgender: '',
+    parents: '',
+    parentage: '',
+    childage: '',
+    class: '',
+    living: '',
+    education1: '',
+    profession1: '',
+    levelofreligiousty: '',
+    education2: '',
+    profession2: '',
+    languages: '',
+    economic_level: '',
+    lab : 'Aysheh'
   };
   invalidSchoolIDFlag = false;
   invalidChildIDFlag = false;

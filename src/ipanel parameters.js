@@ -1,6 +1,6 @@
 window.onload = function() {
       try {
-        var url_string = "https://research-tasks-multi-lang.herokuapp.com/".toLowerCase();
+        var url_string = "https://research-multi.herokuapp.com/".toLowerCase();
         var url = new URL(url_string);
         var i.project = url.searchParams.get("i.project");
         var i.user1 = url.searchParams.get("i.user1");

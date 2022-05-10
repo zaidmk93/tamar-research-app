@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AudioService } from 'src/app/shared/services/audio.service';
 import { DataService } from '../../shared/services/data.service';
@@ -10,14 +10,14 @@ import { DataService } from '../../shared/services/data.service';
 })
 export class SummaryComponent implements OnInit {
   @Input() culture: string;
-  @Input() data: any;
+  @Input() data: any;openingEnded: EventEmitter<boolean> = new EventEmitter<boolean>();
   very1: any = {};
   very2: any = {};
   not1: any = {};
   not2: any = {};
   randomView = true;
   $audio: Subscription;
-
+  counter = 0
   constructor(
     private audioService: AudioService,
     public dataService: DataService
@@ -60,8 +60,24 @@ export class SummaryComponent implements OnInit {
       });
     }, 500);
   }
-
+  counterUp(){
+    this.counter++;
+    if(this.counter == 2){
+      this.openingEnded.emit(true);
+      window.close(); 
+    }
+  }
   ending(subStage: number) {
+    if(subStage == 3){
+      return;
+    }
+
+    console.log( `../../assets/values-ranking/guidance_aud/${
+      this.culture === 'jewish' ? 'heb' : 'arab'
+    }/inst-${subStage}-${this.dataService.gender}-exit.${
+      this.culture === 'jewish' && subStage === 2 ? 'mpeg' : 'mp3'
+    }`);
+
     this.audioService.setAudio(
       `../../assets/values-ranking/guidance_aud/${
         this.culture === 'jewish' ? 'heb' : 'arab'

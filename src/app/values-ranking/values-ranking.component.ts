@@ -22,6 +22,10 @@ export class ValuesRankingComponent implements OnInit {
    * 4 - introduce values set 2
    * 5 - rank values set 2
    * 6 - summary
+   * 7 - Attention task
+   * 8 - Lab
+   * 9 - Language
+   * 10 - Demographic
    */
   culture: 'jewish' | 'druze' | 'christian' | 'muslim' = 'jewish';
   scene = 0;
@@ -48,6 +52,7 @@ export class ValuesRankingComponent implements OnInit {
 
   ngOnInit(): void {
     this.scene = this.applicationStateService.getIsMobileResolution() ? 0 : 1;
+    //this.scene = 8;
     // rotate screen worning. resolves on rotate or 10 sec delay
     if (this.scene === 0) {
       if (window.innerWidth >= window.innerHeight) {
@@ -110,7 +115,7 @@ export class ValuesRankingComponent implements OnInit {
   scene3(endFlag: boolean) {
     if (endFlag) {
       this.dataService.currentStage = 1;
-      this.scene = 4;
+      this.scene = 7;
       this.dataService.currentScene = this.scene;
       this.cacheService.save({
         key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
@@ -133,6 +138,7 @@ export class ValuesRankingComponent implements OnInit {
 
   scene5(endFlag: boolean) {
     if (endFlag) {
+      console.log("We in 5");
       this.calculateData();
       this.scene = 6;
       this.dataService.currentScene = this.scene;
@@ -142,7 +148,34 @@ export class ValuesRankingComponent implements OnInit {
       });
     }
   }
+
+  scene7(endFlag: boolean){
+    if (endFlag) {
+      console.log("We in 7");
+      this.calculateData();
+      this.scene = 4;
+      this.dataService.currentScene = this.scene;
+      this.cacheService.save({
+        key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
+        data: getCacheData(this.dataService),
+      });
+    }
+  }
+
+  scene8(creds: Credentials){
+      this.scene = 9;
+      this.dataService.lab = creds.lab;
+      console.log(this.dataService.lab);
+  }
+
+  scene9(creds: Credentials){
+    this.scene = 1;
+    this.dataService.lab = creds.lab;
+    console.log(this.dataService.lab);
+}
+
   calculateData() {
+    console.log("We in calculate data");
     const finalData = {
       schoolID: this.dataService.schoolID,
       childID: this.dataService.childID,
@@ -167,10 +200,11 @@ export class ValuesRankingComponent implements OnInit {
       learn_what_was_18: this.dataService.pbvs18.rank,
       keep_others_happy_19: this.dataService.pbvs19.rank,
       keep_nature_20: this.dataService.pbvs20.rank,
+      lab : this.dataService.lab,
     };
     const reqBody = {
       query: `mutation insertData {
-        insert_values_ranking_one(
+        insert_research_one(
           object: {
             school_id: "${finalData.schoolID}",
             child_id: "${finalData.childID}",
@@ -195,18 +229,19 @@ export class ValuesRankingComponent implements OnInit {
             learn_what_was_18: ${finalData.learn_what_was_18},
             keep_others_happy_19: ${finalData.keep_others_happy_19},
             keep_nature_20: ${finalData.keep_nature_20},
+            lab : ${finalData.lab},
           }
         ) {
-          id,
-          init_time
+          id
         }
       }`,
     };
-    const headers = { 'X-Hasura-Role': 'app' };
+    const headers = {'x-hasura-admin-secret': 
+    'L2WPqUDgvdWhGveSYAjMOG3l6jbbxSb0jZk7q1rii03COuV0LQr2xCQIMJHmq0JO' };
     console.log('Data summary:', finalData);
     this.http
       .post<any>(
-        'https://research-tasks-multi.hasura.app/v1/graphql',
+        'https://research.hasura.app/v1/graphql',
         reqBody,
         {
           headers,
@@ -214,9 +249,9 @@ export class ValuesRankingComponent implements OnInit {
       )
       .subscribe({
         next: (data) => {
-          if (!!data.data?.insert_values_ranking_one) {
+          if (!!data.data?.insert_research_one) {
             this.dataService.dataSavedFlag = true;
-            const res = data.data.insert_values_ranking_one;
+            const res = data.data.insert_research_one;
             console.log(`Input saved under ID ${res.id} on ${res.init_time}`);
           } else {
             console.error('Error saving task data!');
@@ -232,3 +267,4 @@ export class ValuesRankingComponent implements OnInit {
       });
   }
 }
+

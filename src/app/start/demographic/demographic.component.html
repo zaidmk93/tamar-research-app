@@ -4,28 +4,26 @@
     <table>
         <div *ngIf="isJewishCulture()" >
                 <td> 
-                    <div style="white-space:pre-wrap;margin-right: 20%;">
-                        <div style="font-size: 20px;margin-right: 60%">
+                    <div style="white-space:pre-wrap;">
+                      <div style="font-size: 25px;margin-right: 35%">
                         <b> שאלון דמוגרפי:</b>
-                    </div>
+                      </div>
                         <br/>   1. מין הילד/ה שמשתתף במחקר: 
                         <form class="example-form">
-                            <mat-form-field class="example-full-width" appearance="fill">
-                              <mat-label>Message</mat-label>
-                              <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                              <mat-hint align="start"><strong></strong> </mat-hint>
-                              <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                            </mat-form-field>
-                          </form>
-                    <br/>       2. ההורה הממלא את השאלון
+                        <mat-radio-group aria-label="Select an option">
+                          <mat-radio-button value="1">זכר</mat-radio-button>
+                          <mat-radio-button value="2">נקבה</mat-radio-button>
+                        </mat-radio-group>
+                      </form>
+                      <td>
+                    </td>
+                    <br/>      2. ההורה הממלא את השאלון:
                     <form class="example-form">
-                                <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>Message</mat-label>
-                                <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                                <mat-hint align="start"><strong></strong> </mat-hint>
-                                <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                                </mat-form-field>
-                            </form>
+                      <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button value="1">אמא</mat-radio-button>
+                        <mat-radio-button value="2">אבא</mat-radio-button>
+                      </mat-radio-group>
+                    </form>
                     <br/>    3. גיל (של ההורה הממלא את השאלון)
                     <form class="example-form">
                         <mat-form-field class="example-full-width" appearance="fill">
@@ -35,25 +33,29 @@
                         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
                         </mat-form-field>
                     </form>
-                    <br/>     4. גיל הילד/ה המשתתפ/ת במחקר
+                    <br/>     4. תאריך הלידה של הילד/ה המשתתפ/ת במחקר
+                    <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                  <button mat-raised-button (click)="picker.open()">Open</button>
+                    <br/>   5. באיזו כיתה הילד/ה המשתתף/ת במחקר (אם עכשיו חופש גדול - לאיזו כיתה עולה?)<br/>
                     <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Message</mat-label>
-                        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                        <mat-hint align="start"><strong></strong> </mat-hint>
-                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
+                      <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button value="1">גן</mat-radio-button>
+                        <mat-radio-button value="2">גן חובה</mat-radio-button>
+                        <mat-radio-button value="3">כיתה א'</mat-radio-button>
+                        <mat-radio-button value="4">כיתה ב'</mat-radio-button>
+                        <mat-radio-button value="5">כיתה ג'</mat-radio-button>
+                        <mat-radio-button value="6">כיתה ד'</mat-radio-button>
+                        <mat-radio-button value="7">כיתה ה'</mat-radio-button>
+                        <mat-radio-button value="8">כיתה ו'</mat-radio-button>
+                        <mat-radio-button value="9">כיתה ז'</mat-radio-button>
+                      </mat-radio-group>
                     </form>
-                    <br/>   5. באיזו כיתה הילד/ה המשתתף/ת במחקר<br/>
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Message</mat-label>
-                        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                        <mat-hint align="start"><strong></strong> </mat-hint>
-                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                    </form>
-                    6. עיר המגורים   
+                    6. יישוב המגורים   
                     <form class="example-form">
                         <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Message</mat-label>
@@ -62,7 +64,18 @@
                         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
                         </mat-form-field>
                     </form>                    
-                    <br/> 7. מה מספר החדרים בביתך? (לא כולל שירותים/אמבטיה/מטבח)
+                    <br/> 7. השכלתך היא:
+                    <form class="example-form">
+                    <mat-radio-group aria-label="Select an option">
+                      <mat-radio-button value="1">יסודית</mat-radio-button>
+                      <mat-radio-button value="2">תיכונית</mat-radio-button>
+                      <mat-radio-button value="3">על תיכונית</mat-radio-button>
+                      <mat-radio-button value="4">תואר ראשון</mat-radio-button>
+                      <mat-radio-button value="5">תואר שני</mat-radio-button>
+                      <mat-radio-button value="6">דוקטורט</mat-radio-button>
+                    </mat-radio-group>
+                  </form>
+                    <br/>    8. מהו העיסוק/המקצוע שלך?
                     <form class="example-form">
                         <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Message</mat-label>
@@ -71,7 +84,29 @@
                         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
                         </mat-form-field>
                     </form>
-                    <br/>    8. השכלתך היא?
+                    <br/>   9. כיצד היית מגדיר את עצמך ביחס לדת:
+                    <form class="example-form">
+                    <mat-radio-group aria-label="Select an option">
+                      <mat-radio-button value="1">חרדי/ת</mat-radio-button>
+                      <mat-radio-button value="2">דתי/ת</mat-radio-button>
+                      <mat-radio-button value="3">חילוני/ת</mat-radio-button>
+                      <mat-radio-button value="4">מסורתי/ת</mat-radio-button>
+                      <mat-radio-button value="5">אחר</mat-radio-button>
+                    </mat-radio-group>
+                  </form>
+                    <br/>      10. השכלתו של ההורה השני:
+                    <form class="example-form">
+                    <mat-radio-group aria-label="Select an option">
+                      <mat-radio-button value="1">יסודית</mat-radio-button>
+                      <mat-radio-button value="2">תיכונית</mat-radio-button>
+                      <mat-radio-button value="3">על תיכונית</mat-radio-button>
+                      <mat-radio-button value="4">תואר ראשון</mat-radio-button>
+                      <mat-radio-button value="5">תואר שני</mat-radio-button>
+                      <mat-radio-button value="6">דוקטורט</mat-radio-button>
+                      <mat-radio-button value="7">אני הורה יחיד/ה</mat-radio-button>
+                    </mat-radio-group>
+                  </form>
+                    <br/>    11. מהו העיסוק /המקצוע של ההורה השני
                     <form class="example-form">
                         <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Message</mat-label>
@@ -80,50 +115,54 @@
                         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
                         </mat-form-field>
                     </form>
-                    <br/>   9. מהו העיסוק/המקצוע שלך?
+                    <br/>   12. מה השפות שאתם מדברים בבית?(אפשר לבחור יותר מתשובה אחת)
+                    <form name="myForm" ng-controller="ExampleController">
+                      <label>עברית
+                        <input type="checkbox" ng-model="checkboxModel.value1">
+                      </label><br/>
+                      <label>ערבית
+                        <input type="checkbox" ng-model="checkboxModel.value2"
+                               ng-true-value="'YES'" ng-false-value="'NO'">
+                       </label><br/>
+                       <label>אנגלית
+                        <input type="checkbox" ng-model="checkboxModel.value3"
+                               ng-true-value="'YES'" ng-false-value="'NO'">
+                       </label><br/>
+                       <label>רוסית
+                        <input type="checkbox" ng-model="checkboxModel.value4"
+                               ng-true-value="'YES'" ng-false-value="'NO'">
+                       </label><br/>
+                       <label>אמהרית
+                        <input type="checkbox" ng-model="checkboxModel.value5"
+                               ng-true-value="'YES'" ng-false-value="'NO'">
+                       </label><br/>
+                       <label>אחר- פרט
+                        <input type="checkbox" ng-model="checkboxModel.value6"
+                               ng-true-value="'YES'" ng-false-value="'NO'">
+                       </label><br/>
+                      
+                     </form>
+                    <!-- <form class="example-form">
+                    <mat-radio-group aria-label="Select an option">
+                      <mat-radio-button value="1">עברית</mat-radio-button>
+                      <mat-radio-button value="2">ערבית</mat-radio-button>
+                      <mat-radio-button value="3">אנגלית</mat-radio-button>
+                      <mat-radio-button value="4">רוסית</mat-radio-button>
+                      <mat-radio-button value="5">אמהרית</mat-radio-button>
+                      <mat-radio-button value="6">אחר- פרט</mat-radio-button>
+                    </mat-radio-group>
+                  </form> -->
+                    <br/>    13. "על-פי נתוני הלשכה המרכזית לסטטיסטיקה, ההכנסה החודשית הממוצעת במשק היא כ-12000 ₪ ברוטו. בהתאם לכך, הכנסתכם (נא לסמן):"
+                    *הנתון הוא לאדם, לא למשפחה.
+                     
                     <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Message</mat-label>
-                        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                        <mat-hint align="start"><strong></strong> </mat-hint>
-                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                    </form>
-                    <br/>      10. כיצד היית מגדיר את עצמך ביחס לדת
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Message</mat-label>
-                        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                        <mat-hint align="start"><strong></strong> </mat-hint>
-                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                    </form>
-                    <br/>    11. השכלתו של ההורה השני
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Message</mat-label>
-                        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                        <mat-hint align="start"><strong></strong> </mat-hint>
-                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                    </form>
-                    <br/>   12. מהו העיסוק /המקצוע של ההורה השני
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Message</mat-label>
-                        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                        <mat-hint align="start"><strong></strong> </mat-hint>
-                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                    </form>
-                    <br/>    13. מה השפות שאתם מדברים בבית?
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Message</mat-label>
-                        <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                        <mat-hint align="start"><strong></strong> </mat-hint>
-                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
+                      <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button value="1"> נמוכה בהרבה מהממוצע</mat-radio-button>
+                        <mat-radio-button value="2">נמוכה במקצת מהממוצע</mat-radio-button>
+                        <mat-radio-button value="3">ממוצעת</mat-radio-button>
+                        <mat-radio-button value="4">גבוהה במקצת מהממוצע</mat-radio-button>
+                        <mat-radio-button value="5"> גבוהה בהרבה מהממוצע</mat-radio-button>
+                      </mat-radio-group>
                     </form>
     </div>
 </td>
@@ -131,127 +170,169 @@
 <button mat-raised-button color="primary" [routerLink]="['/values-ranking']">{{'המשך'}} </button>
 
         </div>
-
+        
+          
         <div *ngIf="isArabicCulture()">
             
                 <td>
-                    جنس الطفل المشترك بالدراسة
+                  <div style="font-size: 25px;margin-right: 35%">
+                    <b> المسح الديموغرافي:</b>
+                  </div>
+                    <br/>   1. جنس الطفل المشترك بالبحث:
                     <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Message</mat-label>
-                          <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                          <mat-hint align="start"><strong></strong> </mat-hint>
-                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                      </form>
-                    الوالد أو الوالدة الذي يملأ الاستمارة
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Message</mat-label>
-                          <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                          <mat-hint align="start"><strong></strong> </mat-hint>
-                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                      </form>
-                    عمر الوالد أو الوالدة الذي يملأ الاستمارة
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Message</mat-label>
-                          <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                          <mat-hint align="start"><strong></strong> </mat-hint>
-                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                      </form>
-                    عمر الطفل/الطفلة المشترك/ة بالبحث
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Message</mat-label>
-                          <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                          <mat-hint align="start"><strong></strong> </mat-hint>
-                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                      </form>
-                    في أي صف الطفل/الطفلة المشترك/ة بالبحث ؟
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Message</mat-label>
-                          <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                          <mat-hint align="start"><strong></strong> </mat-hint>
-                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                      </form>
-                    مكان السكن
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Message</mat-label>
-                          <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                          <mat-hint align="start"><strong></strong> </mat-hint>
-                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                      </form>
-                    عدد الغرف في منزلك (غير شامل دورات المياه أو المطبخ )
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Message</mat-label>
-                          <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                          <mat-hint align="start"><strong></strong> </mat-hint>
-                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                      </form>
-                    ما هي درجة تعليمك ؟
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Message</mat-label>
-                          <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                          <mat-hint align="start"><strong></strong> </mat-hint>
-                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                      </form>
-                    ما هي مهنتك ؟
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Message</mat-label>
-                          <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                          <mat-hint align="start"><strong></strong> </mat-hint>
-                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                      </form>
-                    كيف تعرف نفسك من ناحية الدين ؟
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Message</mat-label>
-                          <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                          <mat-hint align="start"><strong></strong> </mat-hint>
-                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                      </form>
-                    ما هي درجة تعليم شريك او شريكتك  ؟
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Message</mat-label>
-                          <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                          <mat-hint align="start"><strong></strong> </mat-hint>
-                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                      </form>
-                    ما هي مهنة شريكك أو شريكتك؟
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Message</mat-label>
-                          <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                          <mat-hint align="start"><strong></strong> </mat-hint>
-                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                      </form>
-                    ما هي لغتك الأم
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <mat-label>Message</mat-label>
-                          <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
-                          <mat-hint align="start"><strong></strong> </mat-hint>
-                          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                      </form>
+                    <mat-radio-group aria-label="Select an option">
+                      <mat-radio-button value="1">ذكر</mat-radio-button>
+                      <mat-radio-button value="2">أنثى</mat-radio-button>
+                    </mat-radio-group>
+                  </form>
+                <br/>      2. من الذي يملأ الاستمارة
+                <form class="example-form">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1">الأم</mat-radio-button>
+                    <mat-radio-button value="2">الأب</mat-radio-button>
+                  </mat-radio-group>
+                </form>
+                <br/>    3.العمر \ الجيل للوالد\ة الذي يملأ الاستمارة
+                <form class="example-form">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Message</mat-label>
+                    <input matInput #message maxlength="256" placeholder="גיל">
+                    <mat-hint align="start"><strong></strong> </mat-hint>
+                    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                    </mat-form-field>
+                </form>
+                <br/>     4.تاريخ الولادة للطفل المشترك بالبحث 
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Choose a date</mat-label>
+                  <input matInput [matDatepicker]="picker">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <br/>   5. بأي صف الطفل المشترك بالبحث <br/>
+                <form class="example-form">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1">روضة</mat-radio-button>
+                    <mat-radio-button value="2">بستان</mat-radio-button>
+                    <mat-radio-button value="3">تمهيدي</mat-radio-button>
+                    <mat-radio-button value="4">أول</mat-radio-button>
+                    <mat-radio-button value="5">ثاني</mat-radio-button>
+                    <mat-radio-button value="6">ثالث</mat-radio-button>
+                    <mat-radio-button value="7">رابع</mat-radio-button>
+                    <mat-radio-button value="8">خامس</mat-radio-button>
+                    <mat-radio-button value="9">سادس</mat-radio-button>
+                    <mat-radio-button value="10">سابع</mat-radio-button>
+                  </mat-radio-group>
+                </form>
+                6. مكان السكن   
+                <form class="example-form">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Message</mat-label>
+                    <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
+                    <mat-hint align="start"><strong></strong> </mat-hint>
+                    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                    </mat-form-field>
+                </form>                    
+                <br/> 7. تحصيلك الأكاديمي
+                <form class="example-form">
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1">ابتدائي</mat-radio-button>
+                  <mat-radio-button value="2">إعدادي</mat-radio-button>
+                  <mat-radio-button value="3">ثانوي</mat-radio-button>
+                  <mat-radio-button value="4">لقب أول</mat-radio-button>
+                  <mat-radio-button value="5">لقب ثاني</mat-radio-button>
+                  <mat-radio-button value="6">لقب ثالث</mat-radio-button>
+                </mat-radio-group>
+              </form>
+                <br/>    8. ما هي مهنتك الحالية
+                <form class="example-form">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Message</mat-label>
+                    <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
+                    <mat-hint align="start"><strong></strong> </mat-hint>
+                    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                    </mat-form-field>
+                </form>
+                <br/>   9. كيف تعرّف نفسك بالنسبة للدين
+                <form class="example-form">
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1">متدين/ة جدا</mat-radio-button>
+                  <mat-radio-button value="2">متدين/ة</mat-radio-button>
+                  <mat-radio-button value="3">محافظ/ة</mat-radio-button>
+                  <mat-radio-button value="4">علماني/ة (غير متدين/ة أبدا)</mat-radio-button>
+                  <mat-radio-button value="5">آخر</mat-radio-button>
+                </mat-radio-group>
+              </form>
+                <br/>      10. التحصيل الأكاديمي للوالد\ة الآخر
+                <form class="example-form">
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1">ابتدائي</mat-radio-button>
+                  <mat-radio-button value="2">إعدادي</mat-radio-button>
+                  <mat-radio-button value="3">ثانوي</mat-radio-button>
+                  <mat-radio-button value="4">لقب أول</mat-radio-button>
+                  <mat-radio-button value="5">لقب ثاني</mat-radio-button>
+                  <mat-radio-button value="6">لقب ثالث</mat-radio-button>
+                </mat-radio-group>
+              </form>
+                <br/>    11. مهنة الوالد\ة الآخر 
+                <form class="example-form">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Message</mat-label>
+                    <input matInput #message maxlength="256" placeholder="Ex. I need help with...">
+                    <mat-hint align="start"><strong></strong> </mat-hint>
+                    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                    </mat-form-field>
+                </form>
+                <br/>   12. ما هي اللغات التي تتحدثون بها داخل البيت ؟(بإمكانك اختيار أكثر من إجابة واحدة )
+                <form name="myForm" ng-controller="ExampleController">
+                  <label>عربية
+                    <input type="checkbox" ng-model="checkboxModel.value1">
+                  </label><br/>
+                  <label>عبرية
+                    <input type="checkbox" ng-model="checkboxModel.value2"
+                           ng-true-value="'YES'" ng-false-value="'NO'">
+                   </label><br/>
+                   <label>انجليزية
+                    <input type="checkbox" ng-model="checkboxModel.value3"
+                           ng-true-value="'YES'" ng-false-value="'NO'">
+                   </label><br/>
+                   <label>روسية
+                    <input type="checkbox" ng-model="checkboxModel.value4"
+                           ng-true-value="'YES'" ng-false-value="'NO'">
+                   </label><br/>
+                   <label>فرنسية
+                    <input type="checkbox" ng-model="checkboxModel.value5"
+                           ng-true-value="'YES'" ng-false-value="'NO'">
+                   </label><br/>
+                   <label>غير ذلك
+                    <input type="checkbox" ng-model="checkboxModel.value6"
+                           ng-true-value="'YES'" ng-false-value="'NO'">
+                   </label><br/>
+                  
+                 </form>
+                <!-- <form class="example-form">
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1">عربية</mat-radio-button>
+                  <mat-radio-button value="2">عبرية</mat-radio-button>
+                  <mat-radio-button value="3">انجليزية</mat-radio-button>
+                  <mat-radio-button value="4">روسية</mat-radio-button>
+                  <mat-radio-button value="5">فرنسية</mat-radio-button>
+                  <mat-radio-button value="6">غير ذلك </mat-radio-button>
+                </mat-radio-group>
+              </form> -->
+                <br/>    13.
+                بحسب معطيات المكتب المركزي للإحصاء، يبلغ إجمالي الدخل الشهري للفرد الواحد حوالي 12 ألف شيكل غير شامل الضريبة. تبعا لذلك، دخلك (يرجى الإحاطة): 
+              
+              
+              
+                <form class="example-form">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1"> أقل بكثير من المعدل        </mat-radio-button>
+                    <mat-radio-button value="2">أقل بقليل من المعدل     </mat-radio-button>
+                    <mat-radio-button value="3">يساوي المعدل تقريبا     </mat-radio-button>
+                    <mat-radio-button value="4"> أكثر بقليل من المعدل      </mat-radio-button>
+                    <mat-radio-button value="5"> أكثر بكثير من المعدل </mat-radio-button>
+                  </mat-radio-group>
+                </form>
                                                                                   
 
 </td>

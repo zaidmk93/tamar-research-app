@@ -2,6 +2,7 @@ export class BasicData {
   dataSavedFlag = false;
   schoolID: string;
   childID: string;
+  lab: string;
   gender: 'M' | 'F' = 'M';
   culture: 'jewish' | 'druze' | 'christian' | 'muslim' = 'jewish';
   pbvs1: Pbvs = {
@@ -38,7 +39,7 @@ export class BasicData {
   };
   pbvs5: Pbvs = {
     valNum: 8,
-    text: 'ללמוד לבד דברים חדשים',
+    text: 'לגלות לבד דברים חדשים',
     imgLink: 'val8.png',
     audioLink: 'val8.mp3',
     rank: null,
@@ -46,7 +47,7 @@ export class BasicData {
   };
   pbvs6: Pbvs = {
     valNum: 1,
-    text: 'לשמור על עצמי',
+    text: 'לשמור על הבטיחות שלי',
     imgLink: 'val1.png',
     audioLink: 'val1.mp3',
     rank: null,
@@ -254,3 +255,8 @@ export interface Pbvs {
   rank: number;
   isStock: boolean;
 }
+
+export class DemographicData{
+  name : string;
+}
+

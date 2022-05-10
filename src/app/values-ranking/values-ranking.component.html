@@ -4,11 +4,15 @@
     <app-rank-set2 *ngIf="scene == 5" [culture]="culture" (gotRanking)="scene5($event)">
     </app-rank-set2>
     <app-summary *ngIf="scene == 6" [culture]="culture"></app-summary>
-    <div class="padding" *ngIf="[0, 1, 2, 4].includes(scene)">
+    <app-lab *ngIf="scene == 8" (gotCreds)="scene8($event)"></app-lab>
+    <app-lab *ngIf="scene == 8" (gotCreds)="scene8($event)"></app-lab>
+    <div class="padding" *ngIf="[0, 1, 2, 4, 7].includes(scene)">
         <app-rotate-screen *ngIf="scene == 0" [culture]="culture" (gotCreds)="scene1($event)"></app-rotate-screen>
         <app-entering-form *ngIf="scene == 1" [culture]="culture" (gotCreds)="scene1($event)"></app-entering-form>
         <app-values-set1 *ngIf="scene == 2" [culture]="culture" (openingEnded)="scene2($event)">
         </app-values-set1>
+        <app-Attention-task-from *ngIf="scene == 7" [culture]="culture" (openingEnded)="scene7($event)">
+        </app-Attention-task-from>
         <app-values-set2 *ngIf="scene == 4" [culture]="culture" (openingEnded)="scene4($event)">
         </app-values-set2>
     </div>

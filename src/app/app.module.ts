@@ -20,6 +20,9 @@ import { PyramidViewComponent } from './values-ranking/pyramid-view/pyramid-view
 import { ConcentComponent } from './start/concent/concent.component';
 import { DemographicComponent } from './start/demographic/demographic.component';
 import { AttentiontaskComponent } from './values-ranking/attention-task/Attention-task.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
@@ -49,6 +52,9 @@ import { AttentiontaskComponent } from './values-ranking/attention-task/Attentio
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Credentials } from 'src/app/models';
 
 @Component({
   selector: 'app-lab',
@@ -6,10 +7,40 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lab.component.scss']
 })
 export class LabComponent implements OnInit {
-
+  @Output() gotCreds: EventEmitter<Credentials> = new EventEmitter<Credentials>();
   constructor() { }
+  creds: Credentials = {
+    schoolID: '',
+    childID: 'a',
+    gender: 'M',
+    childgender: '',
+    parents: '',
+    parentage: '',
+    childage: '',
+    class: '',
+    living: '',
+    education1: '',
+    profession1: '',
+    levelofreligiousty: '',
+    education2: '',
+    profession2: '',
+    languages: '',
+    economic_level: '',
+    lab : 'Aysheh'
+  };
 
   ngOnInit(): void {
   }
+
+  clicked1(){
+    this.creds.lab = "Aysheh"
+    this.gotCreds.emit(this.creds);
+  }
+
+  clicked2(){
+    this.creds.lab = "Texas"
+    this.gotCreds.emit(this.creds);
+  }
+
 
 }
