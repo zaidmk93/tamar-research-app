@@ -456,6 +456,7 @@ export class RankSet1Component implements OnInit, OnDestroy {
     console.log(dt2);
     var diffMins = (dt2 - this.dt1);
     console.log(diffMins / 1000);
+    console.log("hi");
     // var Date2 = Date2.getTime()
     // Date2().getMinutes() 
     // const timeofset1 = Date2().getMinutes()- new Date().getMinutes() 
