@@ -6,12 +6,13 @@ import { ConcentComponent } from './start/concent/concent.component';
 import { LabComponent } from './start/lab/lab.component';
 import { ValuesRankingComponent } from './values-ranking/values-ranking.component';
 import { DemographicComponent } from './start/demographic/demographic.component';
+import { Attentiontask3Component } from './values-ranking/Attention-task3/Attention-task3.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: LabComponent,
+    component: ValuesRankingComponent,
   },
   {
     path: 'lab',
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'demographic',
     component: DemographicComponent,
+  },
+  {
+    path: 'Attention-task3',
+    component: Attentiontask3Component,
   },
   {
     path: '**',

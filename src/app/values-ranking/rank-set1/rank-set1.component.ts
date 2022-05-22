@@ -14,7 +14,7 @@ import { getCacheData, getCacheKey } from 'src/app/shared/utils';
 import { Pbvs, DataService } from '../../shared/services/data.service';
 import { PyramidViewComponent } from '../pyramid-view/pyramid-view.component';
 import { ValueDialogComponent } from '../value-dialog/value-dialog.component';
-
+import { Time } from '@angular/common';
 @Component({
   selector: 'app-rank-set1',
   templateUrl: './rank-set1.component.html',
@@ -35,6 +35,11 @@ export class RankSet1Component implements OnInit, OnDestroy {
   playerSubscription$: Subscription;
   playerworking$: Subscription;
   idleTimer;
+ 
+
+  // var Date1 = Date1.getTime();
+  // var minutes = Date1.getMinutes() 
+  //   console.log(minutes)
 
   orderedValues = {
     veryvery: null,
@@ -47,7 +52,7 @@ export class RankSet1Component implements OnInit, OnDestroy {
     not1: null,
     not2: null,
     notnot: null,
-  };
+   };
 
   valuesStages = [
     'veryvery',
@@ -60,8 +65,11 @@ export class RankSet1Component implements OnInit, OnDestroy {
     'average2',
     'average3',
     'average4',
+    'dt1',
+    'dt2',
   ];
-
+  dt1: number;
+  getTime: any;
   constructor(
     private audioService: AudioService,
     public dataService: DataService,
@@ -74,6 +82,10 @@ export class RankSet1Component implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+   // var today = new Date();
+    //var dt1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    this.dt1 = Date.now();
+    console.log(this.dt1)
     this.isMale = this.dataService.gender === 'M';
     this.nextStage();
   }
@@ -118,6 +130,13 @@ export class RankSet1Component implements OnInit, OnDestroy {
       this.playSound();
     }
   }
+
+  // minutesDiff(dt1, dt2) {
+  // var diffMins = (dt2 -  dt1);
+  // var diffMins = Math.round(((diffMins % 86400000) % 3600000) / 60000);
+  // return diffMins
+//  }
+
 
   valueClick(val: Pbvs) {
     if (!this.calculating) {
@@ -343,6 +362,7 @@ export class RankSet1Component implements OnInit, OnDestroy {
       }
     }
   }
+ 
 
   getRank(rank: string) {
     let rankVal: number;
@@ -431,6 +451,14 @@ export class RankSet1Component implements OnInit, OnDestroy {
   }
 
   nextScene() {
+    var dt2 : number = Date.now();
+    //var dt2 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    console.log(dt2);
+    var diffMins = (dt2 - this.dt1);
+    console.log(diffMins / 1000);
+    // var Date2 = Date2.getTime()
+    // Date2().getMinutes() 
+    // const timeofset1 = Date2().getMinutes()- new Date().getMinutes() 
     this.gotRanking.emit(true);
   }
 }

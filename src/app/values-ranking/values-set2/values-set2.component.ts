@@ -48,7 +48,7 @@ export class ValuesSet2Component implements OnInit {
         this.opening(res);
       });
       
-        
+       
 
       this.$audio = this.audioService.getPlayerStatus().subscribe((res) => {
         if (res === 'ended') {

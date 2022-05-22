@@ -17,7 +17,7 @@ export class LabComponent implements OnInit {
     parents: '',
     parentage: '',
     childage: '',
-    class: '',
+    classs: '',
     living: '',
     education1: '',
     profession1: '',
@@ -26,7 +26,12 @@ export class LabComponent implements OnInit {
     profession2: '',
     languages: '',
     economic_level: '',
-    lab : 'Aysheh'
+    lab : 'Aysheh',
+    applanguages1:'',
+    applanguages2:'',
+    attention1:'',
+    attention2:'',
+    attention3:'',
   };
 
   ngOnInit(): void {

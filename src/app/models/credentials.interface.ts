@@ -6,7 +6,7 @@ export interface Credentials {
   parents: string;
   parentage: string;
   childage: string;
-  class: string;
+  classs: string;
   living: string;
   education1: string;
   profession1: string;
@@ -16,4 +16,9 @@ export interface Credentials {
   languages : string;
   economic_level: string;
   lab : string;
+  applanguages1:string;
+  applanguages2:string;
+  attention1:string;
+  attention2:string;
+  attention3:string;
 }

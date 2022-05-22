@@ -28,7 +28,7 @@ export class EnteringFormComponent implements OnInit {
     parents: '',
     parentage: '',
     childage: '',
-    class: '',
+    classs: '',
     living: '',
     education1: '',
     profession1: '',
@@ -37,10 +37,17 @@ export class EnteringFormComponent implements OnInit {
     profession2: '',
     languages: '',
     economic_level: '',
-    lab : 'Aysheh'
+    lab : 'Aysheh',
+    applanguages1:'',
+    applanguages2:'',
+    attention1:'',
+    attention2:'',
+    attention3:'',
+    
   };
   invalidSchoolIDFlag = false;
   invalidChildIDFlag = false;
+  lab: any;
 
   constructor() {}
 

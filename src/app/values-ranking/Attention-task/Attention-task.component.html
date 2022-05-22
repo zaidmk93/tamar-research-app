@@ -4,6 +4,20 @@
       <h1 style="text-align: center; ">{{'כמה ביצים יש בתמונה?'}}</h1>
     </td>
     <img class="img-agg" src="../../../assets/attention.task.images/agg.png" width="500" class="center" >
+    <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Select</mat-label>
+      <mat-select [(ngModel)]="creds.attention1" [ngModelOptions]="{standalone: true}">
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+        <mat-option value="6">6</mat-option>
+      </mat-select>
+     
+    </mat-form-field>
+  </form>
   </div>
   
   <div *ngIf="counter == 1">
@@ -11,21 +25,24 @@
       <h1 style="text-align: center;">{{'כמה ברווזים יש בתמונה?'}}</h1>
     </td>
     <img class="img-agg" src="../../../assets/attention.task.images/duck.png" width="500" class="center">
+    <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Select</mat-label>
+      <mat-select [(ngModel)]="creds.attention2" [ngModelOptions]="{standalone: true}">
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+        <mat-option value="6">6</mat-option>
+      </mat-select>
+     
+    </mat-form-field>
+    </form>
   </div>
 
 
-  <mat-form-field appearance="fill" >
-    <mat-label>Select</mat-label>
-    <mat-select>
-      <mat-option value="1">1</mat-option>
-      <mat-option value="2">2</mat-option>
-      <mat-option value="3">3</mat-option>
-      <mat-option value="4">4</mat-option>
-      <mat-option value="5">5</mat-option>
-      <mat-option value="6">6</mat-option>
-    </mat-select>
-   
-  </mat-form-field>
+  
   <div>
   <button mat-raised-button color="primary" (click) = "counterUp()" >{{'המשך'}} </button>
 </div>

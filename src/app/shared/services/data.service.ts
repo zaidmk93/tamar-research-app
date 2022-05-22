@@ -3,6 +3,24 @@ export class BasicData {
   schoolID: string;
   childID: string;
   lab: string;
+  childgender: string;
+  parents: string;
+  parentage: string;
+  childage: string;
+  classs: string;
+  living: string;
+  education1: string;
+  profession1: string;
+  levelofreligiousty: string;
+  education2: string;
+  profession2: string;
+  languages: string;
+  economic_level: string;
+  applanguages1:string;
+  applanguages2:string;
+  attention1:string;
+  attention2:string;
+  attention3:string;
   gender: 'M' | 'F' = 'M';
   culture: 'jewish' | 'druze' | 'christian' | 'muslim' = 'jewish';
   pbvs1: Pbvs = {

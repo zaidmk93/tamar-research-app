@@ -28,7 +28,7 @@
                     </div>
 
 </td>
-<button mat-raised-button color="primary" [routerLink]="['/demographic']">{{'מאשר/ת'}} </button>
+<button mat-raised-button color="primary" (click)="start()">{{'מאשר/ת'}} </button>
 
         </div>
 
@@ -48,13 +48,14 @@
 بضغطك على الزر أدناه يمثل موافقتك على الاشتراك بالدراسة
 
 </td>
-<button mat-raised-button color="primary" [queryParams]="{ culture: 'muslim'}" [routerLink]="['/demographic']">{{'موافق/ة'}} </button>
+<button mat-raised-button color="primary" (click)="start()">{{'موافق/ة'}} </button>
 </div>
 </table>
 </mat-card-content>
 </mat-card>
 </div>
 
+<!--  [queryParams]="{ culture: 'muslim'}" -->
 
    
 

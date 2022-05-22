@@ -26,6 +26,9 @@ export class ValuesRankingComponent implements OnInit {
    * 8 - Lab
    * 9 - Language
    * 10 - Demographic
+   * 11 - concent
+   * 12 - Language2
+   * 13 - Attention task3
    */
   culture: 'jewish' | 'druze' | 'christian' | 'muslim' = 'jewish';
   scene = 0;
@@ -52,7 +55,7 @@ export class ValuesRankingComponent implements OnInit {
 
   ngOnInit(): void {
     this.scene = this.applicationStateService.getIsMobileResolution() ? 0 : 1;
-    //this.scene = 8;
+    this.scene = 8;
     // rotate screen worning. resolves on rotate or 10 sec delay
     if (this.scene === 0) {
       if (window.innerWidth >= window.innerHeight) {
@@ -92,6 +95,7 @@ export class ValuesRankingComponent implements OnInit {
       this.dataService.schoolID = creds.schoolID;
       this.dataService.childID = creds.childID;
       this.scene = 2;
+      this.scene = 3;
     }
     this.dataService.currentScene = this.scene;
     this.cacheService.save({
@@ -138,8 +142,6 @@ export class ValuesRankingComponent implements OnInit {
 
   scene5(endFlag: boolean) {
     if (endFlag) {
-      console.log("We in 5");
-      this.calculateData();
       this.scene = 6;
       this.dataService.currentScene = this.scene;
       this.cacheService.save({
@@ -148,34 +150,79 @@ export class ValuesRankingComponent implements OnInit {
       });
     }
   }
-
-  scene7(endFlag: boolean){
+  scene6(endFlag: boolean){
     if (endFlag) {
-      console.log("We in 7");
-      this.calculateData();
-      this.scene = 4;
+      this.scene = 13;
       this.dataService.currentScene = this.scene;
       this.cacheService.save({
         key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
         data: getCacheData(this.dataService),
       });
     }
+  
+}
+
+  scene7(openingEnded: Credentials){
+      this.scene = 4;
+      this.dataService.attention1 = openingEnded.attention1;
+      this.dataService.attention2 = openingEnded.attention2;
+      this.dataService.currentScene = this.scene;
+      this.cacheService.save({
+        key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
+        data: getCacheData(this.dataService),
+      });
   }
 
   scene8(creds: Credentials){
       this.scene = 9;
       this.dataService.lab = creds.lab;
-      console.log(this.dataService.lab);
   }
 
   scene9(creds: Credentials){
-    this.scene = 1;
-    this.dataService.lab = creds.lab;
-    console.log(this.dataService.lab);
-}
+    this.dataService.applanguages1 = creds.applanguages1;
+    this.dataService.applanguages2 = null;
 
+    if(creds.applanguages1 == "Arabic"){
+      this.scene = 12;
+    }else{
+      this.scene = 11;
+    }
+    console.log(this.dataService.applanguages1);
+    console.log(this.dataService.applanguages2);
+  }
+
+
+  scene10(creds: Credentials){
+    this.scene = 1;
+    this.dataService.parents = creds.parents;
+    this.dataService.parentage = creds.parentage;
+    this.dataService.childgender = creds.childgender;
+    // this.dataService.childage = creds.childage;
+     this.dataService.classs = creds.classs;
+     this.dataService.living = creds.living;
+     this.dataService.education1 = creds.education1;
+     this.dataService.profession1 = creds.profession1;
+     this.dataService.levelofreligiousty = creds.levelofreligiousty;
+     this.dataService.education2 = creds.education2;
+     this.dataService.profession2 = creds.profession2;
+     this.dataService.languages = creds.languages;
+     this.dataService.economic_level = creds.economic_level;
+  }
+
+  scene11(creds: Credentials){
+    this.scene = 10;
+  }
+
+  scene12(creds: Credentials){
+    this.dataService.applanguages2 = creds.applanguages2;
+    this.scene = 11;
+  }
+  scene13(creds: Credentials){
+    this.dataService.attention3 = creds.attention3;
+    this.calculateData();
+  }
+  
   calculateData() {
-    console.log("We in calculate data");
     const finalData = {
       schoolID: this.dataService.schoolID,
       childID: this.dataService.childID,
@@ -201,6 +248,25 @@ export class ValuesRankingComponent implements OnInit {
       keep_others_happy_19: this.dataService.pbvs19.rank,
       keep_nature_20: this.dataService.pbvs20.rank,
       lab : this.dataService.lab,
+      parents : this.dataService.parents,
+      parentage : this.dataService.parentage,
+      childgender : this.dataService.childgender,
+      applanguages1: this.dataService.applanguages1,
+      applanguages2: this.dataService.applanguages2,
+      //childage : this.dataService.childage,
+      classs : this.dataService.classs,
+      living : this.dataService.living,
+      education1 : this.dataService.education1,
+      profession1 : this.dataService.profession1,
+      levelofreligiousty : this.dataService.levelofreligiousty,
+      education2 : this.dataService.education2,
+      profession2 : this.dataService.profession2,
+      //languages : this.dataService.languages,
+      economic_level : this.dataService.economic_level,
+      attention1 : this.dataService.attention1,
+      attention2 : this.dataService.attention2,
+      attention3 : this.dataService.attention3,
+
     };
     const reqBody = {
       query: `mutation insertData {
@@ -230,6 +296,23 @@ export class ValuesRankingComponent implements OnInit {
             keep_others_happy_19: ${finalData.keep_others_happy_19},
             keep_nature_20: ${finalData.keep_nature_20},
             lab : ${finalData.lab},
+            applanguages1 : ${finalData.applanguages1},
+            applanguages2 : ${finalData.applanguages2},
+            childgender : ${finalData.childgender},
+            parents : ${finalData.parents},
+            parentage : ${finalData.parentage},
+            education1 : ${finalData.education1},
+            profession1 : "${finalData.profession1}",
+            levelofreligiousty : ${finalData.levelofreligiousty},
+            education2 : ${finalData.education2},
+            profession2 : "${finalData.profession2}",
+            economic_level : ${finalData.economic_level},
+            living : "${finalData.living}",
+            classs : "${finalData.classs}",
+            attention1: ${finalData.attention1},
+            attention2: ${finalData.attention2},
+            attention3: ${finalData.attention3},
+            
           }
         ) {
           id
@@ -239,6 +322,8 @@ export class ValuesRankingComponent implements OnInit {
     const headers = {'x-hasura-admin-secret': 
     'L2WPqUDgvdWhGveSYAjMOG3l6jbbxSb0jZk7q1rii03COuV0LQr2xCQIMJHmq0JO' };
     console.log('Data summary:', finalData);
+    console.log(reqBody);
+
     this.http
       .post<any>(
         'https://research.hasura.app/v1/graphql',
@@ -266,5 +351,9 @@ export class ValuesRankingComponent implements OnInit {
         },
       });
   }
+}
+
+function clicked1() {
+  throw new Error('Function not implemented.');
 }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common'
+import { Credentials } from 'src/app/models';
 
 @Component({
   selector: 'app-concent-from',
@@ -8,25 +9,10 @@ import { CommonModule } from '@angular/common'
   styleUrls: ['./concent.component.scss']
 })
 export class ConcentComponent implements OnInit {
-    culture: string;
-//   @Output() gotCreds: EventEmitter<Credentials> = new EventEmitter<
-//     Credentials
-//   >();
-//   schoolID = new FormControl('', [
-//     Validators.required,
-//     Validators.pattern('[0-9]*'),
-//   ]);
-//   childID = new FormControl('', [
-//     Validators.required,
-//     Validators.pattern('[0-9]*'),
-//   ]);
-//   creds: Credentials = {
-//     schoolID: '',
-//     childID: 'a',
-//     gender: 'M',
-//   };
-//   invalidSchoolIDFlag = false;
-//   invalidChildIDFlag = false;
+  culture: string;
+  creds : Credentials;
+  @Output() gotCreds: EventEmitter<Credentials> = new EventEmitter<Credentials>();
+
 
 constructor(
     private route: ActivatedRoute,
@@ -50,19 +36,8 @@ constructor(
     return this.culture == 'muslim' || this.culture == 'druze'|| this.culture == 'christian'
   }
 
-//   start(): Credentials | void {
-//     if (!!this.schoolID.errors || this.schoolID.value === 0) {
-//       this.invalidSchoolIDFlag = true;
-//     } else if (!!this.childID.errors || this.childID.value === 0) {
-//       this.invalidSchoolIDFlag = false;
-//       this.invalidChildIDFlag = true;
-//     } else {
-//       this.creds.schoolID = this.schoolID.value;
-//       this.creds.childID = this.childID.value;
-//       this.invalidSchoolIDFlag = false;
-//       this.invalidChildIDFlag = false;
-//       this.gotCreds.emit(this.creds);
-//     }
-//   }
+  start() {
+      this.gotCreds.emit(this.creds);
+   }
 }
 

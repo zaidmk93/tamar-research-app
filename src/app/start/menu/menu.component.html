@@ -1,13 +1,15 @@
 <div class="menu">
     <div class="button-box">
-        <button mat-raised-button color="primary" [routerLink]="['/concent']" [queryParams]="{ language: 'Hebrew'}">
+        <button mat-raised-button color="primary" (click)="clicked1()"> 
             עברית/Hebrew
         </button>
     </div>
     <div class="button-box">
-        <button mat-raised-button color="primary" [routerLink]="['/menu2']" [queryParams]="{ language: 'Arabic'}">
+        <button mat-raised-button color="primary" (click)="clicked2()">
             عربي/Arabic 
         </button>
     </div>
 </div>
  
+<!-- [queryParams]="{ language: 'Hebrew'}" -->
+  

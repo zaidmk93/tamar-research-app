@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Credentials } from 'src/app/models';
 import { AudioService } from 'src/app/shared/services/audio.service';
 import { DataService } from '../../shared/services/data.service';
 
@@ -10,14 +11,15 @@ import { DataService } from '../../shared/services/data.service';
 })
 export class SummaryComponent implements OnInit {
   @Input() culture: string;
-  @Input() data: any;openingEnded: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() openingEnded: EventEmitter<boolean> = new EventEmitter<boolean>();
   very1: any = {};
   very2: any = {};
   not1: any = {};
   not2: any = {};
   randomView = true;
   $audio: Subscription;
-  counter = 0
+  
+
   constructor(
     private audioService: AudioService,
     public dataService: DataService
@@ -38,6 +40,7 @@ export class SummaryComponent implements OnInit {
         this.not2 = curVal;
       }
     }
+    
   }
 
   ngOnInit(): void {
@@ -60,13 +63,12 @@ export class SummaryComponent implements OnInit {
       });
     }, 500);
   }
-  counterUp(){
-    this.counter++;
-    if(this.counter == 2){
-      this.openingEnded.emit(true);
-      window.close(); 
-    }
-  }
+   
+  start(){
+    this.openingEnded.emit(true);
+ }
+   
+    
   ending(subStage: number) {
     if(subStage == 3){
       return;

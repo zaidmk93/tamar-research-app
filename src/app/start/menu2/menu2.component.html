@@ -1,16 +1,16 @@
 <div class="menu2">
     <div class="button-box">
-        <button mat-raised-button color="primary" [routerLink]="['/concent']" [queryParams]="{ culture: 'christian'}">
+        <button mat-raised-button color="primary" (click)="clicked1()">
             Christian
         </button>
     </div>
     <div class="button-box">
-        <button mat-raised-button color="primary" [routerLink]="['/concent']" [queryParams]="{ culture: 'druze'}">
+        <button mat-raised-button color="primary" (click)="clicked2()">
             Druze
         </button>
     </div>
     <div class="button-box">
-        <button mat-raised-button color="primary" [routerLink]="['/concent']" [queryParams]="{ culture: 'muslim'}">
+        <button mat-raised-button color="primary" (click)="clicked3()">
             Muslim
         </button>
     </div>
