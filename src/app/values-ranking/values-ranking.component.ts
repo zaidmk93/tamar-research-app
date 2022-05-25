@@ -95,7 +95,7 @@ export class ValuesRankingComponent implements OnInit {
       this.dataService.schoolID = creds.schoolID;
       this.dataService.childID = creds.childID;
       this.scene = 2;
-      this.scene = 3;
+      
     }
     this.dataService.currentScene = this.scene;
     this.cacheService.save({
