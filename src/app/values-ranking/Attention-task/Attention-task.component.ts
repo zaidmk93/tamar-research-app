@@ -62,12 +62,14 @@ export class AttentiontaskComponent implements OnInit {
    }
     counterUp(){
       this.counter++;
+      if(this.counter == 1){
       if(this.culture == 'Hebrew'){
         this.audioService.setAudio("../../assets/attention.task.audio/How many ducks.m4a");
       }else{
         this.audioService.setAudio("../../assets/attention.task.audio/How many ducks-Arabic.m4a");
       }
       this.playerSubscription$ = this.audioService.getPlayerStatus().subscribe();
+    }
       if(this.counter == 2){
         this.openingEnded.emit(this.creds);
       }

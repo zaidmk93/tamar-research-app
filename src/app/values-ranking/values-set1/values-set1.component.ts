@@ -37,6 +37,8 @@ export class ValuesSet1Component implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.culture);
+    console.log(this.dataService.gender);
     this.stage = 1;
     if (this.culture === 'jewish') {
       this.subtitle = `עכשיו אנחנו נצא למסע דמיוני -<br>
@@ -130,6 +132,7 @@ export class ValuesSet1Component implements OnInit {
         this.culture === 'jewish' ? 'heb' : 'arab'
       }/${curVal.audioLink}`
     );
+    
     this.subtitle = curVal.text;
     return 0;
   }

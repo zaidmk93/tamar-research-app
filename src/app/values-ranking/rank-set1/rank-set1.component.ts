@@ -136,12 +136,6 @@ export class RankSet1Component implements OnInit, OnDestroy {
     }
   }
 
-  // minutesDiff(dt1, dt2) {
-  // var diffMins = (dt2 -  dt1);
-  // var diffMins = Math.round(((diffMins % 86400000) % 3600000) / 60000);
-  // return diffMins
-//  }
-
 
   valueClick(val: Pbvs) {
     if (!this.calculating) {
@@ -201,6 +195,9 @@ export class RankSet1Component implements OnInit, OnDestroy {
         this.culture === 'jewish' ? 'heb' : 'arab'
       }/inst-${num}-${this.isMale ? 'M' : 'F'}.mp3`;
     };
+
+    console.log(createSoundLink);
+
     const titles = (num: number): string => {
       const titlesDict = [
         {

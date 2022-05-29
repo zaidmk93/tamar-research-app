@@ -193,11 +193,7 @@ export class ValuesRankingComponent implements OnInit {
 
 
   scene10(creds: Credentials){
-    if (creds.lab == "Aysheh"){
-      this.scene = 2;
-    }    else{
-      this.scene = 1;
-    }
+    this.scene = 1;
 
     this.dataService.parents = creds.parents;
     this.dataService.parentage = creds.parentage;
