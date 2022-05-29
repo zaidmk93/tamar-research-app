@@ -36,6 +36,8 @@ export class PyramidViewComponent implements OnInit {
     not1: Pbvs;
     not2: Pbvs;
     notnot: Pbvs;
+    // timeset1: Pbvs;
+    // timeset2: Pbvs;
   };
 
   @Input() culture: 'jewish' | 'druze' | 'christian' | 'muslim' = 'jewish';
@@ -50,6 +52,8 @@ export class PyramidViewComponent implements OnInit {
     not1: Pbvs;
     not2: Pbvs;
     notnot: Pbvs;
+    // timeset1:Pbvs;
+    // timeset2: Pbvs;
   }) {
     this.values = values;
   }
@@ -72,6 +76,8 @@ export class PyramidViewComponent implements OnInit {
       not1: null,
       not2: null,
       notnot: null,
+      // timeset1: null,
+      // timeset2: null,
     };
   }
 
@@ -88,6 +94,8 @@ export class PyramidViewComponent implements OnInit {
     not1: Pbvs;
     not2: Pbvs;
     notnot: Pbvs;
+    // timeset1: Pbvs;
+    // timeset2: Pbvs;
   }) {
     this.values = values;
     this.ref = this.dialog.open(this.template, this.config);

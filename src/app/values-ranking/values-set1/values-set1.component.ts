@@ -229,7 +229,7 @@ export class ValuesSet1Component implements OnInit {
       }
       case '00:37': {
         this.subtitle =
-          'עכשיו נראה תמונות של כל מני דברים שיכול להיות שאתה רוצה להיות';
+          'עכשיו נראה תמונות של כל מיני דברים שיכול להיות שאתה רוצה להיות';
         break;
       }
       case '00:43': {
@@ -286,7 +286,7 @@ export class ValuesSet1Component implements OnInit {
       }
       case '00:35': {
         this.subtitle =
-          'עכשיו נראה תמונות של כל מני דברים שיכול להיות שאת רוצה להיות';
+          'עכשיו נראה תמונות של כל מיני דברים שיכול להיות שאת רוצה להיות';
         break;
       }
       case '00:41': {

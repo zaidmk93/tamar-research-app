@@ -46,6 +46,8 @@ export class RankSet2Component implements OnInit, OnDestroy {
     not1: null,
     not2: null,
     notnot: null,
+    // timeset1: null,
+    // timeset2: null,
   };
 
   valuesStages = [
@@ -60,7 +62,9 @@ export class RankSet2Component implements OnInit, OnDestroy {
     'average3',
     'average4',
   ];
-
+  dt1: number;
+  // timeset2: number;
+  getTime: any;
   constructor(
     private audioService: AudioService,
     public dataService: DataService,
@@ -73,6 +77,8 @@ export class RankSet2Component implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.dt1 = Date.now();
+    console.log(this.dt1)
     this.isMale = this.dataService.gender === 'M';
     this.nextStage();
     // this.playSound();
@@ -428,6 +434,13 @@ export class RankSet2Component implements OnInit, OnDestroy {
   }
 
   nextScene() {
+    var dt2 : number = Date.now();
+    //var dt2 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    console.log(dt2);
+    var diffMins = (dt2 - this.dt1);
+    // this.timeset2 = diffMins / 1000;
+    console.log(diffMins / 1000);
+    console.log("hi");
     this.gotRanking.emit(true);
   }
 }

@@ -36,7 +36,7 @@ export class ValuesRankingComponent implements OnInit {
   isLandscape: boolean = false;
 
   constructor(
-    private dataService: DataService,
+    public dataService: DataService,
     private cacheService: CacheService,
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -193,20 +193,27 @@ export class ValuesRankingComponent implements OnInit {
 
 
   scene10(creds: Credentials){
-    this.scene = 1;
+    if (creds.lab == "Aysheh"){
+      this.scene = 2;
+    }    else{
+      this.scene = 1;
+    }
+
     this.dataService.parents = creds.parents;
     this.dataService.parentage = creds.parentage;
     this.dataService.childgender = creds.childgender;
-    // this.dataService.childage = creds.childage;
-     this.dataService.classs = creds.classs;
-     this.dataService.living = creds.living;
-     this.dataService.education1 = creds.education1;
-     this.dataService.profession1 = creds.profession1;
-     this.dataService.levelofreligiousty = creds.levelofreligiousty;
-     this.dataService.education2 = creds.education2;
-     this.dataService.profession2 = creds.profession2;
-     this.dataService.languages = creds.languages;
-     this.dataService.economic_level = creds.economic_level;
+    this.dataService.childage = creds.childage;
+    this.dataService.monthchild = creds.monthchild;
+    this.dataService.classs = creds.classs;
+    this.dataService.living = creds.living;
+    this.dataService.education1 = creds.education1;
+    this.dataService.profession1 = creds.profession1;
+    this.dataService.levelofreligiousty = creds.levelofreligiousty;
+    this.dataService.education2 = creds.education2;
+    this.dataService.profession2 = creds.profession2;
+    this.dataService.languages = creds.languages;
+    this.dataService.extralanguage = creds.extralanguage;
+    this.dataService.economic_level = creds.economic_level;
   }
 
   scene11(creds: Credentials){
@@ -216,6 +223,7 @@ export class ValuesRankingComponent implements OnInit {
   scene12(creds: Credentials){
     this.dataService.applanguages2 = creds.applanguages2;
     this.scene = 11;
+    
   }
   scene13(creds: Credentials){
     this.dataService.attention3 = creds.attention3;
@@ -253,7 +261,8 @@ export class ValuesRankingComponent implements OnInit {
       childgender : this.dataService.childgender,
       applanguages1: this.dataService.applanguages1,
       applanguages2: this.dataService.applanguages2,
-      //childage : this.dataService.childage,
+      childage : this.dataService.childage,
+      monthchild: this.dataService.monthchild,
       classs : this.dataService.classs,
       living : this.dataService.living,
       education1 : this.dataService.education1,
@@ -261,7 +270,8 @@ export class ValuesRankingComponent implements OnInit {
       levelofreligiousty : this.dataService.levelofreligiousty,
       education2 : this.dataService.education2,
       profession2 : this.dataService.profession2,
-      //languages : this.dataService.languages,
+      languages : this.dataService.languages,
+      extralanguage: this.dataService.extralanguage,
       economic_level : this.dataService.economic_level,
       attention1 : this.dataService.attention1,
       attention2 : this.dataService.attention2,
@@ -309,9 +319,100 @@ export class ValuesRankingComponent implements OnInit {
             economic_level : ${finalData.economic_level},
             living : "${finalData.living}",
             classs : "${finalData.classs}",
-            attention1: ${finalData.attention1},
+            attention1: ${finalData.attention1}
             attention2: ${finalData.attention2},
             attention3: ${finalData.attention3},
+            childage: ${finalData.childage},
+            monthchild: "${finalData.monthchild}",
+            languages: "${finalData.languages}",
+            extralanguage: "${finalData.extralanguage}",
+            
+          }
+        ) {
+          id
+        }
+      }`,
+    };
+    const headers = {'x-hasura-admin-secret': 
+    'L2WPqUDgvdWhGveSYAjMOG3l6jbbxSb0jZk7q1rii03COuV0LQr2xCQIMJHmq0JO' };
+    console.log('Data summary:', finalData);
+    console.log(reqBody);
+
+    this.http
+      .post<any>(
+        'https://research.hasura.app/v1/graphql',
+        reqBody,
+        {
+          headers,
+        }
+      )
+      .subscribe({
+        next: (data) => {
+          if (!!data.data?.insert_research_one) {
+            this.dataService.dataSavedFlag = true;
+            const res = data.data.insert_research_one;
+            console.log(`Input saved under ID ${res.id} on ${res.init_time}`);
+          } else {
+            console.error('Error saving task data!');
+            if (!!data.data?.errors) {
+              console.error(data.data.errors);
+            }
+          }
+        },
+        error: (e) => {
+          console.error('Error saving task data!');
+          console.error(e);
+        },
+      });
+  }
+
+  calculateDataDemo() {
+    const finalData = {
+      lab : this.dataService.lab,
+      parents : this.dataService.parents,
+      parentage : this.dataService.parentage,
+      childgender : this.dataService.childgender,
+      applanguages1: this.dataService.applanguages1,
+      applanguages2: this.dataService.applanguages2,
+      childage : this.dataService.childage,
+      monthchild: this.dataService.monthchild,
+      classs : this.dataService.classs,
+      living : this.dataService.living,
+      education1 : this.dataService.education1,
+      profession1 : this.dataService.profession1,
+      levelofreligiousty : this.dataService.levelofreligiousty,
+      education2 : this.dataService.education2,
+      profession2 : this.dataService.profession2,
+      languages : this.dataService.languages,
+      extralanguage: this.dataService.extralanguage,
+      economic_level : this.dataService.economic_level,
+      attention1 : this.dataService.attention1,
+      attention2 : this.dataService.attention2,
+      attention3 : this.dataService.attention3,
+
+    };
+    const reqBody = {
+      query: `mutation insertData {
+        insert_research_one(
+          object: {
+            lab : ${finalData.lab},
+            applanguages1 : ${finalData.applanguages1},
+            applanguages2 : ${finalData.applanguages2},
+            childgender : ${finalData.childgender},
+            parents : ${finalData.parents},
+            parentage : ${finalData.parentage},
+            education1 : ${finalData.education1},
+            profession1 : "${finalData.profession1}",
+            levelofreligiousty : ${finalData.levelofreligiousty},
+            education2 : ${finalData.education2},
+            profession2 : "${finalData.profession2}",
+            economic_level : ${finalData.economic_level},
+            living : "${finalData.living}",
+            classs : "${finalData.classs}",
+            childage: ${finalData.childage},
+            monthchild: "${finalData.monthchild}",
+            languages: "${finalData.languages}",
+            extralanguage: "${finalData.extralanguage}",
             
           }
         ) {

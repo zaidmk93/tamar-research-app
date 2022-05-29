@@ -1,22 +1,48 @@
 <div *ngIf="!flag">
 <td style="width:10%">
+
+  <div *ngIf="isJewishCulture()" >
+  <td style="width:10%">
       <h1 style="text-align: center;">{{'כמה דבורים יש בתמונה?'}}</h1>
-    </td>
-    <img class="img-agg" src="../../../assets/attention.task.images/Picture1.png" width="300" >
-    <img class="img-agg" src="../../../assets/attention.task.images/Picture2.png" width="300" >
-    <img class="img-agg" src="../../../assets/attention.task.images/Picture3.png" width="300" >
-    <mat-form-field appearance="fill" >
-        <mat-label>Select</mat-label>
-        <mat-select [(ngModel)]="creds.attention3" [ngModelOptions]="{standalone: true}">
-          <mat-option value="1">1</mat-option>
-          <mat-option value="2">2</mat-option>
-          <mat-option value="3">3</mat-option>
-          <mat-option value="4">4</mat-option>
-          <mat-option value="5">5</mat-option>
-          <mat-option value="6">6</mat-option>
-        </mat-select>
-       
-      </mat-form-field>
+      <img class="img-agg" src="../../../assets/attention.task.images/Picture1.png" width="300" >
+      <img class="img-agg" src="../../../assets/attention.task.images/Picture2.png" width="300" >
+      <img class="img-agg" src="../../../assets/attention.task.images/Picture3.png" width="300" >
+        <mat-form-field appearance="fill" >
+          <mat-label>Select</mat-label>
+          <mat-select [(ngModel)]="creds.attention3" [ngModelOptions]="{standalone: true}">
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+            <mat-option value="4">4</mat-option>
+            <mat-option value="5">5</mat-option>
+            <mat-option value="6">6</mat-option>
+          </mat-select>
+        </mat-form-field>
+  </td>
+  </div>
+ 
+ 
+  <div *ngIf="isArabicCulture()">
+    <td style="width:10%">
+      <h1 style="text-align: center;">{{'كم عدد النحلات في الصورة؟'}}</h1>
+        <img class="img-agg" src="../../../assets/attention.task.images/Picture1.png" width="300" >
+        <img class="img-agg" src="../../../assets/attention.task.images/Picture2.png" width="300" >
+        <img class="img-agg" src="../../../assets/attention.task.images/Picture3.png" width="300" >
+        <mat-form-field appearance="fill" >
+            <mat-label>Select</mat-label>
+            <mat-select [(ngModel)]="creds.attention3" [ngModelOptions]="{standalone: true}">
+              <mat-option value="1">1</mat-option>
+              <mat-option value="2">2</mat-option>
+              <mat-option value="3">3</mat-option>
+              <mat-option value="4">4</mat-option>
+              <mat-option value="5">5</mat-option>
+              <mat-option value="6">6</mat-option>
+            </mat-select>
+          
+    </mat-form-field>
+  </td>
+  </div> 
+</td>
 
 
   <button mat-raised-button color="primary" (click)="start()">{{'המשך'}} </button>

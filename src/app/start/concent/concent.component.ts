@@ -9,8 +9,9 @@ import { Credentials } from 'src/app/models';
   styleUrls: ['./concent.component.scss']
 })
 export class ConcentComponent implements OnInit {
-  culture: string;
+  @Input() culture: string;
   creds : Credentials;
+
   @Output() gotCreds: EventEmitter<Credentials> = new EventEmitter<Credentials>();
 
 
@@ -19,21 +20,15 @@ constructor(
   ) {}
 
    ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-        this.culture = ['jewish', 'druze', 'christian', 'muslim'].includes(
-          params.culture
-        )
-          ? params.culture
-          : 'jewish';
-      });
+    
    }
 
    isJewishCulture() : boolean{
-     return this.culture == 'jewish'
+     return this.culture == 'Hebrew'
    }
 
    isArabicCulture() : boolean{
-    return this.culture == 'muslim' || this.culture == 'druze'|| this.culture == 'christian'
+    return this.culture == 'Arabic'
   }
 
   start() {

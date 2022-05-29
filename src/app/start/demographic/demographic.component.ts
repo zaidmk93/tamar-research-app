@@ -11,44 +11,63 @@ import { FormControl, Validators } from '@angular/forms';
 })
 
 
-export class DemographicComponent implements OnInit {
-    
+export class DemographicComponent{
+   
   @Input() culture: string;
   @Output() gotCreds: EventEmitter<Credentials> = new EventEmitter<Credentials>();
 
+  childgender = new FormControl('', [
+    Validators.required
+  ]);
+  parents = new FormControl('', [
+    Validators.required
+  ]);
   parentage = new FormControl('', [
     Validators.required,
     Validators.pattern('[0-9]*'),
   ]);
   childage = new FormControl('', [
     Validators.required,
-    Validators.pattern('[0-9]*'),
+
+  ]);
+  monthchild = new FormControl('', [
+    Validators.required,
+
   ]);
   classs = new FormControl('', [
     Validators.required,
-    Validators.pattern('[0-9]*'),
+
   ]);
   living = new FormControl('', [
     Validators.required,
-    Validators.pattern('[0-9]*'),
+
+  ]);
+  education1 = new FormControl('', [
+    Validators.required
   ]);
   profession1 = new FormControl('', [
     Validators.required,
-    Validators.pattern('[0-9]*'),
   ]);
   levelofreligiousty = new FormControl('', [
     Validators.required,
-    Validators.pattern('[0-9]*'),
+
+  ]);
+  education2 = new FormControl('', [
+    Validators.required
   ]);
   profession2 = new FormControl('', [
     Validators.required,
-    Validators.pattern('[0-9]*'),
+  ]);
+  languages = new FormControl('', [
+    Validators.required
+  ]);
+  extralanguage = new FormControl('', [
+    Validators.required
   ]);
     economic_level = new FormControl('', [
     Validators.required,
-    Validators.pattern('[0-9]*'),
   ]);
-
+  
   creds: Credentials = {
     schoolID: '',
     childID: 'a',
@@ -57,6 +76,7 @@ export class DemographicComponent implements OnInit {
     parents: '',
     parentage: '',
     childage: '',
+    monthchild: '',
     classs: '',
     living: '',
     education1: '',
@@ -65,6 +85,7 @@ export class DemographicComponent implements OnInit {
     education2: '',
     profession2: '',
     languages: '',
+    extralanguage: '',
     economic_level: '',
     lab: 'Aysheh',
     applanguages1: '',
@@ -87,36 +108,34 @@ export class DemographicComponent implements OnInit {
   invalidlprofession2Flag = false;
   invalidlanguagesFlag = false;
   invalideconomic_levelFlag = false;
-constructor(
-    private route: ActivatedRoute,
-  ) {}
 
-   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-        this.culture = ['jewish', 'druze', 'christian', 'muslim'].includes(
-          params.culture
-        )
-          ? params.culture
-          : 'jewish';
-      });
-   }
+   
    
    isJewishCulture() : boolean{
-    return this.culture == 'jewish'
+    return this.culture == 'Hebrew'
   }
 
   isArabicCulture() : boolean{
-   return this.culture == 'muslim' || this.culture == 'druze'|| this.culture == 'christian'
+   return this.culture == 'Arabic'
  }
 
  start(){
-   this.creds.parentage = this.parentage.value;
-  //  this.creds.childage = this.childage.value
-  
-   this.creds.profession1 = this.profession1.value;
-   this.creds.profession2 = this.profession2.value;
-   this.creds.living = this.living.value;
-   this.gotCreds.emit(this.creds);
+   if(this.childgender.errors || this.parents.errors || this.parentage.errors 
+    || this.childage.errors || this.monthchild.errors || this.classs.errors || 
+    this.living.errors || this.education1.errors || this.profession1.errors || this.levelofreligiousty.errors 
+    || this.education2.errors || this.profession2.errors || this.languages.errors || this.extralanguage.errors || this.economic_level.errors){
+     
+   }
+   else{
+    this.creds.parentage = this.parentage.value;
+    this.creds.extralanguage = this.extralanguage.value;
+    console.log(this.creds.childage)
+    console.log(this.creds.monthchild)
+    this.creds.profession1 = this.profession1.value;
+    this.creds.profession2 = this.profession2.value;
+    this.creds.living = this.living.value;
+    this.gotCreds.emit(this.creds);
+  }
 }
 
 }

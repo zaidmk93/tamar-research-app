@@ -7,6 +7,7 @@ export class BasicData {
   parents: string;
   parentage: string;
   childage: string;
+  monthchild: string;
   classs: string;
   living: string;
   education1: string;
@@ -15,6 +16,7 @@ export class BasicData {
   education2: string;
   profession2: string;
   languages: string;
+  extralanguage: string;
   economic_level: string;
   applanguages1:string;
   applanguages2:string;
@@ -30,7 +32,10 @@ export class BasicData {
     audioLink: '',
     rank: null,
     isStock: true,
+    
   };
+
+
   pbvs2: Pbvs = {
     valNum: 2,
     text: 'להצליח יותר מאחרים',
@@ -161,7 +166,7 @@ export class BasicData {
   };
   pbvs18: Pbvs = {
     valNum: 19,
-    text: 'ללמוד על מה שהיה פעם מזמן',
+    text: 'לשמוע על דברים שקרו מזמן',
     imgLink: 'val19.png',
     audioLink: 'val19.mp3',
     rank: null,

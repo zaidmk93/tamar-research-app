@@ -6,16 +6,16 @@
     <app-summary *ngIf="scene == 6" [culture]="culture"  (openingEnded)="scene6($event)"></app-summary>
     <app-lab *ngIf="scene == 8" (gotCreds)="scene8($event)"></app-lab>
     <app-menu *ngIf = "scene == 9" (gotCreds)="scene9($event)"></app-menu>
-    <app-concent-from *ngIf = "scene == 11" (gotCreds)="scene11($event)"></app-concent-from>
+    <app-concent-from *ngIf = "scene == 11" [culture]="this.dataService.applanguages1" (gotCreds)="scene11($event)"></app-concent-from>
     <app-menu2 *ngIf = "scene == 12" (gotCreds)="scene12($event)"></app-menu2>
-    <app-demographic *ngIf = "scene == 10" (gotCreds)="scene10($event)"></app-demographic>
-    <app-Attention-task3-from *ngIf="scene == 13" (gotCreds)="scene13($event)"></app-Attention-task3-from>
+    <app-demographic [culture]="this.dataService.applanguages1" *ngIf = "scene == 10" (gotCreds)="scene10($event)"></app-demographic>
+    <app-Attention-task3-from [culture]="this.dataService.applanguages1" *ngIf="scene == 13" (gotCreds)="scene13($event)"></app-Attention-task3-from>
         <div class="padding" *ngIf="[0, 1, 2, 4, 7].includes(scene)">
         <app-rotate-screen *ngIf="scene == 0" [culture]="culture" (gotCreds)="scene1($event)"></app-rotate-screen>
         <app-entering-form *ngIf="scene == 1" [culture]="culture" (gotCreds)="scene1($event)"></app-entering-form>
         <app-values-set1 *ngIf="scene == 2" [culture]="culture" (openingEnded)="scene2($event)">
         </app-values-set1>
-        <app-Attention-task-from *ngIf="scene == 7" (openingEnded)="scene7($event)">
+        <app-Attention-task-from [culture]="this.dataService.applanguages1" *ngIf="scene == 7"  (openingEnded)="scene7($event)">
         </app-Attention-task-from>
         <app-values-set2 *ngIf="scene == 4" [culture]="culture" (openingEnded)="scene4($event)">
         </app-values-set2>

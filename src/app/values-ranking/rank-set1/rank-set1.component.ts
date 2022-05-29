@@ -52,6 +52,8 @@ export class RankSet1Component implements OnInit, OnDestroy {
     not1: null,
     not2: null,
     notnot: null,
+    // timeset1: null,
+    // timeset2:null,
    };
 
   valuesStages = [
@@ -67,9 +69,12 @@ export class RankSet1Component implements OnInit, OnDestroy {
     'average4',
     'dt1',
     'dt2',
+    // 'timeset1',
+    // 'timeset2',
   ];
   dt1: number;
   getTime: any;
+  // timeset1: number;
   constructor(
     private audioService: AudioService,
     public dataService: DataService,
@@ -456,6 +461,7 @@ export class RankSet1Component implements OnInit, OnDestroy {
     console.log(dt2);
     var diffMins = (dt2 - this.dt1);
     console.log(diffMins / 1000);
+    // this.timeset1 = diffMins / 1000
     console.log("hi");
     // var Date2 = Date2.getTime()
     // Date2().getMinutes() 
