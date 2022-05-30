@@ -40,7 +40,7 @@ export class PyramidViewComponent implements OnInit {
     // timeset2: Pbvs;
   };
 
-  @Input() culture: 'jewish' | 'druze' | 'christian' | 'muslim' = 'jewish';
+  @Input() culture : string;
   @Input() set setValues(values: {
     veryvery: Pbvs;
     very1: Pbvs;
@@ -101,7 +101,7 @@ export class PyramidViewComponent implements OnInit {
     this.ref = this.dialog.open(this.template, this.config);
     this.audioService.setAudio(
       `../../assets/values-ranking/values_aud/${
-        this.dataService.culture === 'jewish' ? 'heb' : 'arab'
+        this.dataService.culture === 'Hebrew' ? 'heb' : 'arab'
       }/check-${this.dataService.gender}.mp3`
     );
   }

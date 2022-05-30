@@ -24,7 +24,7 @@ export class BasicData {
   attention2:string;
   attention3:string;
   gender: 'M' | 'F' = 'M';
-  culture: 'jewish' | 'druze' | 'christian' | 'muslim' = 'jewish';
+  culture: 'Hebrew' | 'Arabic';
   pbvs1: Pbvs = {
     valNum: 3,
     text: '',
@@ -218,11 +218,11 @@ export class DataService extends BasicData {
     this.pbvs16.audioLink = `val18-${gender}.mp3`;
   }
 
-  setCulture(culture: 'jewish' | 'druze' | 'christian' | 'muslim') {
+  setCulture(culture, secondType) {
     this.culture = culture;
-    this.pbvs8.imgLink = `val4${culture}.png`;
-    this.pbvs9.imgLink = `val5${culture === 'jewish' ? 'jewish' : 'arab'}.png`;
-    if (culture !== 'jewish') {
+    this.pbvs8.imgLink = `val4${secondType}.png`;
+    this.pbvs9.imgLink = `val5${culture === 'Hebrew' ? 'jewish' : 'arab'}.png`;
+    if (culture !== 'Hebrew') {
       this.pbvs1.text =
         this.gender === 'M'
           ? 'أن أكون غنيًّا وقويًّا'

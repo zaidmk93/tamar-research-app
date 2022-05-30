@@ -38,7 +38,7 @@ export class ValuesSet2Component implements OnInit {
 
   ngOnInit(): void {
     this.vs2Stage = 1;
-    if (this.culture === 'jewish') {
+    if (this.culture === 'Hebrew') {
       this.subtitle = `כל הכבוד!<br>עכשיו נשחק שוב את המשחק עם תמונות אחרות.<br>נעבור על התמונות אחת - אחת`;
       this.audioService.setAudio(
         `../../assets/values-ranking/values_aud/heb/opening2-${this.dataService.gender}.wav`
@@ -119,7 +119,7 @@ export class ValuesSet2Component implements OnInit {
     this.imgLink = `../../assets/values-ranking/values_img/${curVal.imgLink}`;
     this.audioService.setAudio(
       `../../assets/values-ranking/values_aud/${
-        this.culture === 'jewish' ? 'heb' : 'arab'
+        this.culture === 'Hebrew' ? 'heb' : 'arab'
       }/${curVal.audioLink}`
     );
     this.subtitle = curVal.text;
@@ -278,7 +278,7 @@ export class ValuesSet2Component implements OnInit {
     this.imgLink = `../../assets/values-ranking/values_img/${curVal.imgLink}`;
     this.audioService.setAudio(
       `../../assets/values-ranking/values_aud/${
-        this.culture === 'jewish' ? 'heb' : 'arab'
+        this.culture === 'Hebrew' ? 'heb' : 'arab'
       }/${curVal.audioLink}`
     );
     this.subtitle = curVal.text;

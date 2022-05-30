@@ -51,7 +51,7 @@ export class SummaryComponent implements OnInit {
   explenation() {
     this.audioService.setAudio(
       `../../assets/values-ranking/guidance_aud/${
-        this.culture === 'jewish' ? 'heb' : 'arab'
+        this.culture === 'Hebrew' ? 'heb' : 'arab'
       }/inst-end-explenation-${this.dataService.gender}.mp3`
     );
     setTimeout(() => {
@@ -75,16 +75,16 @@ export class SummaryComponent implements OnInit {
     }
 
     console.log( `../../assets/values-ranking/guidance_aud/${
-      this.culture === 'jewish' ? 'heb' : 'arab'
+      this.culture === 'Hebrew' ? 'heb' : 'arab'
     }/inst-${subStage}-${this.dataService.gender}-exit.${
-      this.culture === 'jewish' && subStage === 2 ? 'mpeg' : 'mp3'
+      this.culture === 'Hebrew' && subStage === 2 ? 'mpeg' : 'mp3'
     }`);
 
     this.audioService.setAudio(
       `../../assets/values-ranking/guidance_aud/${
-        this.culture === 'jewish' ? 'heb' : 'arab'
+        this.culture === 'Hebrew' ? 'heb' : 'arab'
       }/inst-${subStage}-${this.dataService.gender}-exit.${
-        this.culture === 'jewish' && subStage === 2 ? 'mpeg' : 'mp3'
+        this.culture === 'Hebrew' && subStage === 2 ? 'mpeg' : 'mp3'
       }`
     );
     setTimeout(() => {

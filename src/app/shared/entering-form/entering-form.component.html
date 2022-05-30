@@ -1,15 +1,15 @@
 <div class="main-div">
     <mat-card style="padding: 40px; max-width: 600px; align-items: center;">
         <mat-card-content>
-            <h2 class="example-h2">{{this.culture === 'jewish' ? 'כניסה' : 'الدخول'}}</h2>
+            <h2 class="example-h2">{{this.culture === 'Hebrew' ? 'כניסה' : 'الدخول'}}</h2>
             
             <hr>
             <table>
                 <tr>
                     <td>
-                        <b>{{this.culture === 'jewish' ? 'קבוצה' : ' المجموعة'}}</b>
+                        <b>{{this.culture === 'Hebrew' ? 'קבוצה' : ' المجموعة'}}</b>
                         <br>
-                        <span>{{this.culture === 'jewish' ? 'הקלידו בבקשה את מספר הקבוצה' : 'الرجاء إدخال رقم المجموعة'}}</span>
+                        <span>{{this.culture === 'Hebrew' ? 'הקלידו בבקשה את מספר הקבוצה' : 'الرجاء إدخال رقم المجموعة'}}</span>
                     </td>
                     <td style="width:20px;"></td>
                     <td>
@@ -20,9 +20,9 @@
                 </tr>
                 <tr>
                     <td>
-                        <b>{{this.culture === 'jewish' ? 'ילד' : 'ولد'}}</b>
+                        <b>{{this.culture === 'Hebrew' ? 'ילד' : 'ولد'}}</b>
                         <br>
-                        <span>{{this.culture === 'jewish' ? 'הקלידו בבקשה את מספר הילד' : 'الرجاء إدخال رقم المشترك/ المشتركة'}}</span>
+                        <span>{{this.culture === 'Hebrew' ? 'הקלידו בבקשה את מספר הילד' : 'الرجاء إدخال رقم المشترك/ المشتركة'}}</span>
                     </td>
                     <td style="width:20px;"></td>
                     <td>
@@ -33,7 +33,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <b>{{this.culture === 'jewish' ? 'בן או בת?' : 'ولد أو بنت ؟'}}</b>
+                        <b>{{this.culture === 'Hebrew' ? 'בן או בת?' : 'ولد أو بنت ؟'}}</b>
                     </td>
                     <td></td>
                     <td>
@@ -56,7 +56,7 @@
                     </td>
                 </tr>
             </table>
-            <button mat-raised-button color="primary" (click)="start()">{{this.culture === 'jewish' ? 'היכנסו למשחק' :
+            <button mat-raised-button color="primary" (click)="start()">{{this.culture === 'Hebrew' ? 'היכנסו למשחק' :
                 'الدخول إلى اللعبة'}}</button>
             <p *ngIf="invalidSchoolIDFlag" style="color:red; font-weight: bold;">מספר בית הספר אינו מתאים</p>
             <p *ngIf="invalidChildIDFlag" style="color:red; font-weight: bold;">מספר הילד אינו מתאים</p>

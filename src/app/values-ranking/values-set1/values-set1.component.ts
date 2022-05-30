@@ -40,7 +40,7 @@ export class ValuesSet1Component implements OnInit {
     console.log(this.culture);
     console.log(this.dataService.gender);
     this.stage = 1;
-    if (this.culture === 'jewish') {
+    if (this.culture === 'Hebrew') {
       this.subtitle = `עכשיו אנחנו נצא למסע דמיוני -<br>
       מסע בדברים החשובים לך בחיים,<br>
       במטרות שלך ואיך תרצ${
@@ -48,7 +48,7 @@ export class ValuesSet1Component implements OnInit {
       } לחיות בעתיד`;
       this.audioService.setAudio(
         `../../assets/values-ranking/values_aud/${
-          this.culture === 'jewish' ? 'heb' : 'arab'
+          this.culture === 'Hebrew' ? 'heb' : 'arab'
         }/opening1-${this.dataService.gender}.wav`
       );
 
@@ -129,7 +129,7 @@ export class ValuesSet1Component implements OnInit {
     this.imgLink = `../../assets/values-ranking/values_img/${curVal.imgLink}`;
     this.audioService.setAudio(
       `../../assets/values-ranking/values_aud/${
-        this.culture === 'jewish' ? 'heb' : 'arab'
+        this.culture === 'Hebrew' ? 'heb' : 'arab'
       }/${curVal.audioLink}`
     );
     
@@ -187,7 +187,7 @@ export class ValuesSet1Component implements OnInit {
     this.imgLink = `../../assets/values-ranking/values_img/${curVal.imgLink}`;
     this.audioService.setAudio(
       `../../assets/values-ranking/values_aud/${
-        this.culture === 'jewish' ? 'heb' : 'arab'
+        this.culture === 'Hebrew' ? 'heb' : 'arab'
       }/${curVal.audioLink}`
     );
     this.subtitle = curVal.text;

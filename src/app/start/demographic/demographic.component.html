@@ -56,18 +56,18 @@
                     <br/>     5. חודש הלידה של הילד/ה המשתתפ/ת במחקר:
                     <form class="example-form">
                       <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.monthchild" [formControl]="monthchild" >
-                        <mat-radio-button value="January">January-01</mat-radio-button>
-                        <mat-radio-button value="February">February-02</mat-radio-button>
-                        <mat-radio-button value="March">March-03</mat-radio-button>
-                        <mat-radio-button value="April">April-04</mat-radio-button>
-                        <mat-radio-button value="May">May-05</mat-radio-button>
-                        <mat-radio-button value="June">June-06</mat-radio-button>
-                        <mat-radio-button value="July">July-07</mat-radio-button>
-                        <mat-radio-button value="August">August-08</mat-radio-button>
-                        <mat-radio-button value="September">September-09</mat-radio-button>
-                        <mat-radio-button value="October">October-10</mat-radio-button>
-                        <mat-radio-button value="November">November-11</mat-radio-button>
-                        <mat-radio-button value="December">December-12</mat-radio-button>
+                        <mat-radio-button value="January">ינואר</mat-radio-button>
+                        <mat-radio-button value="February">פברואר</mat-radio-button>
+                        <mat-radio-button value="March">מרץ</mat-radio-button>
+                        <mat-radio-button value="April">אפריל</mat-radio-button>
+                        <mat-radio-button value="May">מאי</mat-radio-button>
+                        <mat-radio-button value="June">יוני</mat-radio-button>
+                        <mat-radio-button value="July">יולי</mat-radio-button>
+                        <mat-radio-button value="August">אוגוסט</mat-radio-button>
+                        <mat-radio-button value="September">ספטמבר</mat-radio-button>
+                        <mat-radio-button value="October">אוקטובר</mat-radio-button>
+                        <mat-radio-button value="November">נובמבר</mat-radio-button>
+                        <mat-radio-button value="December">דצמבר</mat-radio-button>
                       </mat-radio-group>
                     </form>
                        
@@ -276,18 +276,18 @@
                 <br/>     5. شهر ميلاد الطفل قيد الدراسة:
                     <form class="example-form">
                       <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.monthchild" [formControl]="monthchild" >
-                        <mat-radio-button value="January">January-01</mat-radio-button>
-                        <mat-radio-button value="February">February-02</mat-radio-button>
-                        <mat-radio-button value="March">March-03</mat-radio-button>
-                        <mat-radio-button value="April">April-04</mat-radio-button>
-                        <mat-radio-button value="May">May-05</mat-radio-button>
-                        <mat-radio-button value="June">June-06</mat-radio-button>
-                        <mat-radio-button value="July">July-07</mat-radio-button>
-                        <mat-radio-button value="August">August-08</mat-radio-button>
-                        <mat-radio-button value="September">September-09</mat-radio-button>
-                        <mat-radio-button value="October">October-10</mat-radio-button>
-                        <mat-radio-button value="November">November-11</mat-radio-button>
-                        <mat-radio-button value="December">December-12</mat-radio-button>
+                        <mat-radio-button value="January"> يناير</mat-radio-button>
+                        <mat-radio-button value="February">فبراير</mat-radio-button>
+                        <mat-radio-button value="March">مارس</mat-radio-button>
+                        <mat-radio-button value="April">أبريل</mat-radio-button>
+                        <mat-radio-button value="May">مايو</mat-radio-button>
+                        <mat-radio-button value="June">يونيو</mat-radio-button>
+                        <mat-radio-button value="July">يوليو</mat-radio-button>
+                        <mat-radio-button value="August">أغسطس</mat-radio-button>
+                        <mat-radio-button value="September">سبتمبر</mat-radio-button>
+                        <mat-radio-button value="October">أكتوبر</mat-radio-button>
+                        <mat-radio-button value="November">نوفمبر</mat-radio-button>
+                        <mat-radio-button value="December">ديسمبر</mat-radio-button>
                       </mat-radio-group>
                     </form>
                 <br/>   6. بأي صف الطفل المشترك بالبحث <br/>
@@ -398,7 +398,7 @@
                                                                                   
 
 </td>
-<button mat-raised-button color="primary" [queryParams]="{ culture: 'muslim'}" [routerLink]="['/values-ranking']">{{'ليوافق'}} </button>
+<button mat-raised-button color="primary" (click)="start()">{{'ليوافق'}} </button>
 </div>
 </table>
 </mat-card-content>

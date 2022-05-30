@@ -7,7 +7,7 @@
             <table class="pyramid-table">
                 <tr class="pyramid-row">
                     <td style="width:37%">
-                        <h1 style="text-align: center;">{{culture === 'jewish' ? 'חשוב מאוד' : 'مهمّ جدًّا'}}</h1>
+                        <h1 style="text-align: center;">{{culture === 'Hebrew' ? 'חשוב מאוד' : 'مهمّ جدًّا'}}</h1>
                     </td>
                     <td class="pyramid-cell">
                         <div class="pyramid-square">
@@ -126,7 +126,7 @@
                 </tr>
                 <tr class="pyramid-row">
                     <td style="width:37%">
-                        <h1 style="text-align: center;">{{culture === 'jewish' ? 'כלל לא חשוב' : 'غير مهمّ أبدًا'}}</h1>
+                        <h1 style="text-align: center;">{{culture === 'Hebrew' ? 'כלל לא חשוב' : 'غير مهمّ أبدًا'}}</h1>
                     </td>
                     <td class="pyramid-cell">
                         <div class="pyramid-square">
@@ -144,7 +144,7 @@
                         <div class="button-cell2">
                             <button mat-raised-button color="warn" (click)="stepback()"
                                 [disabled]="calculating || stage < 2">
-                                {{culture === 'jewish' ? 'צעד אחורה' : 'للرجوع للخلف'}}
+                                {{culture === 'Hebrew' ? 'צעד אחורה' : 'للرجوع للخلف'}}
                             </button>
                         </div>
                     </td>
@@ -155,7 +155,7 @@
             <!-- <div class="accept-button" *ngIf="stage>=10">
                 <button mat-raised-button color="primary" (click)="this.gotRanking.emit(true);">
                     <h1>
-                        {{culture === 'jewish' ? 'אני מרוצה' : this.isMale ? 'استمر' : 'استمري'}}
+                        {{culture === 'Hebrew' ? 'אני מרוצה' : this.isMale ? 'استمر' : 'استمري'}}
                     </h1>
                 </button>
             </div> -->

@@ -192,7 +192,7 @@ export class RankSet1Component implements OnInit, OnDestroy {
     clearTimeout(this.idleTimer);
     const createSoundLink = (num: number): string => {
       return `../../assets/values-ranking/guidance_aud/${
-        this.culture === 'jewish' ? 'heb' : 'arab'
+        this.culture === 'Hebrew' ? 'heb' : 'arab'
       }/inst-${num}-${this.isMale ? 'M' : 'F'}.mp3`;
     };
 
@@ -267,7 +267,7 @@ export class RankSet1Component implements OnInit, OnDestroy {
           },
         },
       ];
-      return titlesDict[num - 1][this.culture === 'jewish' ? 'heb' : 'arab'][
+      return titlesDict[num - 1][this.culture === 'Hebrew' ? 'heb' : 'arab'][
         this.isMale ? 'M' : 'F'
       ];
     };

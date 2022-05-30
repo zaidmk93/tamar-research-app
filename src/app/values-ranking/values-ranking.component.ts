@@ -30,7 +30,6 @@ export class ValuesRankingComponent implements OnInit {
    * 12 - Language2
    * 13 - Attention task3
    */
-  culture: 'jewish' | 'druze' | 'christian' | 'muslim' = 'jewish';
   scene = 0;
   creds: Credentials;
   isLandscape: boolean = false;
@@ -56,6 +55,7 @@ export class ValuesRankingComponent implements OnInit {
   ngOnInit(): void {
     this.scene = this.applicationStateService.getIsMobileResolution() ? 0 : 1;
     this.scene = 8;
+    
     // rotate screen worning. resolves on rotate or 10 sec delay
     if (this.scene === 0) {
       if (window.innerWidth >= window.innerHeight) {
@@ -70,14 +70,7 @@ export class ValuesRankingComponent implements OnInit {
         }, 10000);
       }
     }
-    this.route.queryParams.subscribe((params) => {
-      this.culture = ['jewish', 'druze', 'christian', 'muslim'].includes(
-        params.culture
-      )
-        ? params.culture
-        : 'jewish';
-    });
-  }
+   }
 
   scene1(creds: Credentials) {
     this.dataService.currentStage = 1;
@@ -87,11 +80,11 @@ export class ValuesRankingComponent implements OnInit {
     if (prevData) {
       Object.assign(this.dataService, prevData.data);
       this.dataService.setGender(creds.gender);
-      this.dataService.setCulture(this.culture);
+      this.dataService.setCulture(this.dataService.applanguages1, this.dataService.applanguages2);
       this.scene = prevData.scene;
     } else {
       this.dataService.setGender(creds.gender);
-      this.dataService.setCulture(this.culture);
+      this.dataService.setCulture(this.dataService.applanguages1, this.dataService.applanguages2);
       this.dataService.schoolID = creds.schoolID;
       this.dataService.childID = creds.childID;
       this.scene = 2;
@@ -187,8 +180,6 @@ export class ValuesRankingComponent implements OnInit {
     }else{
       this.scene = 11;
     }
-    console.log(this.dataService.applanguages1);
-    console.log(this.dataService.applanguages2);
   }
 
 
@@ -219,6 +210,7 @@ export class ValuesRankingComponent implements OnInit {
   scene12(creds: Credentials){
     this.dataService.applanguages2 = creds.applanguages2;
     this.scene = 11;
+ 
     
   }
   scene13(creds: Credentials){

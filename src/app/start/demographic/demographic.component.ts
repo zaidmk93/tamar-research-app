@@ -108,7 +108,7 @@ export class DemographicComponent{
   invalidlprofession2Flag = false;
   invalidlanguagesFlag = false;
   invalideconomic_levelFlag = false;
-
+345
    
    
    isJewishCulture() : boolean{

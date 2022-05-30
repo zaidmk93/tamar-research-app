@@ -1,7 +1,7 @@
 <div class="container">
     <div class="text-div" *ngIf="randomView">
         <h1 style="text-align: center;">
-            {{culture === 'jewish' ? 'כלל לא חשוב' : 'غير مهمّ أبدًا'}}
+            {{culture === 'Hebrew' ? 'כלל לא חשוב' : 'غير مهمّ أبدًا'}}
         </h1>
     </div>
     <div class="values-div" *ngIf="randomView">
@@ -20,7 +20,7 @@
     </div>
     <div class="text-div">
         <h1 style="text-align: center;">
-            {{culture === 'jewish' ? 'חשוב מאוד' : 'مهمّ جدًّا'}}
+            {{culture === 'Hebrew' ? 'חשוב מאוד' : 'مهمّ جدًّا'}}
         </h1>
     </div>
     <div class="values-div">
@@ -39,7 +39,7 @@
     </div>
     <div class="text-div" *ngIf="!randomView">
         <h1 style="text-align: center;">
-            {{culture === 'jewish' ? 'כלל לא חשוב' : 'غير مهمّ أبدًا'}}
+            {{culture === 'Hebrew' ? 'כלל לא חשוב' : 'غير مهمّ أبدًا'}}
         </h1>
     </div>
     <div class="values-div" *ngIf="!randomView">
@@ -56,4 +56,4 @@
             </p>
         </mat-card>
     </div>
-    <button mat-raised-button color="primary" (click)="start()">{{'המשך'}} </button>
+    <button mat-raised-button color="primary" (click)="start()">{{culture == 'Hebrew' ? 'המשך' : 'ليوافق'}} </button>

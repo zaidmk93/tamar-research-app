@@ -1,9 +1,9 @@
 <div class="containter">
-    <app-rank-set1 *ngIf="scene == 3" [culture]="culture" (gotRanking)="scene3($event)">
+    <app-rank-set1 *ngIf="scene == 3" [culture]="this.dataService.applanguages1" (gotRanking)="scene3($event)">
     </app-rank-set1>
-    <app-rank-set2 *ngIf="scene == 5" [culture]="culture" (gotRanking)="scene5($event)">
+    <app-rank-set2 *ngIf="scene == 5" [culture]="this.dataService.applanguages1" (gotRanking)="scene5($event)">
     </app-rank-set2>
-    <app-summary *ngIf="scene == 6" [culture]="culture"  (openingEnded)="scene6($event)"></app-summary>
+    <app-summary *ngIf="scene == 6" [culture]="this.dataService.applanguages1"  (openingEnded)="scene6($event)"></app-summary>
     <app-lab *ngIf="scene == 8" (gotCreds)="scene8($event)"></app-lab>
     <app-menu *ngIf = "scene == 9" (gotCreds)="scene9($event)"></app-menu>
     <app-concent-from *ngIf = "scene == 11" [culture]="this.dataService.applanguages1" (gotCreds)="scene11($event)"></app-concent-from>
@@ -11,13 +11,13 @@
     <app-demographic [culture]="this.dataService.applanguages1" *ngIf = "scene == 10" (gotCreds)="scene10($event)"></app-demographic>
     <app-Attention-task3-from [culture]="this.dataService.applanguages1" *ngIf="scene == 13" (gotCreds)="scene13($event)"></app-Attention-task3-from>
         <div class="padding" *ngIf="[0, 1, 2, 4, 7].includes(scene)">
-        <app-rotate-screen *ngIf="scene == 0" [culture]="culture" (gotCreds)="scene1($event)"></app-rotate-screen>
-        <app-entering-form *ngIf="scene == 1" [culture]="culture" (gotCreds)="scene1($event)"></app-entering-form>
-        <app-values-set1 *ngIf="scene == 2" [culture]="culture" (openingEnded)="scene2($event)">
+        <app-rotate-screen *ngIf="scene == 0" [culture]="this.dataService.applanguages1" (gotCreds)="scene1($event)"></app-rotate-screen>
+        <app-entering-form *ngIf="scene == 1" [culture]="this.dataService.applanguages1" (gotCreds)="scene1($event)"></app-entering-form>
+        <app-values-set1 *ngIf="scene == 2" [culture]="this.dataService.applanguages1" (openingEnded)="scene2($event)">
         </app-values-set1>
         <app-Attention-task-from [culture]="this.dataService.applanguages1" *ngIf="scene == 7"  (openingEnded)="scene7($event)">
         </app-Attention-task-from>
-        <app-values-set2 *ngIf="scene == 4" [culture]="culture" (openingEnded)="scene4($event)">
+        <app-values-set2 *ngIf="scene == 4" [culture]="this.dataService.applanguages1" (openingEnded)="scene4($event)">
         </app-values-set2>
     </div>
 </div>

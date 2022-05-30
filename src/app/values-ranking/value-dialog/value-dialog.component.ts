@@ -42,7 +42,7 @@ export class ValueDialogComponent implements OnInit {
     this.ref = this.dialog.open(this.template, this.config);
     this.audioService.setAudio(
       `../../assets/values-ranking/values_aud/${
-        this.dataService.culture === 'jewish' ? 'heb' : 'arab'
+        this.dataService.culture === 'Hebrew' ? 'heb' : 'arab'
       }/chosen-${this.dataService.gender}.mp3`
     );
     setTimeout(() => {
@@ -51,7 +51,7 @@ export class ValueDialogComponent implements OnInit {
           this.$audio.unsubscribe();
           this.audioService.setAudio(
             `../../assets/values-ranking/values_aud/${
-              this.dataService.culture === 'jewish' ? 'heb' : 'arab'
+              this.dataService.culture === 'Hebrew' ? 'heb' : 'arab'
             }/${value.audioLink}`
           );
           if (this.dataService.firstTimeV) {
@@ -62,7 +62,7 @@ export class ValueDialogComponent implements OnInit {
                   this.$audio.unsubscribe();
                   this.audioService.setAudio(
                     `../../assets/values-ranking/guidance_aud/${
-                      this.dataService.culture === 'jewish' ? 'heb' : 'arab'
+                      this.dataService.culture === 'Hebrew' ? 'heb' : 'arab'
                     }/inst-v-explenation-${this.dataService.gender}.mp3`
                   );
                 }
