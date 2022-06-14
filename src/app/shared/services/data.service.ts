@@ -87,7 +87,7 @@ export class BasicData {
   pbvs8: Pbvs = {
     valNum: 4,
     text: 'להתפלל לאלוהים',
-    imgLink: 'val4.png',
+    imgLink: 'val4Hebrew.png',
     audioLink: 'val4.mp3',
     rank: null,
     isStock: true,
@@ -220,7 +220,7 @@ export class DataService extends BasicData {
 
   setCulture(culture, secondType) {
     this.culture = culture;
-    this.pbvs8.imgLink = `val4${secondType}.png`;
+    this.pbvs8.imgLink = `val4${culture === 'Hebrew' ? 'Hebrew' : secondType}.png`;
     this.pbvs9.imgLink = `val5${culture === 'Hebrew' ? 'jewish' : 'arab'}.png`;
     if (culture !== 'Hebrew') {
       this.pbvs1.text =
