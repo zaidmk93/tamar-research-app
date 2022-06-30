@@ -196,54 +196,54 @@ export class ValuesSet1Component implements OnInit {
 
   openingHebMale(time: string) {
     switch (time) {
-      case '00:10': {
+      case '00:08': {
         this.imgLink = '../../assets/values-ranking/values_img/kid.png';
         this.subtitle =
           'תאר לך שהילד הזה, עם הכובע המפוספס והבגד האפור, הוא אתה';
         break;
       }
-      case '00:16': {
+      case '00:14': {
         this.subtitle = 'יכול להיות שקשה לך לדמיין את זה.';
         break;
       }
-      case '00:19': {
+      case '00:16': {
         this.subtitle = 'אולי בכלל אין לך כובע כזה או בגדים אפורים';
         break;
       }
-      case '00:23': {
+      case '00:20': {
         this.subtitle = 'אבל זה לא משנה';
         break;
       }
-      case '00:25': {
+      case '00:21': {
         this.subtitle = 'פשוט נסה לדמיין שזה אתה';
         break;
       }
-      case '00:28': {
+      case '00:24': {
         this.subtitle = 'עכשיו, חשוב על עצמך. ';
         break;
       }
-      case '00:31': {
+      case '00:26': {
         this.subtitle = 'איך אתה רוצה להיות כשתהיה גדול?';
         break;
       }
-      case '00:34': {
+      case '00:28': {
         this.subtitle = 'איזה מטרות אתה רוצה להשיג? ';
         break;
       }
-      case '00:37': {
+      case '00:31': {
         this.subtitle =
           'עכשיו נראה תמונות של כל מיני דברים שיכול להיות שאתה רוצה להיות';
         break;
       }
-      case '00:43': {
+      case '00:35': {
         this.subtitle = 'תסתכל על התמונות, אתה תוכל למצוא בהן את הילד הזה';
         break;
       }
-      case '00:47': {
+      case '00:39': {
         this.subtitle = 'בוא נעבור על התמונות אחת - אחת';
         break;
       }
-      case '00:51': {
+      case '00:42': {
         this.subtitle =
           'ואתה כבר יכול להתחיל לחשוב מה יותר חשוב ומה פחות חשוב לך בחיים';
         break;
