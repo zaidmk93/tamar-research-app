@@ -36,7 +36,6 @@ export class PyramidViewComponent implements OnInit {
     not1: Pbvs;
     not2: Pbvs;
     notnot: Pbvs;
-    // timeset1: Pbvs;
     // timeset2: Pbvs;
   };
 
