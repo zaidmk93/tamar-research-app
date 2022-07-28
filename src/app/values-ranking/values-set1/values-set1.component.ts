@@ -36,6 +36,7 @@ export class ValuesSet1Component implements OnInit {
     public dataService: DataService
   ) {}
 
+  //
   ngOnInit(): void {
     console.log(this.culture);
     console.log(this.dataService.gender);
