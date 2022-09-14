@@ -211,7 +211,6 @@ export class ValuesRankingComponent implements OnInit {
     this.dataService.applanguages2 = creds.applanguages2;
     this.scene = 11;
  
-    
   }
   scene13(creds: Credentials){
     this.dataService.attention3 = creds.attention3;

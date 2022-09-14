@@ -128,7 +128,7 @@ export class ValuesSet2Component implements OnInit {
 
   opening(time: string) {
     switch (time) {
-      case '00:08': {
+      case '00:06': {
         this.imgLink = '../../assets/values-ranking/values_img/kid.png';
         this.subtitle =
           this.dataService.gender === 'M'
@@ -136,7 +136,7 @@ export class ValuesSet2Component implements OnInit {
             : 'דמייני שוב שאת הילדה הזו, עם החולצה האפורה';
         break;
       }
-      case '00:12': {
+      case '00:10': {
         this.subtitle =
           this.dataService.gender === 'M'
             ? 'ואתה זה שעושה את כל הדברים האלה'

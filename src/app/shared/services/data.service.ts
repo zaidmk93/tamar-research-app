@@ -70,7 +70,7 @@ export class BasicData {
   };
   pbvs6: Pbvs = {
     valNum: 1,
-    text: 'לשמור על הבטיחות שלי',
+    text: 'לשמור על הבטיחות ',
     imgLink: 'val1.png',
     audioLink: 'val1.mp3',
     rank: null,
@@ -262,7 +262,7 @@ export class DataService extends BasicData {
       this.pbvs17.audioLink = `${this.gender}/40.mp3`;
       this.pbvs18.text = 'معرفة ما حدث في الماضي';
       this.pbvs18.audioLink = `${this.gender}/41.mp3`;
-      this.pbvs19.text = 'إسعاد الآخرين';
+      this.pbvs19.text = 'الاستماع لما حدث في الماضي ';
       this.pbvs19.audioLink = `${this.gender}/42.mp3`;
       this.pbvs20.text = 'المحافظة على البيئة';
       this.pbvs20.audioLink = `${this.gender}/43.mp3`;
