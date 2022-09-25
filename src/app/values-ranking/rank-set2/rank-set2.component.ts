@@ -78,10 +78,8 @@ export class RankSet2Component implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.dt1 = Date.now();
-    console.log(this.dt1)
     this.isMale = this.dataService.gender === 'M';
     this.nextStage();
-    // this.playSound();
   }
 
   ngOnDestroy(): void {
@@ -435,12 +433,7 @@ export class RankSet2Component implements OnInit, OnDestroy {
 
   nextScene() {
     var dt2 : number = Date.now();
-    //var dt2 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    console.log(dt2);
     var diffMins = (dt2 - this.dt1);
-    // this.timeset2 = diffMins / 1000;
-    console.log(diffMins / 1000);
-    console.log("hi");
     this.gotRanking.emit(true);
   }
 }

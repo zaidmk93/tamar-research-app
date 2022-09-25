@@ -220,7 +220,9 @@ export class DataService extends BasicData {
 
   setCulture(culture, secondType) {
     this.culture = culture;
+    console.log(secondType);
     this.pbvs8.imgLink = `val4${culture === 'Hebrew' ? 'Hebrew' : secondType}.png`;
+    console.log(this.pbvs8.imgLink);
     this.pbvs9.imgLink = `val5${culture === 'Hebrew' ? 'jewish' : 'arab'}.png`;
     if (culture !== 'Hebrew') {
       this.pbvs1.text =
