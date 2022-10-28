@@ -135,7 +135,7 @@ export class ValuesRankingComponent implements OnInit {
 
   scene5(endFlag: boolean) {
     if (endFlag) {
-      this.scene = 6;
+      this.scene = 13;
       this.dataService.currentScene = this.scene;
       this.cacheService.save({
         key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
@@ -145,12 +145,12 @@ export class ValuesRankingComponent implements OnInit {
   }
   scene6(endFlag: boolean){
     if (endFlag) {
-      this.scene = 13;
       this.dataService.currentScene = this.scene;
       this.cacheService.save({
         key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
         data: getCacheData(this.dataService),
       });
+      this.calculateData();
     }
   
 }
@@ -214,7 +214,7 @@ export class ValuesRankingComponent implements OnInit {
   }
   scene13(creds: Credentials){
     this.dataService.attention3 = creds.attention3;
-    this.calculateData();
+    this.scene = 6
   }
   
   calculateData() {
@@ -263,7 +263,6 @@ export class ValuesRankingComponent implements OnInit {
       attention1 : this.dataService.attention1,
       attention2 : this.dataService.attention2,
       attention3 : this.dataService.attention3,
-
     };
     const reqBody = {
       query: `mutation insertData {

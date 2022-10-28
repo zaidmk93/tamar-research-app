@@ -46,6 +46,7 @@ export class SummaryComponent implements OnInit {
   ngOnInit(): void {
     this.randomView = Math.random() > 0.5;
     this.explenation();
+    this.openingEnded.emit(true);
   }
 
   explenation() {
@@ -65,7 +66,6 @@ export class SummaryComponent implements OnInit {
   }
    
   start(){
-    this.openingEnded.emit(true);
  }
    
     
