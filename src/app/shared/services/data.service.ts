@@ -220,7 +220,9 @@ export class DataService extends BasicData {
 
   setCulture(culture, secondType) {
     this.culture = culture;
+    console.log(secondType);
     this.pbvs8.imgLink = `val4${culture === 'Hebrew' ? 'Hebrew' : secondType}.png`;
+    console.log(this.pbvs8.imgLink);
     this.pbvs9.imgLink = `val5${culture === 'Hebrew' ? 'jewish' : 'arab'}.png`;
     if (culture !== 'Hebrew') {
       this.pbvs1.text =
@@ -260,9 +262,9 @@ export class DataService extends BasicData {
       this.pbvs16.audioLink = `${this.gender}/39.mp3`;
       this.pbvs17.text = 'أن أكون مثل الآخرين';
       this.pbvs17.audioLink = `${this.gender}/40.mp3`;
-      this.pbvs18.text = 'معرفة ما حدث في الماضي';
+      this.pbvs18.text = 'الاستماع لما حدث في الماضي';
       this.pbvs18.audioLink = `${this.gender}/41.mp3`;
-      this.pbvs19.text = 'الاستماع لما حدث في الماضي ';
+      this.pbvs19.text =' إسعاد الآخرين';
       this.pbvs19.audioLink = `${this.gender}/42.mp3`;
       this.pbvs20.text = 'المحافظة على البيئة';
       this.pbvs20.audioLink = `${this.gender}/43.mp3`;

@@ -36,11 +36,6 @@ export class RankSet1Component implements OnInit, OnDestroy {
   playerworking$: Subscription;
   idleTimer;
  
-
-  // var Date1 = Date1.getTime();
-  // var minutes = Date1.getMinutes() 
-  //   console.log(minutes)
-
   orderedValues = {
     veryvery: null,
     very1: null,
@@ -196,7 +191,6 @@ export class RankSet1Component implements OnInit, OnDestroy {
       }/inst-${num}-${this.isMale ? 'M' : 'F'}.mp3`;
     };
 
-    console.log(createSoundLink);
 
     const titles = (num: number): string => {
       const titlesDict = [
@@ -454,15 +448,7 @@ export class RankSet1Component implements OnInit, OnDestroy {
 
   nextScene() {
     var dt2 : number = Date.now();
-    //var dt2 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    console.log(dt2);
     var diffMins = (dt2 - this.dt1);
-    console.log(diffMins / 1000);
-    // this.timeset1 = diffMins / 1000
-    console.log("hi");
-    // var Date2 = Date2.getTime()
-    // Date2().getMinutes() 
-    // const timeofset1 = Date2().getMinutes()- new Date().getMinutes() 
     this.gotRanking.emit(true);
   }
 }
