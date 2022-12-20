@@ -132,14 +132,6 @@ export class DemographicComponent{
    else{
     this.creds.parentage = this.parentage.value;
     this.creds.extralanguage = this.extralanguage.value;
-    console.log(this.creds.childage);
-    console.log(this.creds.monthchild);
-
-    // console.log(this.education2.value);
-    // console.log(this.profession2.value);
-    // console.log(this.languages.value);
-    // console.log(this.extralanguage.value);
-
     this.creds.profession1 = this.profession1.value;
     this.creds.profession2 = this.profession2.value;
     this.creds.living = this.living.value;
