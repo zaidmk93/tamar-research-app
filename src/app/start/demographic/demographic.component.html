@@ -1,181 +1,199 @@
 <div class="main-div">
-    <mat-card style="width:700px;border: 0.5px solid black;">
+  <mat-card style="width:700px;border: 0.5px solid black;">
     <mat-card-content>
-    <table>
-        <div *ngIf="isJewishCulture()" >
-                <td> 
-                    <div style="white-space:pre-wrap;">
-                      <div style="font-size: 25px;margin-right: 35%">
-                        <b> שאלון דמוגרפי:</b>
-                      </div>
-                        <br/>   1. מין הילד/ה שמשתתף במחקר: 
-                        <form class="example-form">
-                        <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.childgender" [formControl]="childgender">
-                          <mat-radio-button value="M">זכר</mat-radio-button>
-                          <mat-radio-button value="F">נקבה</mat-radio-button>
-                        </mat-radio-group>
-                      </form>
-                      <td>
-                    </td>
-                    <br/>      2. ההורה הממלא את השאלון:
-                    <form class="example-form">
-                      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.parents" [formControl]="parents">
-                        <mat-radio-button value="Mom">אמא</mat-radio-button>
-                        <mat-radio-button value="Dad">אבא</mat-radio-button>
-                      </mat-radio-group>
-                    </form>
-                    <br/>    3. גיל (של ההורה הממלא את השאלון)
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill" >
-                        <mat-label>Message</mat-label>
-                        <input matInput #message maxlength="256" placeholder="גיל" [formControl]="parentage">
-                        <mat-hint align="start"><strong></strong> </mat-hint>
-                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                    </form>
-                    <br/>     4. שנת הלידה של הילד/ה המשתתפ/ת במחקר:
-                    <form>
-                      <mat-form-field appearance="fill">
-                        <mat-label>year</mat-label>
-                        <mat-select [(ngModel)]="creds.childage" [formControl]="childage">
-                          <mat-option value="2008">2008</mat-option>
-                          <mat-option value="2009">2009</mat-option>
-                          <mat-option value="2010">2010</mat-option>
-                          <mat-option value="2011">2011</mat-option>
-                          <mat-option value="2012">2012</mat-option>
-                          <mat-option value="2013">2013</mat-option>
-                          <mat-option value="2014">2014</mat-option>
-                          <mat-option value="2015">2015</mat-option>
-                          <mat-option value="2016">2016</mat-option>
-                          <mat-option value="2017">2017</mat-option>
-                          <mat-option value="2018">2018</mat-option>
-                          <mat-option value="2019">2019</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                    </form>
-                    <br/>     5. חודש הלידה של הילד/ה המשתתפ/ת במחקר:
-                    <form class="example-form">
-                      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.monthchild" [formControl]="monthchild" >
-                        <mat-radio-button value="January">ינואר</mat-radio-button>
-                        <mat-radio-button value="February">פברואר</mat-radio-button>
-                        <mat-radio-button value="March">מרץ</mat-radio-button>
-                        <mat-radio-button value="April">אפריל</mat-radio-button>
-                        <mat-radio-button value="May">מאי</mat-radio-button>
-                        <mat-radio-button value="June">יוני</mat-radio-button>
-                        <mat-radio-button value="July">יולי</mat-radio-button>
-                        <mat-radio-button value="August">אוגוסט</mat-radio-button>
-                        <mat-radio-button value="September">ספטמבר</mat-radio-button>
-                        <mat-radio-button value="October">אוקטובר</mat-radio-button>
-                        <mat-radio-button value="November">נובמבר</mat-radio-button>
-                        <mat-radio-button value="December">דצמבר</mat-radio-button>
-                      </mat-radio-group>
-                    </form>
-                       
-                    
-                  
-                  <!-- <mat-form-field appearance="fill">
+      <table>
+        <div *ngIf="isJewishCulture()">
+          <form>
+          <td>
+            <div style="white-space:pre-wrap;">
+              <div style="font-size: 25px;margin-right: 35%">
+                <b> שאלון דמוגרפי:</b>
+              </div>
+              <br /> 1. מין הילד/ה שמשתתף במחקר:
+              <div class="example-form">
+                <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.childgender"
+                  [formControl]="childgender">
+                  <mat-radio-button value="M">זכר</mat-radio-button>
+                  <mat-radio-button value="F">נקבה</mat-radio-button>
+                  <mat-error *ngIf="childgender.errors && triedToSubmit">אנא לענות על השאלה הבאה</mat-error>
+                </mat-radio-group>
+              </div>
+          <br /> 2. ההורה הממלא את השאלון:
+          <div class="example-form">
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.parents" [formControl]="parents">
+              <mat-radio-button value="Mom">אמא</mat-radio-button>
+              <mat-radio-button value="Dad">אבא</mat-radio-button>
+              <mat-error *ngIf="parents.errors && triedToSubmit">אנא לענות על השאלה הבאה</mat-error>
+            </mat-radio-group>
+          </div>
+          <br /> 3. גיל (של ההורה הממלא את השאלון)(במספרים)
+          <div class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Message</mat-label>
+              <input matInput #message maxlength="256" placeholder="גיל" [formControl]="parentage">
+              <mat-error>אנא לענות על השאלה הבאה במספרים</mat-error>
+              <mat-hint align="start"><strong></strong> </mat-hint>
+              <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+            </mat-form-field>
+          </div>
+          <br /> 4. שנת הלידה של הילד/ה המשתתפ/ת במחקר:
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>year</mat-label>
+              <mat-select [(ngModel)]="creds.childage" [formControl]="childage">
+                <mat-option value="2008">2008</mat-option>
+                <mat-option value="2009">2009</mat-option>
+                <mat-option value="2010">2010</mat-option>
+                <mat-option value="2011">2011</mat-option>
+                <mat-option value="2012">2012</mat-option>
+                <mat-option value="2013">2013</mat-option>
+                <mat-option value="2014">2014</mat-option>
+                <mat-option value="2015">2015</mat-option>
+                <mat-option value="2016">2016</mat-option>
+                <mat-option value="2017">2017</mat-option>
+                <mat-option value="2018">2018</mat-option>
+                <mat-option value="2019">2019</mat-option>
+              </mat-select>
+              <mat-error *ngIf="childage.errors && triedToSubmit">אנא לענות על השאלה הבאה</mat-error>
+            </mat-form-field>
+          </div>
+          <br /> 5. חודש הלידה של הילד/ה המשתתפ/ת במחקר:
+          <div class="example-form">
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.monthchild" [formControl]="monthchild">
+              <mat-radio-button value="January">ינואר</mat-radio-button>
+              <mat-radio-button value="February">פברואר</mat-radio-button>
+              <mat-radio-button value="March">מרץ</mat-radio-button>
+              <mat-radio-button value="April">אפריל</mat-radio-button>
+              <mat-radio-button value="May">מאי</mat-radio-button>
+              <mat-radio-button value="June">יוני</mat-radio-button>
+              <mat-radio-button value="July">יולי</mat-radio-button>
+              <mat-radio-button value="August">אוגוסט</mat-radio-button>
+              <mat-radio-button value="September">ספטמבר</mat-radio-button>
+              <mat-radio-button value="October">אוקטובר</mat-radio-button>
+              <mat-radio-button value="November">נובמבר</mat-radio-button>
+              <mat-radio-button value="December">דצמבר</mat-radio-button>
+              <mat-error *ngIf="monthchild.errors && triedToSubmit">אנא לענות על השאלה הבאה</mat-error>
+            </mat-radio-group>
+          </div>
+
+
+
+          <!-- <mat-form-field appearance="fill">
                     <mat-label>Date of birth</mat-label>
                     <input matInput [matDatepicker]="dp" [formControl]="childage">
                     <mat-hint>MMMM DD, YYYY</mat-hint>
                     <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                     <mat-datepicker #dp></mat-datepicker>
                   </mat-form-field> -->
-                  
-                    <br/>   6. באיזו כיתה הילד/ה המשתתף/ת במחקר (אם עכשיו חופש גדול - לאיזו כיתה עולה?)<br/>
-                    <form class="example-form">
-                      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.classs" [formControl]="classs">
-                        <mat-radio-button value="1">גן</mat-radio-button>
-                        <mat-radio-button value="2">גן חובה</mat-radio-button>
-                        <mat-radio-button value="3">כיתה א'</mat-radio-button>
-                        <mat-radio-button value="4">כיתה ב'</mat-radio-button>
-                        <mat-radio-button value="5">כיתה ג'</mat-radio-button>
-                        <mat-radio-button value="6">כיתה ד'</mat-radio-button>
-                        <mat-radio-button value="7">כיתה ה'</mat-radio-button>
-                        <mat-radio-button value="8">כיתה ו'</mat-radio-button>
-                        <mat-radio-button value="9">כיתה ז'</mat-radio-button>
-                      </mat-radio-group>
-                    </form>
-                    7. יישוב המגורים   
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Message</mat-label>
-                        <input matInput #message maxlength="256" placeholder="Ex. I need help with..." [formControl]="living">
-                        <mat-hint align="start"><strong></strong> </mat-hint>
-                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                    </form>                    
-                    <br/> 8. השכלתך היא:
-                    <form class="example-form">
-                    <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.education1" [formControl]="education1">
-                      <mat-radio-button value="1">יסודית</mat-radio-button>
-                      <mat-radio-button value="2">תיכונית</mat-radio-button>
-                      <mat-radio-button value="3">על תיכונית</mat-radio-button>
-                      <mat-radio-button value="4">תואר ראשון</mat-radio-button>
-                      <mat-radio-button value="5">תואר שני</mat-radio-button>
-                      <mat-radio-button value="6">דוקטורט</mat-radio-button>
-                    </mat-radio-group>
-                  </form>
-                    <br/>    9. מהו העיסוק/המקצוע שלך?
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Message</mat-label>
-                        <input matInput #message maxlength="256" placeholder="Ex. I need help with..." [formControl]="profession1">
-                        <mat-hint align="start"><strong></strong> </mat-hint>
-                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                    </form>
-                    <br/>   10. כיצד היית מגדיר את עצמך ביחס לדת:
-                    <form class="example-form">
-                    <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.levelofreligiousty" [formControl]="levelofreligiousty">
-                      <mat-radio-button value="1">חרדי/ת</mat-radio-button>
-                      <mat-radio-button value="2">דתי/ת</mat-radio-button>
-                      <mat-radio-button value="3">חילוני/ת</mat-radio-button>
-                      <mat-radio-button value="4">מסורתי/ת</mat-radio-button>
-                      <mat-radio-button value="5">אחר</mat-radio-button>
-                    </mat-radio-group>
-                  </form>
-                    <br/>      11. השכלתו של ההורה השני:
-                    <form class="example-form">
-                    <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.education2" [formControl]="education2" >
-                      <mat-radio-button value="1">יסודית</mat-radio-button>
-                      <mat-radio-button value="2">תיכונית</mat-radio-button>
-                      <mat-radio-button value="3">על תיכונית</mat-radio-button>
-                      <mat-radio-button value="4">תואר ראשון</mat-radio-button>
-                      <mat-radio-button value="5">תואר שני</mat-radio-button>
-                      <mat-radio-button value="6">דוקטורט</mat-radio-button>
-                      <mat-radio-button value="7">אני הורה יחיד/ה</mat-radio-button>
-                    </mat-radio-group>
-                  </form>
-                    <br/>    12. מהו העיסוק /המקצוע של ההורה השני
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill" >
-                        <mat-label>Message</mat-label>
-                        <input matInput #message maxlength="256" placeholder="Ex. I need help with..." [formControl]="profession2">
-                        <mat-hint align="start"><strong></strong> </mat-hint>
-                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                    </form>
-                    <br/>   13. מה השפות שאתם מדברים בבית?
-                        <form class="example-form">
-                          <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.languages" [formControl]="languages" >
-                            <mat-radio-button value="Hebrew">עברית</mat-radio-button>
-                            <mat-radio-button value="Arabic">ערבית</mat-radio-button>
-                            <mat-radio-button value="English">אנגלית</mat-radio-button>
-                            <mat-radio-button value="Russian">רוסית</mat-radio-button>
-                            <mat-radio-button value="Amharic">אמהרית</mat-radio-button>
-                          </mat-radio-group>
-                        </form>
-                    <br/>    14. האם יש שפה נוספת שאתם מדברים בבית?
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill" >
-                        <mat-label>Message</mat-label>
-                        <input matInput #message maxlength="256" placeholder="Ex. I need help with..." [formControl]="extralanguage">
-                        <mat-hint align="start"><strong></strong> </mat-hint>
-                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                    </form>
 
-                        <!-- <input type="checkbox" ng-model="checkboxModel.value2" 
+          <br /> 6. באיזו כיתה הילד/ה המשתתף/ת במחקר (אם עכשיו חופש גדול - לאיזו כיתה עולה?)<br />
+          <div class="example-form">
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.classs" [formControl]="classs">
+              <mat-radio-button value="1">גן</mat-radio-button>
+              <mat-radio-button value="2">גן חובה</mat-radio-button>
+              <mat-radio-button value="3">כיתה א'</mat-radio-button>
+              <mat-radio-button value="4">כיתה ב'</mat-radio-button>
+              <mat-radio-button value="5">כיתה ג'</mat-radio-button>
+              <mat-radio-button value="6">כיתה ד'</mat-radio-button>
+              <mat-radio-button value="7">כיתה ה'</mat-radio-button>
+              <mat-radio-button value="8">כיתה ו'</mat-radio-button>
+              <mat-radio-button value="9">כיתה ז'</mat-radio-button>
+              <mat-error *ngIf="classs.errors && triedToSubmit">אנא לענות על השאלה הבאה</mat-error>
+            </mat-radio-group>
+          </div>
+          7. יישוב המגורים
+          <div class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Message</mat-label>
+              <input matInput #message maxlength="256" placeholder="Ex. I need help with..." [formControl]="living">
+              <mat-error>אנא לענות על השאלה הבאה</mat-error>
+              <mat-hint align="start"><strong></strong> </mat-hint>
+              <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+            </mat-form-field>
+          </div>
+          <br /> 8. השכלתך היא:
+          <div class="example-form">
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.education1" [formControl]="education1">
+              <mat-radio-button value="1">יסודית</mat-radio-button>
+              <mat-radio-button value="2">תיכונית</mat-radio-button>
+              <mat-radio-button value="3">על תיכונית</mat-radio-button>
+              <mat-radio-button value="4">תואר ראשון</mat-radio-button>
+              <mat-radio-button value="5">תואר שני</mat-radio-button>
+              <mat-radio-button value="6">דוקטורט</mat-radio-button>
+              <mat-error *ngIf="education1.errors && triedToSubmit">אנא לענות על השאלה הבאה</mat-error>
+            </mat-radio-group>
+          </div>
+          <br /> 9. מהו העיסוק/המקצוע שלך?
+          <div class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Message</mat-label>
+              <input matInput #message maxlength="256" placeholder="Ex. I need help with..."
+                [formControl]="profession1">
+              <mat-error>אנא לענות על השאלה הבאה</mat-error>
+              <mat-hint align="start"><strong></strong> </mat-hint>
+              <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+            </mat-form-field>
+          </div>
+          <br /> 10. כיצד היית מגדיר את עצמך ביחס לדת:
+          <div class="example-form">
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.levelofreligiousty"
+              [formControl]="levelofreligiousty">
+              <mat-radio-button value="1">חרדי/ת</mat-radio-button>
+              <mat-radio-button value="2">דתי/ת</mat-radio-button>
+              <mat-radio-button value="3">חילוני/ת</mat-radio-button>
+              <mat-radio-button value="4">מסורתי/ת</mat-radio-button>
+              <mat-radio-button value="5">אחר</mat-radio-button>
+              <mat-error *ngIf="levelofreligiousty.errors && triedToSubmit">אנא לענות על השאלה הבאה</mat-error>
+            </mat-radio-group>
+          </div>
+          <br /> 11. השכלתו של ההורה השני:
+          <div class="example-form">
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.education2" [formControl]="education2">
+              <mat-radio-button value="1">יסודית</mat-radio-button>
+              <mat-radio-button value="2">תיכונית</mat-radio-button>
+              <mat-radio-button value="3">על תיכונית</mat-radio-button>
+              <mat-radio-button value="4">תואר ראשון</mat-radio-button>
+              <mat-radio-button value="5">תואר שני</mat-radio-button>
+              <mat-radio-button value="6">דוקטורט</mat-radio-button>
+              <mat-radio-button value="7">אני הורה יחיד/ה</mat-radio-button>
+              <mat-error *ngIf="education2.errors && triedToSubmit">אנא לענות על השאלה הבאה</mat-error>
+            </mat-radio-group>
+          </div>
+          <br /> 12. מהו העיסוק /המקצוע של ההורה השני
+          <div class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Message</mat-label>
+              <input matInput #message maxlength="256" placeholder="Ex. I need help with..."
+                [formControl]="profession2">
+              <mat-error>אנא לענות על השאלה הבאה</mat-error>
+              <mat-hint align="start"><strong></strong> </mat-hint>
+              <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+            </mat-form-field>
+          </div>
+          <br /> 13. מה השפה העיקרית שאתם מדברים בבית?
+          <div class="example-form">
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.languages" [formControl]="languages">
+              <mat-radio-button value="Hebrew">עברית</mat-radio-button>
+              <mat-radio-button value="Arabic">ערבית</mat-radio-button>
+              <mat-radio-button value="English">אנגלית</mat-radio-button>
+              <mat-radio-button value="Russian">רוסית</mat-radio-button>
+              <mat-radio-button value="Amharic">אמהרית</mat-radio-button>
+              <mat-error *ngIf="languages.errors && triedToSubmit">אנא לענות על השאלה הבאה</mat-error>
+            </mat-radio-group>
+          </div>
+          <br /> 14. האם יש שפה נוספת שאתם מדברים בבית?
+          <div class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Message</mat-label>
+              <input matInput #message maxlength="256" placeholder="Ex. I need help with..."
+                [formControl]="extralanguage">
+              <mat-error>אנא לענות על השאלה הבאה</mat-error>
+              <mat-hint align="start"><strong></strong> </mat-hint>
+              <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <!-- <input type="checkbox" ng-model="checkboxModel.value2" 
                                ng-true-value="'YES'" ng-false-value="'NO'">
                        </label><br/>
                        <label>אנגלית
@@ -196,7 +214,7 @@
                        </label><br/>
                       
                      </form> -->
-                    <!-- <form class="example-form">
+          <!-- <form class="example-form">
                     <mat-radio-group aria-label="Select an option">
                       <mat-radio-button value="1">עברית</mat-radio-button>
                       <mat-radio-button value="2">ערבית</mat-radio-button>
@@ -206,207 +224,223 @@
                       <mat-radio-button value="6">אחר- פרט</mat-radio-button>
                     </mat-radio-group>
                   </form> -->
-                    <br/>    15. "על-פי נתוני הלשכה המרכזית לסטטיסטיקה, ההכנסה החודשית הממוצעת במשק היא כ-12000 ₪ ברוטו. בהתאם לכך, הכנסתכם (נא לסמן):"
-                    *הנתון הוא לאדם, לא למשפחה.
-                     
-                    <form class="example-form">
-                      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.economic_level" [formControl]="economic_level" >
-                        <mat-radio-button value="1"> נמוכה בהרבה מהממוצע</mat-radio-button>
-                        <mat-radio-button value="2">נמוכה במקצת מהממוצע</mat-radio-button>
-                        <mat-radio-button value="3">ממוצעת</mat-radio-button>
-                        <mat-radio-button value="4">גבוהה במקצת מהממוצע</mat-radio-button>
-                        <mat-radio-button value="5"> גבוהה בהרבה מהממוצע</mat-radio-button>
-                      </mat-radio-group>
-                    </form>
-    </div>
-</td>
+          <br /> 15. "על-פי נתוני הלשכה המרכזית לסטטיסטיקה, ההכנסה החודשית הממוצעת במשק היא כ-12000 ₪ ברוטו. בהתאם לכך,
+          הכנסתכם (נא לסמן):"
+          *הנתון הוא לאדם, לא למשפחה.
 
-<button mat-raised-button color="primary" (click)="start()">{{'המשך'}} </button>
-
+          <div class="example-form">
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.economic_level"
+              [formControl]="economic_level">
+              <mat-radio-button value="1"> נמוכה בהרבה מהממוצע</mat-radio-button>
+              <mat-radio-button value="2">נמוכה במקצת מהממוצע</mat-radio-button>
+              <mat-radio-button value="3">ממוצעת</mat-radio-button>
+              <mat-radio-button value="4">גבוהה במקצת מהממוצע</mat-radio-button>
+              <mat-radio-button value="5"> גבוהה בהרבה מהממוצע</mat-radio-button>
+              <mat-error *ngIf="economic_level.errors && triedToSubmit">אנא לענות על השאלה הבאה</mat-error>
+            </mat-radio-group>
+          </div>
         </div>
-          
-        <div *ngIf="isArabicCulture()">
-                <td>
-                  <div style="font-size: 25px;margin-right: 35%">
-                    <b> المسح الديموغرافي:</b>
-                  </div>
-                    <br/>   1. جنس الطفل المشترك بالبحث:
-                    <form class="example-form">
-                      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.childgender" [formControl]="childgender">
-                      <mat-radio-button value="M">ذكر</mat-radio-button>
-                      <mat-radio-button value="F">أنثى</mat-radio-button>
-                    </mat-radio-group>
-                  </form>
-                <br/>      2. من الذي يملأ الاستمارة
-                <form class="example-form">
-                  <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.parents" [formControl]="parents">
-                    <mat-radio-button value="Mom">الأم</mat-radio-button>
-                    <mat-radio-button value="Dad">الأب</mat-radio-button>
-                  </mat-radio-group>
-                </form>
-                <br/>    3.العمر \ الجيل للوالد\ة الذي يملأ الاستمارة
-                <form class="example-form">
-                    <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Message</mat-label>
-                    <input matInput #message maxlength="256" placeholder="العمر" [formControl]="parentage">
-                    <mat-hint align="start"><strong></strong> </mat-hint>
-                    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                    </mat-form-field>
-                </form>
-                <br/>     4.سنة ميلاد الطفل المشترك في الدراسة 
-                <form>
-                  <mat-form-field appearance="fill">
-                    <mat-label>year</mat-label>
-                    <mat-select [(ngModel)]="creds.childage" [formControl]="childage">
-                      <mat-option value="2008">2008</mat-option>
-                      <mat-option value="2009">2009</mat-option>
-                      <mat-option value="2010">2010</mat-option>
-                      <mat-option value="2011">2011</mat-option>
-                      <mat-option value="2012">2012</mat-option>
-                      <mat-option value="2013">2013</mat-option>
-                      <mat-option value="2014">2014</mat-option>
-                      <mat-option value="2015">2015</mat-option>
-                      <mat-option value="2016">2016</mat-option>
-                      <mat-option value="2017">2017</mat-option>
-                      <mat-option value="2018">2018</mat-option>
-                      <mat-option value="2019">2019</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </form>
-                <br/>     5. شهر ميلاد الطفل قيد الدراسة:
-                    <form class="example-form">
-                      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.monthchild" [formControl]="monthchild" >
-                        <mat-radio-button value="January"> يناير</mat-radio-button>
-                        <mat-radio-button value="February">فبراير</mat-radio-button>
-                        <mat-radio-button value="March">مارس</mat-radio-button>
-                        <mat-radio-button value="April">أبريل</mat-radio-button>
-                        <mat-radio-button value="May">مايو</mat-radio-button>
-                        <mat-radio-button value="June">يونيو</mat-radio-button>
-                        <mat-radio-button value="July">يوليو</mat-radio-button>
-                        <mat-radio-button value="August">أغسطس</mat-radio-button>
-                        <mat-radio-button value="September">سبتمبر</mat-radio-button>
-                        <mat-radio-button value="October">أكتوبر</mat-radio-button>
-                        <mat-radio-button value="November">نوفمبر</mat-radio-button>
-                        <mat-radio-button value="December">ديسمبر</mat-radio-button>
-                      </mat-radio-group>
-                    </form>
-                <br/>   6. بأي صف الطفل المشترك بالبحث <br/>
-                <form class="example-form">
-                  <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.classs" [formControl]="classs">
-                    <mat-radio-button value="1">روضة</mat-radio-button>
-                    <mat-radio-button value="2">بستان</mat-radio-button>
-                    <mat-radio-button value="3">تمهيدي</mat-radio-button>
-                    <mat-radio-button value="4">أول</mat-radio-button>
-                    <mat-radio-button value="5">ثاني</mat-radio-button>
-                    <mat-radio-button value="6">ثالث</mat-radio-button>
-                    <mat-radio-button value="7">رابع</mat-radio-button>
-                    <mat-radio-button value="8">خامس</mat-radio-button>
-                    <mat-radio-button value="9">سادس</mat-radio-button>
-                    <mat-radio-button value="10">سابع</mat-radio-button>
-                  </mat-radio-group>
-                </form>
-                7. مكان السكن   
-                <form class="example-form">
-                    <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Message</mat-label>
-                    <input matInput #message maxlength="256" placeholder="Ex. I need help with..." [formControl]="living">
-                    <mat-hint align="start"><strong></strong> </mat-hint>
-                    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                    </mat-form-field>
-                </form>                    
-                <br/> 8. تحصيلك الأكاديمي
-                <form class="example-form">
-                  <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.education1" [formControl]="education1">
-                  <mat-radio-button value="1">ابتدائي</mat-radio-button>
-                  <mat-radio-button value="2">إعدادي</mat-radio-button>
-                  <mat-radio-button value="3">ثانوي</mat-radio-button>
-                  <mat-radio-button value="4">لقب أول</mat-radio-button>
-                  <mat-radio-button value="5">لقب ثاني</mat-radio-button>
-                  <mat-radio-button value="6">لقب ثالث</mat-radio-button>
-                </mat-radio-group>
-              </form>
-                <br/>    9. ما هي مهنتك الحالية
-                <form class="example-form">
-                    <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Message</mat-label>
-                    <input matInput #message maxlength="256" placeholder="Ex. I need help with..." [formControl]="profession1">
-                    <mat-hint align="start"><strong></strong> </mat-hint>
-                    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                    </mat-form-field>
-                </form>
-                <br/>   10. كيف تعرّف نفسك بالنسبة للدين
-                <form class="example-form">
-                  <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.levelofreligiousty" [formControl]="levelofreligiousty">
-                  <mat-radio-button value="1">متدين/ة جدا</mat-radio-button>
-                  <mat-radio-button value="2">متدين/ة</mat-radio-button>
-                  <mat-radio-button value="3">محافظ/ة</mat-radio-button>
-                  <mat-radio-button value="4">علماني/ة (غير متدين/ة أبدا)</mat-radio-button>
-                  <mat-radio-button value="5">آخر</mat-radio-button>
-                </mat-radio-group>
-              </form>
-                <br/>      11. التحصيل الأكاديمي للوالد\ة الآخر
-                <form class="example-form">
-                  <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.education2" [formControl]="education2" >
-                  <mat-radio-button value="1">ابتدائي</mat-radio-button>
-                  <mat-radio-button value="2">إعدادي</mat-radio-button>
-                  <mat-radio-button value="3">ثانوي</mat-radio-button>
-                  <mat-radio-button value="4">لقب أول</mat-radio-button>
-                  <mat-radio-button value="5">لقب ثاني</mat-radio-button>
-                  <mat-radio-button value="6">لقب ثالث</mat-radio-button>
-                </mat-radio-group>
-              </form>
-                <br/>    12. مهنة الوالد\ة الآخر 
-                <form class="example-form">
-                    <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Message</mat-label>
-                    <input matInput #message maxlength="256" placeholder="Ex. I need help with..." [formControl]="profession2">
-                    <mat-hint align="start"><strong></strong> </mat-hint>
-                    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                    </mat-form-field>
-                </form>
-                <br/>   13. ما هي اللغات التي تتحدثون بها داخل البيت ؟
-                 <form class="example-form">
-                  <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.languages" [formControl]="languages" >
-                    <mat-radio-button value="Hebrew">عبرية</mat-radio-button>
-                    <mat-radio-button value="Arabic">عربية</mat-radio-button>
-                    <mat-radio-button value="English">انجليزية</mat-radio-button>
-                    <mat-radio-button value="Russian">روسية</mat-radio-button>
-                    <mat-radio-button value="French">فرنسية</mat-radio-button>
-                  </mat-radio-group>
-                </form>
-                <br/>    14.  انت كنت تتحدث/ين لغات أخرى،الرجاء ذكرها ?
-                    <form class="example-form">
-                        <mat-form-field class="example-full-width" appearance="fill" >
-                        <mat-label>Message</mat-label>
-                        <input matInput #message maxlength="256" placeholder="Ex. I need help with..." [formControl]="extralanguage">
-                        <mat-hint align="start"><strong></strong> </mat-hint>
-                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-                        </mat-form-field>
-                    </form>
-                <br/>    15.
-                بحسب معطيات المكتب المركزي للإحصاء، يبلغ إجمالي الدخل الشهري للفرد الواحد حوالي 12 ألف شيكل غير شامل الضريبة. تبعا لذلك، دخلك (يرجى الإحاطة): 
+        </td>
 
-                <form class="example-form">
-                  <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.economic_level" [formControl]="economic_level" >
-                    <mat-radio-button value="1"> أقل بكثير من المعدل        </mat-radio-button>
-                    <mat-radio-button value="2">أقل بقليل من المعدل     </mat-radio-button>
-                    <mat-radio-button value="3">يساوي المعدل تقريبا     </mat-radio-button>
-                    <mat-radio-button value="4"> أكثر بقليل من المعدل      </mat-radio-button>
-                    <mat-radio-button value="5"> أكثر بكثير من المعدل </mat-radio-button>
-                  </mat-radio-group>
-                </form>
-                                                                                  
+        <button mat-raised-button color="primary" (click)="start()">{{'המשך'}} </button>
+      </form>
 
-</td>
-<button mat-raised-button color="primary" (click)="start()">{{'ليوافق'}} </button>
+</div>
+
+<div *ngIf="isArabicCulture()">
+  <form>
+  <td>
+    <div style="font-size: 25px;margin-right: 35%">
+      <b> المسح الديموغرافي:</b>
+    </div>
+    <br /> 1. جنس الطفل المشترك بالبحث:
+    <div class="example-form">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.childgender" [formControl]="childgender">
+        <mat-radio-button value="M">ذكر</mat-radio-button>
+        <mat-radio-button value="F">أنثى</mat-radio-button>
+        <mat-error *ngIf="childgender.errors && triedToSubmit">الرجاء الاجابة على السؤال التالي</mat-error>
+      </mat-radio-group>
+    </div>
+    <br /> 2. من الذي يملأ الاستمارة
+    <div class="example-form" aria-required="true">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.parents" [formControl]="parents">
+        <mat-radio-button value="Mom">الأم</mat-radio-button>
+        <mat-radio-button value="Dad">الأب</mat-radio-button>
+        <mat-error *ngIf="parents.errors && triedToSubmit">الرجاء الاجابة على السؤال التالي</mat-error>
+      </mat-radio-group>
+    </div>
+    <br /> 3.العمر \ الجيل للوالد\ة الذي يملأ الاستمارة (بالارقام)
+    <div class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Message</mat-label>
+        <mat-error>الرجاء الاجابة على السؤال التالي بالارقام</mat-error>
+        <input matInput #message maxlength="256" placeholder="العمر" [formControl]="parentage">
+        <mat-hint align="start"><strong></strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+    </div>
+    <br /> 4.سنة ميلاد الطفل المشترك في الدراسة
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>year</mat-label>
+        <mat-select [(ngModel)]="creds.childage" [formControl]="childage">
+          <mat-option value="2008">2008</mat-option>
+          <mat-option value="2009">2009</mat-option>
+          <mat-option value="2010">2010</mat-option>
+          <mat-option value="2011">2011</mat-option>
+          <mat-option value="2012">2012</mat-option>
+          <mat-option value="2013">2013</mat-option>
+          <mat-option value="2014">2014</mat-option>
+          <mat-option value="2015">2015</mat-option>
+          <mat-option value="2016">2016</mat-option>
+          <mat-option value="2017">2017</mat-option>
+          <mat-option value="2018">2018</mat-option>
+          <mat-option value="2019">2019</mat-option>
+        </mat-select>
+        <mat-error *ngIf="childage.errors && triedToSubmit">الرجاء الاجابة على السؤال التالي</mat-error>
+      </mat-form-field>
+    </div>
+    <br /> 5. شهر ميلاد الطفل قيد الدراسة:
+    <div class="example-form">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.monthchild" [formControl]="monthchild">
+        <mat-radio-button value="January"> يناير</mat-radio-button>
+        <mat-radio-button value="February">فبراير</mat-radio-button>
+        <mat-radio-button value="March">مارس</mat-radio-button>
+        <mat-radio-button value="April">أبريل</mat-radio-button>
+        <mat-radio-button value="May">مايو</mat-radio-button>
+        <mat-radio-button value="June">يونيو</mat-radio-button>
+        <mat-radio-button value="July">يوليو</mat-radio-button>
+        <mat-radio-button value="August">أغسطس</mat-radio-button>
+        <mat-radio-button value="September">سبتمبر</mat-radio-button>
+        <mat-radio-button value="October">أكتوبر</mat-radio-button>
+        <mat-radio-button value="November">نوفمبر</mat-radio-button>
+        <mat-radio-button value="December">ديسمبر</mat-radio-button>
+        <mat-error *ngIf="monthchild.errors && triedToSubmit">الرجاء الاجابة على السؤال التالي</mat-error>
+      </mat-radio-group>
+    </div>
+    <br /> 6. بأي صف الطفل المشترك بالبحث <br />
+    <div class="example-form">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.classs" [formControl]="classs">
+        <mat-radio-button value="1">روضة</mat-radio-button>
+        <mat-radio-button value="2">بستان</mat-radio-button>
+        <mat-radio-button value="3">تمهيدي</mat-radio-button>
+        <mat-radio-button value="4">أول</mat-radio-button>
+        <mat-radio-button value="5">ثاني</mat-radio-button>
+        <mat-radio-button value="6">ثالث</mat-radio-button>
+        <mat-radio-button value="7">رابع</mat-radio-button>
+        <mat-radio-button value="8">خامس</mat-radio-button>
+        <mat-radio-button value="9">سادس</mat-radio-button>
+        <mat-radio-button value="10">سابع</mat-radio-button>
+        <mat-error *ngIf="classs.errors && triedToSubmit">الرجاء الاجابة على السؤال التالي</mat-error>
+      </mat-radio-group>
+    </div>
+    7. مكان السكن
+    <div class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Message</mat-label>
+        <input matInput #message maxlength="256" placeholder="Ex. I need help with..." [formControl]="living">
+        <mat-error>الرجاء الاجابة على السؤال التالي</mat-error>
+        <mat-hint align="start"><strong></strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+    </div>
+    <br /> 8. تحصيلك الأكاديمي
+    <div class="example-form">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.education1" [formControl]="education1">
+        <mat-radio-button value="1">ابتدائي</mat-radio-button>
+        <mat-radio-button value="2">إعدادي</mat-radio-button>
+        <mat-radio-button value="3">ثانوي</mat-radio-button>
+        <mat-radio-button value="4">لقب أول</mat-radio-button>
+        <mat-radio-button value="5">لقب ثاني</mat-radio-button>
+        <mat-radio-button value="6">لقب ثالث</mat-radio-button>
+        <mat-error *ngIf="education1.errors && triedToSubmit">الرجاء الاجابة على السؤال التالي</mat-error>
+      </mat-radio-group>
+    </div>
+    <br /> 9. ما هي مهنتك الحالية
+    <div class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Message</mat-label>
+        <input matInput #message maxlength="256" placeholder="Ex. I need help with..." [formControl]="profession1">
+        <mat-error>الرجاء الاجابة على السؤال التالي</mat-error>
+        <mat-hint align="start"><strong></strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+    </div>
+    <br /> 10. كيف تعرّف نفسك بالنسبة للدين
+    <div class="example-form">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.levelofreligiousty"
+        [formControl]="levelofreligiousty">
+        <mat-radio-button value="1">متدين/ة جدا</mat-radio-button>
+        <mat-radio-button value="2">متدين/ة</mat-radio-button>
+        <mat-radio-button value="3">محافظ/ة</mat-radio-button>
+        <mat-radio-button value="4">علماني/ة (غير متدين/ة أبدا)</mat-radio-button>
+        <mat-radio-button value="5">آخر</mat-radio-button>
+        <mat-error *ngIf="levelofreligiousty.errors && triedToSubmit">الرجاء الاجابة على السؤال التالي</mat-error>
+      </mat-radio-group>
+    </div>
+    <br /> 11. التحصيل الأكاديمي للوالد\ة الآخر
+    <div class="example-form">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.education2" [formControl]="education2">
+        <mat-radio-button value="1">ابتدائي</mat-radio-button>
+        <mat-radio-button value="2">إعدادي</mat-radio-button>
+        <mat-radio-button value="3">ثانوي</mat-radio-button>
+        <mat-radio-button value="4">لقب أول</mat-radio-button>
+        <mat-radio-button value="5">لقب ثاني</mat-radio-button>
+        <mat-radio-button value="6">لقب ثالث</mat-radio-button>
+        <mat-error *ngIf="education2.errors && triedToSubmit">الرجاء الاجابة على السؤال التالي</mat-error>
+      </mat-radio-group>
+    </div>
+    <br /> 12. مهنة الوالد\ة الآخر
+    <div class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Message</mat-label>
+        <input matInput #message maxlength="256" placeholder="Ex. I need help with..." [formControl]="profession2">
+        <mat-error>الرجاء الاجابة على السؤال التالي</mat-error>
+        <mat-hint align="start"><strong></strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+    </div>
+    <br /> 13. ما هي اللغة الاساسية التي تتحدثون بها داخل البيت ؟
+    <div class="example-form">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.languages" [formControl]="languages">
+        <mat-radio-button value="Hebrew">عبرية</mat-radio-button>
+        <mat-radio-button value="Arabic">عربية</mat-radio-button>
+        <mat-radio-button value="English">انجليزية</mat-radio-button>
+        <mat-radio-button value="Russian">روسية</mat-radio-button>
+        <mat-radio-button value="French">فرنسية</mat-radio-button>
+        <mat-error *ngIf="languages.errors && triedToSubmit">الرجاء الاجابة على السؤال التالي</mat-error>
+      </mat-radio-group>
+    </div>
+    <br /> 14. اذا كنت تتحدث/ين لغات أخرى،الرجاء ذكرها ?
+    <div class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Message</mat-label>
+        <input matInput #message maxlength="256" placeholder="Ex. I need help with..." [formControl]="extralanguage">
+        <mat-error>الرجاء الاجابة على السؤال التالي</mat-error>
+        <mat-hint align="start"><strong></strong> </mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+      </mat-form-field>
+    </div>
+    <br /> 15.
+    بحسب معطيات المكتب المركزي للإحصاء، يبلغ إجمالي الدخل الشهري للفرد الواحد حوالي 12 ألف شيكل غير شامل الضريبة. تبعا
+    لذلك، دخلك (يرجى الإحاطة):
+
+    <div class="example-form">
+      <mat-radio-group aria-label="Select an option" [(ngModel)]="creds.economic_level" [formControl]="economic_level">
+        <mat-radio-button value="1"> أقل بكثير من المعدل </mat-radio-button>
+        <mat-radio-button value="2">أقل بقليل من المعدل </mat-radio-button>
+        <mat-radio-button value="3">يساوي المعدل تقريبا </mat-radio-button>
+        <mat-radio-button value="4"> أكثر بقليل من المعدل </mat-radio-button>
+        <mat-radio-button value="5"> أكثر بكثير من المعدل </mat-radio-button>
+        <mat-error *ngIf="economic_level.errors && triedToSubmit">الرجاء الاجابة على السؤال التالي</mat-error>
+      </mat-radio-group>
+    </div>
+
+
+  </td>
+  <button mat-raised-button color="primary" (click)="start()">{{'ليوافق'}} </button>
+</form>
 </div>
 </table>
 </mat-card-content>
 </mat-card>
-
-</div>
-
-
-
-   
-

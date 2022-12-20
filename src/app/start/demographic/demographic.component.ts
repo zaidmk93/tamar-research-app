@@ -1,8 +1,11 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, ElementRef, Output, EventEmitter, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { Credentials } from 'src/app/models';
 import { FormControl, Validators } from '@angular/forms';
+import { fromEvent } from "rxjs";
+import { debounceTime, take } from "rxjs/operators";
+
 
 @Component({
   selector: 'app-demographic',
@@ -13,9 +16,15 @@ import { FormControl, Validators } from '@angular/forms';
 
 export class DemographicComponent{
    
+  constructor(
+    private el: ElementRef,
+  ){
+
+  }
   @Input() culture: string;
   @Output() gotCreds: EventEmitter<Credentials> = new EventEmitter<Credentials>();
 
+  triedToSubmit: boolean = false;
   childgender = new FormControl('', [
     Validators.required
   ]);
@@ -52,22 +61,14 @@ export class DemographicComponent{
     Validators.required,
 
   ]);
-  education2 = new FormControl('', [
-    Validators.required
-  ]);
-  profession2 = new FormControl('', [
-    Validators.required,
-  ]);
-  languages = new FormControl('', [
-    Validators.required
-  ]);
-  extralanguage = new FormControl('', [
-    Validators.required
-  ]);
+  education2 = new FormControl('', []);
+  profession2 = new FormControl('', []);
+  languages = new FormControl('', []);
+  extralanguage = new FormControl('', []);
     economic_level = new FormControl('', [
     Validators.required,
   ]);
-  
+
   creds: Credentials = {
     schoolID: '',
     childID: 'a',
@@ -120,22 +121,54 @@ export class DemographicComponent{
  }
 
  start(){
+  this.triedToSubmit = true;
    if(this.childgender.errors || this.parents.errors || this.parentage.errors 
     || this.childage.errors || this.monthchild.errors || this.classs.errors || 
     this.living.errors || this.education1.errors || this.profession1.errors || this.levelofreligiousty.errors 
-    || this.education2.errors || this.profession2.errors || this.languages.errors || this.extralanguage.errors || this.economic_level.errors){
-     
+    || this.economic_level.errors){
+      console.log("print");
+      this.scrollToFirstInvalidControl();
    }
    else{
     this.creds.parentage = this.parentage.value;
     this.creds.extralanguage = this.extralanguage.value;
-    console.log(this.creds.childage)
-    console.log(this.creds.monthchild)
+    console.log(this.creds.childage);
+    console.log(this.creds.monthchild);
+
+    // console.log(this.education2.value);
+    // console.log(this.profession2.value);
+    // console.log(this.languages.value);
+    // console.log(this.extralanguage.value);
+
     this.creds.profession1 = this.profession1.value;
     this.creds.profession2 = this.profession2.value;
     this.creds.living = this.living.value;
     this.gotCreds.emit(this.creds);
   }
+}
+
+private getTopOffset(controlEl: HTMLElement): number {
+  const labelOffset = 50;
+  return controlEl.getBoundingClientRect().top + window.scrollY - labelOffset;
+}
+
+private scrollToFirstInvalidControl() {
+  const firstInvalidControl: HTMLElement = this.el.nativeElement.querySelector(
+    ".ng-invalid"
+  );
+
+  window.scroll({
+    top: this.getTopOffset(firstInvalidControl),
+    left: 0,
+    behavior: "smooth"
+  });
+
+  fromEvent(window, "scroll")
+    .pipe(
+      debounceTime(100),
+      take(1)
+    )
+    .subscribe(() => firstInvalidControl.focus());
 }
 
 }
