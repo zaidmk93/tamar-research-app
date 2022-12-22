@@ -61,7 +61,7 @@ export class DemographicComponent{
     Validators.required,
 
   ]);
-  education2 = new FormControl('', []);
+  education2 = new FormControl('', [Validators.required]);
   profession2 = new FormControl('', []);
   languages = new FormControl('', []);
   extralanguage = new FormControl('', []);
