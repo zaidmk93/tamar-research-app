@@ -375,7 +375,7 @@ export class ValuesRankingComponent implements OnInit {
             education1 : ${finalData.education1},
             profession1 : "${finalData.profession1}",
             levelofreligiousty : ${finalData.levelofreligiousty},
-            education2 : ${finalData.education2 ? finalData.education2 : ""},
+            education2 : ${finalData.education2},
             profession2 : "${finalData.profession2}",
             economic_level : ${finalData.economic_level},
             living : "${finalData.living}",
