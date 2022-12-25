@@ -8,7 +8,7 @@
     <app-menu *ngIf = "scene == 9" (gotCreds)="scene9($event)"></app-menu>
     <app-concent-from *ngIf = "scene == 11" [culture]="this.dataService.applanguages1" (gotCreds)="scene11($event)"></app-concent-from>
     <app-menu2 *ngIf = "scene == 12" (gotCreds)="scene12($event)"></app-menu2>
-    <app-demographic [culture]="this.dataService.applanguages1" *ngIf = "scene == 10" (gotCreds)="scene10($event)"></app-demographic>
+    <!-- <app-demographic [culture]="this.dataService.applanguages1" *ngIf = "scene == 10" (gotCreds)="scene10($event)"></app-demographic> -->
     <app-Attention-task3-from [culture]="this.dataService.applanguages1" *ngIf="scene == 13" (gotCreds)="scene13($event)"></app-Attention-task3-from>
         <div class="padding" *ngIf="[0, 1, 2, 4, 7].includes(scene)">
         <app-rotate-screen *ngIf="scene == 0" [culture]="this.dataService.applanguages1" (gotCreds)="scene1($event)"></app-rotate-screen>

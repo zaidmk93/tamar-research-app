@@ -204,7 +204,7 @@ export class ValuesRankingComponent implements OnInit {
   }
 
   scene11(creds: Credentials){
-    this.scene = 10;
+    this.scene = 1;
   }
 
   scene12(creds: Credentials){
@@ -294,24 +294,9 @@ export class ValuesRankingComponent implements OnInit {
             lab : ${finalData.lab},
             applanguages1 : ${finalData.applanguages1},
             applanguages2 : ${finalData.applanguages2},
-            childgender : ${finalData.childgender},
-            parents : ${finalData.parents},
-            parentage : ${finalData.parentage},
-            education1 : ${finalData.education1},
-            profession1 : "${finalData.profession1}",
-            levelofreligiousty : ${finalData.levelofreligiousty},
-            education2 : ${finalData.education2},
-            profession2 : "${finalData.profession2}",
-            economic_level : ${finalData.economic_level},
-            living : "${finalData.living}",
-            classs : "${finalData.classs}",
             attention1: ${finalData.attention1}
             attention2: ${finalData.attention2},
             attention3: ${finalData.attention3},
-            childage: ${finalData.childage},
-            monthchild: "${finalData.monthchild}",
-            languages: "${finalData.languages}",
-            extralanguage: "${finalData.extralanguage}",
             
           }
         ) {
@@ -390,7 +375,7 @@ export class ValuesRankingComponent implements OnInit {
             education1 : ${finalData.education1},
             profession1 : "${finalData.profession1}",
             levelofreligiousty : ${finalData.levelofreligiousty},
-            education2 : ${finalData.education2},
+            education2 : ${finalData.education2 ? finalData.education2 : ""},
             profession2 : "${finalData.profession2}",
             economic_level : ${finalData.economic_level},
             living : "${finalData.living}",
