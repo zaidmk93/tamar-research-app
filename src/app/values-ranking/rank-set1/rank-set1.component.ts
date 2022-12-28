@@ -1,5 +1,7 @@
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   OnDestroy,
@@ -7,7 +9,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 import { AudioService } from 'src/app/shared/services/audio.service';
 import { CacheService } from 'src/app/shared/services/cache.service';
 import { getCacheData, getCacheKey } from 'src/app/shared/utils';
@@ -15,13 +17,15 @@ import { Pbvs, DataService } from '../../shared/services/data.service';
 import { PyramidViewComponent } from '../pyramid-view/pyramid-view.component';
 import { ValueDialogComponent } from '../value-dialog/value-dialog.component';
 import { Time } from '@angular/common';
+import { debounceTime, take } from 'rxjs/operators';
+import { Container } from '@angular/compiler/src/i18n/i18n_ast';
 @Component({
   selector: 'app-rank-set1',
   templateUrl: './rank-set1.component.html',
   styleUrls: ['./rank-set1.component.scss'],
   providers: [AudioService],
 })
-export class RankSet1Component implements OnInit, OnDestroy {
+export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('valueDialog')
   valueDialog: ValueDialogComponent;
   @ViewChild('pyramidView')
@@ -71,6 +75,7 @@ export class RankSet1Component implements OnInit, OnDestroy {
   getTime: any;
   // timeset1: number;
   constructor(
+    private el: ElementRef,
     private audioService: AudioService,
     public dataService: DataService,
     private cacheService: CacheService
@@ -80,6 +85,14 @@ export class RankSet1Component implements OnInit, OnDestroy {
       this.updateValuesFromCache();
     }
   }
+  ngAfterViewInit(): void {
+    const pyramid_container: HTMLElement = this.el.nativeElement.querySelector(".pyramid-container");
+    const stock_container: HTMLElement = this.el.nativeElement.querySelector(".stock-container");
+    this.scrollTo(pyramid_container);
+    setTimeout(()=> {
+      this.scrollTo(stock_container);
+    }, this.culture === 'Hebrew'? (this.dataService.currentStage > 2 ? 2000 : 9500) : (this.dataService.currentStage > 2 ? 2000 : 14500));
+  }
 
   ngOnInit(): void {
    // var today = new Date();
@@ -88,6 +101,28 @@ export class RankSet1Component implements OnInit, OnDestroy {
     console.log(this.dt1)
     this.isMale = this.dataService.gender === 'M';
     this.nextStage();
+  }
+
+
+  private getTopOffset(controlEl: HTMLElement): number {
+    const labelOffset = 50;
+    return controlEl.getBoundingClientRect().top + window.scrollY - labelOffset;
+  }
+
+  private scrollTo(scrollTo: HTMLElement) {
+  
+    window.scroll({
+      top: this.getTopOffset(scrollTo),
+      left: 0,
+      behavior: "smooth"
+    });
+  
+    fromEvent(window, "scroll")
+      .pipe(
+        debounceTime(100),
+        take(1)
+      )
+      .subscribe(() => scrollTo.focus());
   }
 
   ngOnDestroy(): void {

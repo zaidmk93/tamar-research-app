@@ -12,3 +12,13 @@
   justify-content: center;
   align-items: center;
 }
+
+.mat-card {
+  padding: 40px;
+}
+
+@media screen and (max-width: 500px) {  
+  .mat-card {
+    padding: 20px;
+  }
+}

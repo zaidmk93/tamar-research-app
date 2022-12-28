@@ -126,7 +126,6 @@ export class DemographicComponent{
     || this.childage.errors || this.monthchild.errors || this.classs.errors || 
     this.living.errors || this.education1.errors || this.profession1.errors || this.levelofreligiousty.errors 
     || this.economic_level.errors){
-      console.log("print");
       this.scrollToFirstInvalidControl();
    }
    else{

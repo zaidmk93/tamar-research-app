@@ -9,9 +9,11 @@
                     <td>
                         <b>{{this.culture === 'Hebrew' ? 'קבוצה' : ' المجموعة'}}</b>
                         <br>
-                        <span>{{this.culture === 'Hebrew' ? 'תקליד/י את מספר הקבוצה לפי הדת שלך:
-                            יהדות-1, אסלאם-2 , נצרות - 3 , דרוזית- 4' : 'ادخلَي رقم المجموعة بحسب ديانتك:
-                            1- اليهودية  2- الاسلام 3- المسيحية 4- درزية'}}</span>
+                        <p class="ask-parag">{{this.culture === 'Hebrew' ? 'תקליד/י את מספר הקבוצה לפי הדת שלך:' : 'ادخل/ي رقم المجموعة بحسب ديانتك:'}}</p>
+                        <p class="option-parag">{{this.culture === 'Hebrew' ? '1- יהדות' : '1- اليهودية'}}</p>
+                        <p class="option-parag">{{this.culture === 'Hebrew' ? '2- אסלאם' : '2- الاسلام'}}</p>
+                        <p class="option-parag">{{this.culture === 'Hebrew' ? '3- נצרות' : '3- المسيحية'}}</p>
+                        <p class="option-parag">{{this.culture === 'Hebrew' ? '4- דרוזית' : '4- درزية'}}</p>
                     </td>
                     <td style="width:20px;"></td>
                     <td>
