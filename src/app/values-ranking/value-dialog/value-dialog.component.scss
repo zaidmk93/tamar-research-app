@@ -36,6 +36,10 @@
 
 
 @media screen and (max-width: 450px) {
+  .container {
+    height: 60vh;
+  }
+  
   .img{
     height: unset;
   }
