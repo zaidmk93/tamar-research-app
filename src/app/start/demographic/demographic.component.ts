@@ -137,7 +137,7 @@ export class DemographicComponent{
     this.gotCreds.emit(this.creds);
   }
 }
-
+ 
 private getTopOffset(controlEl: HTMLElement): number {
   const labelOffset = 50;
   return controlEl.getBoundingClientRect().top + window.scrollY - labelOffset;

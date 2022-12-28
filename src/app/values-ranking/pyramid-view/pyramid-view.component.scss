@@ -150,22 +150,27 @@
 @media screen and (max-width: 1000px) {
   .pyramid-container{
     width: unset;
+    height: unset;
   }
 
   .pyramid-table {
     width: unset;
+    height: unset;
   }
 
   .pyramid-row {
     width: unset;
+    height: 16vh;
   }
 
   .pyramid-cell {
     width: 15vw;
+    height: 15vh;
   }
 
   .pyramid-square{
     width: 14vw;
+    height: 15vh;
   }
 
   .pyramid-cell-data {
