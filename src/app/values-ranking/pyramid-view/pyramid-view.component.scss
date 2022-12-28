@@ -145,7 +145,21 @@
   align-items: center;
 }
 
+.done-right-container {
+    margin-bottom: 5px;
+    margin-top: auto;
+}
 
+.done-button{
+  text-align: center;
+}
+
+.clear-button {
+  margin: auto;
+  width: unset !important;
+  margin-bottom: 0;
+  margin-bottom: 5px;
+}
 
 @media screen and (max-width: 1000px) {
   .pyramid-container{
@@ -175,5 +189,10 @@
 
   .pyramid-cell-data {
     width: 13vw;
+  }
+
+
+  .title-not-necessarily {
+    height: 44px;
   }
 }
