@@ -112,11 +112,11 @@
         </td>
       </tr>
       <tr class="pyramid-row">
-        <td style="width:37%">
+        <td style="width:37%" class="done-right-container">
           <div>
-            <h1 style="text-align: center;">{{this.culture === 'Hebrew' ? 'כלל לא חשוב' : 'غير مهمّ أبدًا'}}</h1>
+            <h1 style="text-align: center;" class="title-not-necessarily">{{this.culture === 'Hebrew' ? 'כלל לא חשוב' : 'غير مهمّ أبدًا'}}</h1>
           </div>
-          <div>
+          <div class="done-button">
             <button mat-button color="warn" (click)="confirm()">
               <mat-icon style="color: green">done</mat-icon>
             </button>
@@ -133,7 +133,7 @@
 
           </div>
         </td>
-        <td style="width:37%">
+        <td style="width:37%" class="clear-button">
           <button mat-button (click)="cancel()">
             <mat-icon style="color: red">clear</mat-icon>
           </button>
