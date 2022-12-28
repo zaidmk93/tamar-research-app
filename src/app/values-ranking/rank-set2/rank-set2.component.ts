@@ -1,5 +1,7 @@
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   OnDestroy,
@@ -7,7 +9,9 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { fromEvent } from 'rxjs';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { debounceTime, take } from 'rxjs/operators';
 import { AudioService } from 'src/app/shared/services/audio.service';
 import { CacheService } from 'src/app/shared/services/cache.service';
 import { getCacheData, getCacheKey } from 'src/app/shared/utils';
@@ -21,7 +25,7 @@ import { ValueDialogComponent } from '../value-dialog/value-dialog.component';
   styleUrls: ['./rank-set2.component.scss'],
   providers: [AudioService],
 })
-export class RankSet2Component implements OnInit, OnDestroy {
+export class RankSet2Component implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('valueDialog')
   valueDialog: ValueDialogComponent;
   @ViewChild('pyramidView')
@@ -67,6 +71,7 @@ export class RankSet2Component implements OnInit, OnDestroy {
   getTime: any;
   constructor(
     private audioService: AudioService,
+    private el: ElementRef,
     public dataService: DataService,
     private cacheService: CacheService
   ) {
@@ -80,6 +85,36 @@ export class RankSet2Component implements OnInit, OnDestroy {
     this.dt1 = Date.now();
     this.isMale = this.dataService.gender === 'M';
     this.nextStage();
+  }
+
+  ngAfterViewInit(): void {
+    const pyramid_container: HTMLElement = this.el.nativeElement.querySelector(".pyramid-container");
+    const stock_container: HTMLElement = this.el.nativeElement.querySelector(".stock-container");
+    this.scrollTo(pyramid_container);
+    setTimeout(()=> {
+      this.scrollTo(stock_container);
+    }, this.culture === 'Hebrew'? (this.dataService.currentStage > 2 ? 2000 : 11000) : (this.dataService.currentStage > 2 ? 2000 : 14500));
+  }
+
+  private getTopOffset(controlEl: HTMLElement): number {
+    const labelOffset = 50;
+    return controlEl.getBoundingClientRect().top + window.scrollY - labelOffset;
+  }
+
+  private scrollTo(scrollTo: HTMLElement) {
+  
+    window.scroll({
+      top: this.getTopOffset(scrollTo),
+      left: 0,
+      behavior: "smooth"
+    });
+  
+    fromEvent(window, "scroll")
+      .pipe(
+        debounceTime(100),
+        take(1)
+      )
+      .subscribe(() => scrollTo.focus());
   }
 
   ngOnDestroy(): void {
