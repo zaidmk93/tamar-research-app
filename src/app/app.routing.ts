@@ -11,7 +11,7 @@ import { Attentiontask3Component } from './values-ranking/Attention-task3/Attent
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'v/:id',
     component: ValuesRankingComponent,
   },
   {
@@ -19,17 +19,9 @@ const routes: Routes = [
     component: LabComponent,
   },
   {
-    path: 'menu',
-    component: MenuComponent,
-  },
-  {
     path: 'menu2',
     component: Menu2Component,
   }, 
-  {
-    path: 'values-ranking',
-    component: ValuesRankingComponent,
-  },
   {
     path: 'concent',
     component: ConcentComponent,

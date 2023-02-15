@@ -54,8 +54,12 @@ export class ValuesRankingComponent implements OnInit {
 
   ngOnInit(): void {
     this.scene = this.applicationStateService.getIsMobileResolution() ? 0 : 1;
-    this.scene = 8;
+    this.scene = 9;
     
+    this.route.paramMap.subscribe((params) => {
+      this.dataService.lab = params.get('id');
+    });
+
     // rotate screen worning. resolves on rotate or 10 sec delay
     if (this.scene === 0) {
       if (window.innerWidth >= window.innerHeight) {
@@ -150,7 +154,7 @@ export class ValuesRankingComponent implements OnInit {
         key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
         data: getCacheData(this.dataService),
       });
-      this.calculateData();
+      this.checkIfUserAlreadySubimet();
     }
   
 }
@@ -216,6 +220,37 @@ export class ValuesRankingComponent implements OnInit {
     this.dataService.attention3 = creds.attention3;
     this.scene = 6
   }
+
+  checkIfUserAlreadySubimet(){
+    const headers = {'x-hasura-admin-secret': 
+    'L2WPqUDgvdWhGveSYAjMOG3l6jbbxSb0jZk7q1rii03COuV0LQr2xCQIMJHmq0JO'};
+
+    this.http
+      .get<any>(
+        `https://research.hasura.app/api/rest/user-data-by-ip/${this.dataService.userip}`,
+        {
+          headers,
+        }
+      )
+      .subscribe({
+        next: (data) => {
+          if (data.research.length && this.dataService.childID !== "26121989"){
+            console.error('user already submitted before');
+          } else {
+            this.calculateData();
+          }
+
+          if (!!data.data?.errors) {
+            console.error(data.data.errors);
+          }
+        },
+        error: (e) => {
+          console.error('failed in checking if user ip already submitted, trying to save...');
+          console.error(e);
+          this.calculateData();
+        },
+      });
+  }
   
   calculateData() {
     const finalData = {
@@ -263,6 +298,7 @@ export class ValuesRankingComponent implements OnInit {
       attention1 : this.dataService.attention1,
       attention2 : this.dataService.attention2,
       attention3 : this.dataService.attention3,
+      user_ip : this.dataService.userip,
     };
     const reqBody = {
       query: `mutation insertData {
@@ -297,6 +333,7 @@ export class ValuesRankingComponent implements OnInit {
             attention1: ${finalData.attention1}
             attention2: ${finalData.attention2},
             attention3: ${finalData.attention3},
+            IP: "${finalData.user_ip}",
             
           }
         ) {
