@@ -236,8 +236,6 @@ export class ValuesRankingComponent implements OnInit {
         next: (data) => {
           if (data.research.length && this.dataService.userip !== undefined && this.dataService.childID !== "26121989"){
             console.error('user already submitted before');
-            console.log('for now the user user data will be submited') // after fixing the get ip need to be removed
-            this.calculateData();                                       // the same
           } else {
             this.calculateData();
           }
