@@ -14,8 +14,9 @@ export class CommonService implements OnInit {
     }
     
     updateIPAddress(){
-      this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
+      this.http.get("https://api.ipify.org/?format=json").subscribe((res:any)=>{
         this.dataService.userip = res.ip;
+        console.log('hereee ', this.dataService.userip);
       });
     }
 }
