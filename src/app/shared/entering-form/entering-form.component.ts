@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Credentials } from '../../models';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-entering-form',
@@ -51,7 +52,7 @@ export class EnteringFormComponent implements OnInit {
   invalidChildIDFlag = false;
   lab: any;
 
-  constructor() {}
+  constructor(public dataService: DataService) {}
 
   ngOnInit(): void {}
 

@@ -26,7 +26,8 @@
                     <td>
                         <b>{{this.culture === 'Hebrew' ? 'ילד' : 'ولد'}}</b>
                         <br>
-                        <span>{{this.culture === 'Hebrew' ? 'תקליד/י את גיל הילד/ה' : 'أدخل/ي جيل ابنك/ابنتك'}}</span>
+                        <span *ngIf="this.dataService.lab === 'texas' || this.dataService.lab === 'rotem'; else PID">{{this.culture === 'Hebrew' ? 'מספר הנבדק' : 'رقم المشترك/ة'}}</span>
+                        <ng-template #PID><span>{{this.culture === 'Hebrew' ? 'תקליד/י את גיל הילד/ה' : 'أدخل/ي جيل ابنك/ابنتك'}}</span></ng-template>
                     </td>
                     <td style="width:20px;"></td>
                     <td>

@@ -1,5 +1,6 @@
 export class BasicData {
   dataSavedFlag = false;
+  userip: string;
   schoolID: string;
   childID: string;
   lab: string;

@@ -24,6 +24,8 @@ import { Attentiontask3Component } from './values-ranking/Attention-task3/Attent
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonService } from './shared/services/common.service';
+import { DataService } from './shared/services/data.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatInputModule,
     MatFormFieldModule,
   ],
-  providers: [],
+  providers: [CommonService, DataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
