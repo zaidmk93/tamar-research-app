@@ -234,7 +234,8 @@ export class ValuesRankingComponent implements OnInit {
       )
       .subscribe({
         next: (data) => {
-          if (data.research.length && this.dataService.userip !== undefined && this.dataService.childID !== "26121989"){
+          if (data.research.length && this.dataService.lab !== "texas" &&
+           this.dataService.userip !== undefined && this.dataService.childID !== "26121989"){
             console.error('user already submitted before');
           } else {
             this.calculateData();
