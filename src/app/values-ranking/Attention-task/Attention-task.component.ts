@@ -62,13 +62,10 @@ export class AttentiontaskComponent implements OnInit {
      return this.culture == 'Arabic'
    }
     counterUp(){
-      console.log('hasaaa heee ', this.displayErrorMessage);
-
       if(this.counter == 0){
         if(this.creds.attention1){
           this.counter++;
           this.displayErrorMessage = false;
-          console.log('saraaat false ', this.displayErrorMessage);
           if(this.culture == 'Hebrew'){
             this.audioService.setAudio("../../assets/attention.task.audio/How many ducks.m4a");
           }else{
