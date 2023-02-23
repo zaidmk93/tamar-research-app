@@ -39,6 +39,7 @@ export class AttentiontaskComponent implements OnInit {
       applanguages2: '',
     };
     playerSubscription$: Subscription;
+    displayErrorMessage: boolean = false;
 
     constructor(
       private audioService: AudioService,
@@ -61,17 +62,30 @@ export class AttentiontaskComponent implements OnInit {
      return this.culture == 'Arabic'
    }
     counterUp(){
-      this.counter++;
-      if(this.counter == 1){
-      if(this.culture == 'Hebrew'){
-        this.audioService.setAudio("../../assets/attention.task.audio/How many ducks.m4a");
-      }else{
-        this.audioService.setAudio("../../assets/attention.task.audio/How many ducks-Arabic.m4a");
+      console.log('hasaaa heee ', this.displayErrorMessage);
+
+      if(this.counter == 0){
+        if(this.creds.attention1){
+          this.counter++;
+          this.displayErrorMessage = false;
+          console.log('saraaat false ', this.displayErrorMessage);
+          if(this.culture == 'Hebrew'){
+            this.audioService.setAudio("../../assets/attention.task.audio/How many ducks.m4a");
+          }else{
+            this.audioService.setAudio("../../assets/attention.task.audio/How many ducks-Arabic.m4a");
+          }
+          this.playerSubscription$ = this.audioService.getPlayerStatus().subscribe();
+        } else {
+          this.displayErrorMessage = true;
+        }
       }
-      this.playerSubscription$ = this.audioService.getPlayerStatus().subscribe();
-    }
-      if(this.counter == 2){
-        this.openingEnded.emit(this.creds);
+      else if(this.counter == 1){
+        if(this.creds.attention2){
+          this.openingEnded.emit(this.creds);
+          this.displayErrorMessage = false;
+        } else {
+          this.displayErrorMessage = true;
+        }
       }
     }
     

@@ -45,6 +45,7 @@ export class Attentiontask3Component implements OnInit {
      };
     flag = false;
     playerSubscription$: Subscription;
+    displayErrorMessage: boolean = false;
 
     constructor(
         public dataService: DataService,
@@ -53,7 +54,7 @@ export class Attentiontask3Component implements OnInit {
       ) {}
      
           
-     ngOnInit(): void {
+    ngOnInit(): void {
       if(this.isJewishCulture()){
         this.audioService.setAudio("../../assets/attention.task3.audio/How many bees.m4a");
       }
@@ -75,14 +76,17 @@ export class Attentiontask3Component implements OnInit {
  }
      
 
-     ngOnDestroy(): void {
-      this.playerSubscription$.unsubscribe();
-    }
+  ngOnDestroy(): void {
+    this.playerSubscription$.unsubscribe();
+  }
 
-     start() {
-        
-        this.flag = true;
-        this.gotCreds.emit(this.creds);
-     }
+  start() {
+    if (this.creds.attention3){
+      this.flag = true;
+      this.gotCreds.emit(this.creds);
+    } else {
+      this.displayErrorMessage = true;
     }
+  }
+}
     
