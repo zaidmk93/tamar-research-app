@@ -63,8 +63,19 @@
             </table>
             <button mat-raised-button color="primary" (click)="start()">{{this.culture === 'Hebrew' ? 'היכנסו למשחק' :
                 'الدخول إلى اللعبة'}}</button>
-            <p *ngIf="invalidSchoolIDFlag" style="color:red; font-weight: bold;">מספר בית הספר אינו מתאים</p>
-            <p *ngIf="invalidChildIDFlag" style="color:red; font-weight: bold;">מספר הילד אינו מתאים</p>
+            <p *ngIf="invalidSchoolIDFlag" style="color:red; font-weight: bold;">
+                {{this.culture === 'Hebrew' ? 'מספר הקבוצה אינו מתאים' :
+                'رقم المجموعة غير ملائم'}}
+            </p>
+
+            <p *ngIf="invalidChildIDFlag" style="color:red; font-weight: bold;">
+                <span *ngIf="this.dataService.lab === 'texas' || this.dataService.lab === 'rotem'; else ChildId">
+                    {{this.culture === 'Hebrew' ? 'נא להכניס מספר הילד/ה המתאים במספרים' : 'الرجاء إدخال رقم الطفل/ة الملائم بالارقام'}}
+                </span>
+                <ng-template #ChildId><span>
+                    {{this.culture === 'Hebrew' ? 'נא להכניס גיל הילד/ה המתאים במספרים' : 'الرجاء إدخال جيل الطفل/ة الملائم بالارقام'}}
+                </span></ng-template>
+            </p>
         </mat-card-content>
     </mat-card>
 </div>

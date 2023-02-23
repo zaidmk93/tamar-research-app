@@ -45,7 +45,8 @@
 </td>
 
 
-  <button mat-raised-button color="primary" (click)="start()">{{this.isJewishCulture() ? 'המשך' : 'موافق/ة'}} </button>
+<p *ngIf="displayErrorMessage" class="errorRed">{{culture == 'Hebrew' ? 'נא לענות על השאלה' : 'الرجاء الإجابة على السؤال'}}</p>
+<button mat-raised-button color="primary" (click)="start()">{{this.isJewishCulture() ? 'המשך' : 'موافق/ة'}} </button>
     </div>
   <div class="data-saved" *ngIf="flag">
     <p style="color: green">המידע נקלט. תודה!</p>

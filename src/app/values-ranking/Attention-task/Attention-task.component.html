@@ -84,6 +84,7 @@
 </div>
 
   <div>
+    <p *ngIf="displayErrorMessage == true" class="errorRed">{{culture == 'Hebrew' ? 'נא לענות על השאלה' : 'الرجاء الإجابة على السؤال'}}</p>
   <button mat-raised-button color="primary" (click) = "counterUp()" >{{culture == 'Hebrew' ? 'המשך' : 'موافق/ة'}} </button>
 </div>
   
