@@ -15,11 +15,11 @@ export class EnteringFormComponent implements OnInit {
   >();
   schoolID = new FormControl('', [
     Validators.required,
-    Validators.pattern('[0-9]*'),
+    Validators.pattern('[0-9]*[٠-٩]*'),
   ]);
   childID = new FormControl('', [
     Validators.required,
-    Validators.pattern('[0-9]*'),
+    Validators.pattern('[0-9]*[٠-٩]*'),
   ]);
   creds: Credentials = {
     schoolID: '',
