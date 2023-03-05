@@ -222,6 +222,8 @@ export class ValuesRankingComponent implements OnInit {
   }
 
   checkIfUserAlreadySubimet(){
+    const limitedLabsForOneSubmit = ['aysheh', 'ayshehfacebook'];
+
     const headers = {'x-hasura-admin-secret': 
     'L2WPqUDgvdWhGveSYAjMOG3l6jbbxSb0jZk7q1rii03COuV0LQr2xCQIMJHmq0JO'};
 
@@ -234,7 +236,7 @@ export class ValuesRankingComponent implements OnInit {
       )
       .subscribe({
         next: (data) => {
-          if (data.research.length && this.dataService.lab !== "texas" &&
+          if (limitedLabsForOneSubmit.includes(this.dataService.lab) && data.research.length &&
            this.dataService.userip !== undefined && this.dataService.childID !== "26121989"){
             console.error('user already submitted before');
           } else {
