@@ -234,7 +234,6 @@ export class ValuesRankingComponent implements OnInit {
           headers,
         }
       )
-
       .subscribe({
         next: (data) => {
           if (limitedLabsForOneSubmit.includes(this.dataService.lab) && data.research.length &&
