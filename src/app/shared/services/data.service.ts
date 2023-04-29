@@ -1,4 +1,7 @@
 export class BasicData {
+  dataId:string = "-1";
+  is_done: boolean = false;
+  userBlocked: boolean = false;
   dataSavedFlag = false;
   userip: string;
   schoolID: string;
@@ -21,9 +24,9 @@ export class BasicData {
   economic_level: string;
   applanguages1:string;
   applanguages2:string;
-  attention1:string;
-  attention2:string;
-  attention3:string;
+  attention1:string = '0';
+  attention2:string = '0';
+  attention3:string = '0';
   gender: 'M' | 'F' = 'M';
   culture: 'Hebrew' | 'Arabic';
   pbvs1: Pbvs = {
@@ -31,7 +34,7 @@ export class BasicData {
     text: '',
     imgLink: 'val3.png',
     audioLink: '',
-    rank: null,
+    rank: 0,
     isStock: true,
     
   };
@@ -42,7 +45,7 @@ export class BasicData {
     text: 'להצליח יותר מאחרים',
     imgLink: 'val2.png',
     audioLink: 'val2.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs3: Pbvs = {
@@ -50,7 +53,7 @@ export class BasicData {
     text: 'להנות מהחיים',
     imgLink: 'val6.png',
     audioLink: 'val6.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs4: Pbvs = {
@@ -58,7 +61,7 @@ export class BasicData {
     text: 'לעשות דברים מרגשים',
     imgLink: 'val7.png',
     audioLink: 'val7.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs5: Pbvs = {
@@ -66,7 +69,7 @@ export class BasicData {
     text: 'לגלות לבד דברים חדשים',
     imgLink: 'val8.png',
     audioLink: 'val8.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs6: Pbvs = {
@@ -74,7 +77,7 @@ export class BasicData {
     text: 'לשמור על הבטיחות ',
     imgLink: 'val1.png',
     audioLink: 'val1.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs7: Pbvs = {
@@ -82,7 +85,7 @@ export class BasicData {
     text: 'לשמור על הכללים',
     imgLink: 'val0.png',
     audioLink: 'val0.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs8: Pbvs = {
@@ -90,7 +93,7 @@ export class BasicData {
     text: 'להתפלל לאלוהים',
     imgLink: 'val4Hebrew.png',
     audioLink: 'val4.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs9: Pbvs = {
@@ -98,7 +101,7 @@ export class BasicData {
     text: 'לעזור לאחרים',
     imgLink: 'val5.png',
     audioLink: 'val5.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs10: Pbvs = {
@@ -106,7 +109,7 @@ export class BasicData {
     text: 'להיות חבר של ילדים מכל הסוגים',
     imgLink: 'val9.png',
     audioLink: 'val9.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs11: Pbvs = {
@@ -114,7 +117,7 @@ export class BasicData {
     text: '',
     imgLink: 'val12.png',
     audioLink: '',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs12: Pbvs = {
@@ -122,7 +125,7 @@ export class BasicData {
     text: '',
     imgLink: 'val10.png',
     audioLink: '',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs13: Pbvs = {
@@ -130,7 +133,7 @@ export class BasicData {
     text: 'לעשות חיים',
     imgLink: 'val11.png',
     audioLink: 'val11.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs14: Pbvs = {
@@ -138,7 +141,7 @@ export class BasicData {
     text: 'לצאת להרפתקאות',
     imgLink: 'val13.png',
     audioLink: 'val13.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs15: Pbvs = {
@@ -146,7 +149,7 @@ export class BasicData {
     text: 'להפעיל את הדמיון',
     imgLink: 'val14.png',
     audioLink: 'val14.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs16: Pbvs = {
@@ -154,7 +157,7 @@ export class BasicData {
     text: '',
     imgLink: 'val18.png',
     audioLink: '',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs17: Pbvs = {
@@ -162,7 +165,7 @@ export class BasicData {
     text: 'להיות כמו כולם',
     imgLink: 'val15.png',
     audioLink: 'val15.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs18: Pbvs = {
@@ -170,7 +173,7 @@ export class BasicData {
     text: 'לשמוע על דברים שקרו מזמן',
     imgLink: 'val19.png',
     audioLink: 'val19.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs19: Pbvs = {
@@ -178,7 +181,7 @@ export class BasicData {
     text: 'לשמח אחרים',
     imgLink: 'val16.png',
     audioLink: 'val16.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
   pbvs20: Pbvs = {
@@ -186,7 +189,7 @@ export class BasicData {
     text: 'לשמור על הטבע',
     imgLink: 'val17.png',
     audioLink: 'val17.mp3',
-    rank: null,
+    rank: 0,
     isStock: true,
   };
 

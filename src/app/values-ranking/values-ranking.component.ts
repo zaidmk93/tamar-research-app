@@ -81,24 +81,21 @@ export class ValuesRankingComponent implements OnInit {
     const prevData = this.cacheService.load(
       getCacheKey(creds.schoolID, creds.childID)
     );
-    if (prevData) {
+    if (prevData && prevData.data.dataId && prevData.data.dataId !== '-1') {
       Object.assign(this.dataService, prevData.data);
       this.dataService.setGender(creds.gender);
       this.dataService.setCulture(this.dataService.applanguages1, this.dataService.applanguages2);
       this.scene = prevData.scene;
+      this.updateData();
     } else {
       this.dataService.setGender(creds.gender);
       this.dataService.setCulture(this.dataService.applanguages1, this.dataService.applanguages2);
       this.dataService.schoolID = creds.schoolID;
       this.dataService.childID = creds.childID;
       this.scene = 2;
-      
+      this.checkIfUserAlreadySubmittedAndSubmit();
     }
     this.dataService.currentScene = this.scene;
-    this.cacheService.save({
-      key: getCacheKey(creds.schoolID, creds.childID),
-      data: getCacheData(this.dataService),
-    });
   }
 
   scene2(endFlag: boolean) {
@@ -111,6 +108,7 @@ export class ValuesRankingComponent implements OnInit {
       key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
       data: getCacheData(this.dataService),
     });
+    this.updateData();
   }
 
   scene3(endFlag: boolean) {
@@ -123,6 +121,7 @@ export class ValuesRankingComponent implements OnInit {
         data: getCacheData(this.dataService),
       });
     }
+    this.updateData();
   }
 
   scene4(endFlag: boolean) {
@@ -135,6 +134,7 @@ export class ValuesRankingComponent implements OnInit {
         data: getCacheData(this.dataService),
       });
     }
+    this.updateData();
   }
 
   scene5(endFlag: boolean) {
@@ -146,6 +146,7 @@ export class ValuesRankingComponent implements OnInit {
         data: getCacheData(this.dataService),
       });
     }
+    this.updateData();
   }
   scene6(endFlag: boolean){
     if (endFlag) {
@@ -154,7 +155,8 @@ export class ValuesRankingComponent implements OnInit {
         key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
         data: getCacheData(this.dataService),
       });
-      this.checkIfUserAlreadySubimet();
+      this.dataService.is_done = true;
+      this.updateData();
     }
   
 }
@@ -168,6 +170,7 @@ export class ValuesRankingComponent implements OnInit {
         key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
         data: getCacheData(this.dataService),
       });
+      this.updateData();
   }
 
   scene8(creds: Credentials){
@@ -219,10 +222,21 @@ export class ValuesRankingComponent implements OnInit {
   scene13(creds: Credentials){
     this.dataService.attention3 = creds.attention3;
     this.scene = 6
+    this.updateData();
   }
 
-  checkIfUserAlreadySubimet(){
-    const limitedLabsForOneSubmit = ['aysheh', 'ayshehfacebook'];
+
+  // need to make the get data (excel) to get by lastUpdate (after some months - or update all the lastupdated to be iniatedtime)
+  checkIfUserAlreadySubmittedAndSubmit(){
+    const limitedLabsForOneSubmit = [
+      // 'aysheh',
+      // 'ayshehfacebook'
+    ];
+
+    if (!limitedLabsForOneSubmit.length){
+      this.calculateData();
+      return;
+    }
 
     const headers = {'x-hasura-admin-secret': 
     'L2WPqUDgvdWhGveSYAjMOG3l6jbbxSb0jZk7q1rii03COuV0LQr2xCQIMJHmq0JO'};
@@ -239,7 +253,9 @@ export class ValuesRankingComponent implements OnInit {
           if (limitedLabsForOneSubmit.includes(this.dataService.lab) && data.research.length &&
            this.dataService.userip !== undefined && this.dataService.childID !== "26121989"){
             console.error('user already submitted before');
-          } else {
+            this.dataService.userBlocked = true;
+          }
+          else {
             this.calculateData();
           }
 
@@ -254,9 +270,13 @@ export class ValuesRankingComponent implements OnInit {
         },
       });
   }
-  
-  calculateData() {
-    const finalData = {
+
+  private finalData;
+
+  fetchData(){
+    this.finalData = {
+      dataId: this.dataService.dataId,
+      is_done: this.dataService.is_done,
       schoolID: this.dataService.schoolID,
       childID: this.dataService.childID,
       gender: this.dataService.gender,
@@ -302,42 +322,106 @@ export class ValuesRankingComponent implements OnInit {
       attention2 : this.dataService.attention2,
       attention3 : this.dataService.attention3,
       user_ip : this.dataService.userip,
+      last_update_time: new Date().toISOString(),
     };
+  }
+
+  updateData(){
+    if (this.dataService.is_done || this.dataService.userBlocked)
+      return;
+
+    this.fetchData();
+    const reqBody = {
+      query: `mutation updateData {
+        update_research_by_pk(pk_columns: {id: "${this.finalData.dataId}"},
+          _set: {
+            ${this.dataString()}
+          }) {
+          id
+        }
+      }`,
+    };
+    const headers = {'x-hasura-admin-secret': 
+    'L2WPqUDgvdWhGveSYAjMOG3l6jbbxSb0jZk7q1rii03COuV0LQr2xCQIMJHmq0JO' };
+    console.log('Data to Update:', this.finalData);
+    console.log(reqBody);
+
+    this.http
+      .post<any>(
+        'https://research.hasura.app/v1/graphql',
+        reqBody,
+        {
+          headers,
+        }
+      )
+      .subscribe({
+        next: (data) => {
+          if (!!data.data?.update_research_by_pk) {
+            this.dataService.dataSavedFlag = true;
+            const res = data.data.update_research_by_pk;
+            console.log(`Input saved under ID ${res.id} on ${res.init_time}`);
+            this.dataService.dataId = res.id || "-1";
+            this.cacheService.save({
+              key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
+              data: getCacheData(this.dataService),
+            });
+          } else {
+            console.error('Error saving task data!');
+            if (!!data.data?.errors) {
+              console.error(data.data.errors);
+            }
+          }
+        },
+        error: (e) => {
+          console.error('Error saving task data!');
+          console.error(e);
+        },
+      });
+  }
+
+  dataString(){
+    this.fetchData();
+    return `school_id: "${this.finalData.schoolID}",
+    child_id: "${this.finalData.childID}",
+    gender: "${this.finalData.gender}",
+    rich_strong_1: ${this.finalData.rich_strong_1},
+    succeed_more_2: ${this.finalData.succeed_more_2},
+    enjoy_life_3: ${this.finalData.enjoy_life_3},
+    exciting_things_4: ${this.finalData.exciting_things_4},
+    learn_new_5: ${this.finalData.learn_new_5},
+    care_for_myself_6: ${this.finalData.care_for_myself_6},
+    keep_rules_7: ${this.finalData.keep_rules_7},
+    pray_god_8: ${this.finalData.pray_god_8},
+    help_others_9: ${this.finalData.help_others_9},
+    be_friend_10: ${this.finalData.be_friend_10},
+    be_leader_11: ${this.finalData.be_leader_11},
+    show_everyone_12: ${this.finalData.show_everyone_12},
+    have_fun_13: ${this.finalData.have_fun_13},
+    adventures_14: ${this.finalData.adventures_14},
+    imagine_15: ${this.finalData.imagine_15},
+    be_protected_16: ${this.finalData.be_protected_16},
+    like_everyone_17: ${this.finalData.like_everyone_17},
+    learn_what_was_18: ${this.finalData.learn_what_was_18},
+    keep_others_happy_19: ${this.finalData.keep_others_happy_19},
+    keep_nature_20: ${this.finalData.keep_nature_20},
+    lab : ${this.finalData.lab},
+    applanguages1 : ${this.finalData.applanguages1},
+    applanguages2 : ${this.finalData.applanguages2},
+    attention1: ${this.finalData.attention1}
+    attention2: ${this.finalData.attention2},
+    attention3: ${this.finalData.attention3},
+    IP: "${this.finalData.user_ip}"
+    is_done: "${this.finalData.is_done}"
+    last_update_time: "${this.finalData.last_update_time}"`;
+  }
+  
+  
+  calculateData() {
     const reqBody = {
       query: `mutation insertData {
         insert_research_one(
           object: {
-            school_id: "${finalData.schoolID}",
-            child_id: "${finalData.childID}",
-            gender: "${finalData.gender}",
-            rich_strong_1: ${finalData.rich_strong_1},
-            succeed_more_2: ${finalData.succeed_more_2},
-            enjoy_life_3: ${finalData.enjoy_life_3},
-            exciting_things_4: ${finalData.exciting_things_4},
-            learn_new_5: ${finalData.learn_new_5},
-            care_for_myself_6: ${finalData.care_for_myself_6},
-            keep_rules_7: ${finalData.keep_rules_7},
-            pray_god_8: ${finalData.pray_god_8},
-            help_others_9: ${finalData.help_others_9},
-            be_friend_10: ${finalData.be_friend_10},
-            be_leader_11: ${finalData.be_leader_11},
-            show_everyone_12: ${finalData.show_everyone_12},
-            have_fun_13: ${finalData.have_fun_13},
-            adventures_14: ${finalData.adventures_14},
-            imagine_15: ${finalData.imagine_15},
-            be_protected_16: ${finalData.be_protected_16},
-            like_everyone_17: ${finalData.like_everyone_17},
-            learn_what_was_18: ${finalData.learn_what_was_18},
-            keep_others_happy_19: ${finalData.keep_others_happy_19},
-            keep_nature_20: ${finalData.keep_nature_20},
-            lab : ${finalData.lab},
-            applanguages1 : ${finalData.applanguages1},
-            applanguages2 : ${finalData.applanguages2},
-            attention1: ${finalData.attention1}
-            attention2: ${finalData.attention2},
-            attention3: ${finalData.attention3},
-            IP: "${finalData.user_ip}",
-            
+            ${this.dataString()}
           }
         ) {
           id
@@ -346,7 +430,7 @@ export class ValuesRankingComponent implements OnInit {
     };
     const headers = {'x-hasura-admin-secret': 
     'L2WPqUDgvdWhGveSYAjMOG3l6jbbxSb0jZk7q1rii03COuV0LQr2xCQIMJHmq0JO' };
-    console.log('Data summary:', finalData);
+    console.log('Data summary:', this.finalData);
     console.log(reqBody);
 
     this.http
@@ -363,6 +447,11 @@ export class ValuesRankingComponent implements OnInit {
             this.dataService.dataSavedFlag = true;
             const res = data.data.insert_research_one;
             console.log(`Input saved under ID ${res.id} on ${res.init_time}`);
+            this.dataService.dataId = res.id || "-1";
+            this.cacheService.save({
+              key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
+              data: getCacheData(this.dataService),
+            });
           } else {
             console.error('Error saving task data!');
             if (!!data.data?.errors) {
