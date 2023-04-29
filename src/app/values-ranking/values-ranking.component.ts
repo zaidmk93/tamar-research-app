@@ -86,7 +86,8 @@ export class ValuesRankingComponent implements OnInit {
       this.dataService.setGender(creds.gender);
       this.dataService.setCulture(this.dataService.applanguages1, this.dataService.applanguages2);
       this.scene = prevData.scene;
-      this.updateData();
+      if(!prevData.data.is_done)
+        this.updateData();
     } else {
       this.dataService.setGender(creds.gender);
       this.dataService.setCulture(this.dataService.applanguages1, this.dataService.applanguages2);
@@ -151,11 +152,13 @@ export class ValuesRankingComponent implements OnInit {
   scene6(endFlag: boolean){
     if (endFlag) {
       this.dataService.currentScene = this.scene;
+      if(this.dataService.is_done)
+        return;
+      this.dataService.is_done = true;
       this.cacheService.save({
         key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
         data: getCacheData(this.dataService),
       });
-      this.dataService.is_done = true;
       this.updateData();
     }
   
@@ -222,7 +225,8 @@ export class ValuesRankingComponent implements OnInit {
   scene13(creds: Credentials){
     this.dataService.attention3 = creds.attention3;
     this.scene = 6
-    this.updateData();
+    //no need to send an update, the next scene will open after this immediately and will send an update
+    // this.updateData();
   }
 
 
@@ -327,7 +331,7 @@ export class ValuesRankingComponent implements OnInit {
   }
 
   updateData(){
-    if (this.dataService.is_done || this.dataService.userBlocked)
+    if (this.dataService.userBlocked)
       return;
 
     this.fetchData();
