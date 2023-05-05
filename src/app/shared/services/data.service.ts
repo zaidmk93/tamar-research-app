@@ -10,7 +10,7 @@ export class BasicData {
   childgender: string;
   parents: string;
   parentage: string;
-  childage: string;
+  childage: string = '0';
   monthchild: string;
   classs: string;
   living: string;

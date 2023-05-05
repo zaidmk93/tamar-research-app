@@ -93,6 +93,7 @@ export class ValuesRankingComponent implements OnInit {
       this.dataService.setCulture(this.dataService.applanguages1, this.dataService.applanguages2);
       this.dataService.schoolID = creds.schoolID;
       this.dataService.childID = creds.childID;
+      this.dataService.childage = creds.childage;
       this.scene = 2;
       this.checkIfUserAlreadySubmittedAndSubmit();
     }
@@ -414,6 +415,7 @@ export class ValuesRankingComponent implements OnInit {
     attention1: ${this.finalData.attention1}
     attention2: ${this.finalData.attention2},
     attention3: ${this.finalData.attention3},
+    childage: ${this.finalData.childage},
     IP: "${this.finalData.user_ip}"
     is_done: "${this.finalData.is_done}"
     last_update_time: "${this.finalData.last_update_time}"`;
