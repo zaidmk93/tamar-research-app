@@ -1,12 +1,17 @@
 <div class="menu">
     <div class="button-box">
-        <button mat-raised-button color="primary" (click)="clicked1()"> 
+        <button mat-raised-button color="primary" (click)="clicked('Hebrew')"> 
             עברית/Hebrew
         </button>
     </div>
     <div class="button-box">
-        <button mat-raised-button color="primary" (click)="clicked2()">
+        <button mat-raised-button color="primary" (click)="clicked('Arabic')">
             عربي/Arabic 
+        </button>
+    </div>
+    <div class="button-box">
+        <button mat-raised-button color="primary" (click)="clicked('English')">
+            English
         </button>
     </div>
 </div>

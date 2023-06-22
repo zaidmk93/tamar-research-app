@@ -51,12 +51,9 @@ export class MenuComponent implements OnInit {
       }
     );    
   }
-  clicked1(){
-    this.creds.applanguages1 = "Hebrew"
+  clicked(lang: string){
+    this.creds.applanguages1 = lang;
     this.gotCreds.emit(this.creds);
   }
-  clicked2(){
-    this.creds.applanguages1 = "Arabic"
-      this.gotCreds.emit(this.creds);
-  }
+
 }

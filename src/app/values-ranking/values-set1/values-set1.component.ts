@@ -53,6 +53,8 @@ export class ValuesSet1Component implements OnInit {
         }/opening1-${this.dataService.gender}.wav`
       );
 
+      console.log("hereee the opening111111111");
+
       this.audioService.getTimeElapsed().subscribe((res) => {
         if (this.dataService.gender === 'M') {
           this.openingHebMale(res);

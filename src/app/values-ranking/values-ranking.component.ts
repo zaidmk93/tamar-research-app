@@ -186,10 +186,15 @@ export class ValuesRankingComponent implements OnInit {
     this.dataService.applanguages1 = creds.applanguages1;
     this.dataService.applanguages2 = null;
 
-    if(creds.applanguages1 == "Arabic"){
-      this.scene = 12;
-    }else{
-      this.scene = 11;
+    if (this.dataService.applanguages1  == 'Hebrew' ||
+     this.dataService.applanguages1  == 'Arabic'){
+      if(creds.applanguages1 == "Arabic"){
+        this.scene = 12;
+      }else{
+        this.scene = 11;
+      }
+    } else {
+      this.scene = 1;
     }
   }
 
