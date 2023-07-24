@@ -22,9 +22,9 @@
   </div>
  
  
-  <div *ngIf="isArabicCulture()">
+  <div *ngIf="isNotJewishCulture()">
     <td style="width:10%">
-      <h1 style="text-align: center;">{{'كم عدد النحلات في الصورة؟'}}</h1>
+      <h1 style="text-align: center;">{{this.dataService.json_data.Attention1.bees_q}}</h1>
         <img class="img-agg" src="../../../assets/attention.task.images/Picture1.png" width="300" >
         <img class="img-agg" src="../../../assets/attention.task.images/Picture2.png" width="300" >
         <img class="img-agg" src="../../../assets/attention.task.images/Picture3.png" width="300" >
@@ -45,8 +45,8 @@
 </td>
 
 
-<p *ngIf="displayErrorMessage" class="errorRed">{{culture == 'Hebrew' ? 'נא לענות על השאלה' : 'الرجاء الإجابة على السؤال'}}</p>
-<button mat-raised-button color="primary" (click)="start()">{{this.isJewishCulture() ? 'המשך' : 'موافق/ة'}} </button>
+<p *ngIf="displayErrorMessage" class="errorRed">{{culture == 'Hebrew' ? 'נא לענות על השאלה' : this.dataService.json_data.Attention1.error_select}}</p>
+<button mat-raised-button color="primary" (click)="start()">{{this.isJewishCulture() ? 'המשך' : this.dataService.json_data.Attention1.continue}} </button>
     </div>
   <div class="data-saved" *ngIf="flag">
     <p style="color: green">המידע נקלט. תודה!</p>

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="text-div" *ngIf="randomView">
         <h1 style="text-align: center;">
-            {{culture === 'Hebrew' ? 'כלל לא חשוב' : 'غير مهمّ أبدًا'}}
+            {{culture === 'Hebrew' ? 'כלל לא חשוב' : this.dataService.json_data.pyramid.not_important}}
         </h1>
     </div>
     <div class="values-div" *ngIf="randomView">
@@ -20,7 +20,7 @@
     </div>
     <div class="text-div">
         <h1 style="text-align: center;">
-            {{culture === 'Hebrew' ? 'חשוב מאוד' : 'مهمّ جدًّا'}}
+            {{culture === 'Hebrew' ? 'חשוב מאוד' : this.dataService.json_data.pyramid.important}}
         </h1>
     </div>
     <div class="values-div">
@@ -39,7 +39,7 @@
     </div>
     <div class="text-div" *ngIf="!randomView">
         <h1 style="text-align: center;">
-            {{culture === 'Hebrew' ? 'כלל לא חשוב' : 'غير مهمّ أبدًا'}}
+            {{culture === 'Hebrew' ? 'כלל לא חשוב' : this.dataService.json_data.pyramid.not_important}}
         </h1>
     </div>
     <div class="values-div" *ngIf="!randomView">

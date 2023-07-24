@@ -1,3 +1,6 @@
+import * as Arabic from '../../../assets/Jsons/Arabic.json';
+import * as English from '../../../assets/Jsons/English.json';
+
 export class BasicData {
   dataId:string = "-1";
   is_done: boolean = false;
@@ -29,6 +32,9 @@ export class BasicData {
   attention3:string = '0';
   gender: 'M' | 'F' = 'M';
   culture: 'Hebrew' | 'Arabic';
+
+  json_data;
+
   pbvs1: Pbvs = {
     valNum: 3,
     text: '',
@@ -222,55 +228,51 @@ export class DataService extends BasicData {
     this.pbvs16.audioLink = `val18-${gender}.mp3`;
   }
 
+
+  pickJsonByLang(){
+    switch(this.applanguages1){
+      case "Arabic": {
+          this.json_data = Arabic['default'];
+          break;
+      }
+      case "English": {
+        this.json_data = English['default'];
+        
+        break;
+      }
+    }
+  }
+
   setCulture(culture, secondType) {
     this.culture = culture;
     console.log(secondType);
-    this.pbvs8.imgLink = `val4${culture === 'Hebrew' ? 'Hebrew' : secondType}.png`;
+    this.pbvs8.imgLink = `val4${culture === 'Hebrew' ? 'Hebrew' : secondType || ''}.png`;
     console.log(this.pbvs8.imgLink);
-    this.pbvs9.imgLink = `val5${culture === 'Hebrew' ? 'jewish' : 'arab'}.png`;
+    if(culture=== 'Arabic' || culture === 'Hebrew')
+      this.pbvs9.imgLink = `val5${culture}.png`;
     if (culture !== 'Hebrew') {
-      this.pbvs1.text =
-        this.gender === 'M'
-          ? 'أن أكون غنيًّا وقويًّا'
-          : 'أن أكون غنيّةً وقويّة';
+      for(let i=0; i<= 19; i++){
+        this['pbvs' + (i+1)].text = this.json_data[this.gender].pbvs[i].text;
+      }
       this.pbvs1.audioLink = `${this.gender}/15.mp3`;
-      this.pbvs2.text = 'التّفوّق على الآخرين';
       this.pbvs2.audioLink = `${this.gender}/16.mp3`;
-      this.pbvs3.text = 'الاستمتاع بالحياة';
       this.pbvs3.audioLink = `${this.gender}/17.mp3`;
-      this.pbvs4.text = 'عمل الأشياء المشوّقة';
       this.pbvs4.audioLink = `${this.gender}/18.mp3`;
-      this.pbvs5.text = 'اكتشاف الأشياء الجديدة وحدي';
       this.pbvs5.audioLink = `${this.gender}/19.mp3`;
-      this.pbvs6.text = 'المحافظة على سلامتي';
       this.pbvs6.audioLink = `${this.gender}/20.mp3`;
-      this.pbvs7.text = 'التزام القوانين';
       this.pbvs7.audioLink = `${this.gender}/21.mp3`;
-      this.pbvs8.text = 'الصّلاة لله';
       this.pbvs8.audioLink = `${this.gender}/22.mp3`;
-      this.pbvs9.text = 'مساعدة الآخرين';
       this.pbvs9.audioLink = `${this.gender}/23.mp3`;
-      this.pbvs10.text = 'الصّداقة مع النّاس من كلّ الأنواع';
       this.pbvs10.audioLink = `${this.gender}/24.mp3`;
-      this.pbvs11.text = 'قيادة المجموعة';
       this.pbvs11.audioLink = `${this.gender}/34.mp3`;
-      this.pbvs12.text = 'إظهار قدراتي للجميع';
       this.pbvs12.audioLink = `${this.gender}/35.mp3`;
-      this.pbvs13.text = 'قضاء الوقت الممتع';
       this.pbvs13.audioLink = `${this.gender}/36.mp3`;
-      this.pbvs14.text = 'القيام بالمغامرات';
       this.pbvs14.audioLink = `${this.gender}/37.mp3`;
-      this.pbvs15.text = 'استخدام الخيال';
       this.pbvs15.audioLink = `${this.gender}/38.mp3`;
-      this.pbvs16.text = 'العيش بأمن وأمان';
       this.pbvs16.audioLink = `${this.gender}/39.mp3`;
-      this.pbvs17.text = 'أن أكون مثل الآخرين';
       this.pbvs17.audioLink = `${this.gender}/40.mp3`;
-      this.pbvs18.text = 'الاستماع لما حدث في الماضي';
       this.pbvs18.audioLink = `${this.gender}/41.mp3`;
-      this.pbvs19.text =' إسعاد الآخرين';
       this.pbvs19.audioLink = `${this.gender}/42.mp3`;
-      this.pbvs20.text = 'المحافظة على البيئة';
       this.pbvs20.audioLink = `${this.gender}/43.mp3`;
     }
   }

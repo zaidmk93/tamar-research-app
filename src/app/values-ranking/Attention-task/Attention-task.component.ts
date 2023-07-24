@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Credentials } from 'src/app/models';
 import { AudioService } from 'src/app/shared/services/audio.service';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'app-Attention-task-from',
@@ -43,14 +44,11 @@ export class AttentiontaskComponent implements OnInit {
 
     constructor(
       private audioService: AudioService,
+      public dataService: DataService
     ) {}
 
     ngOnInit(): void {
-      if(this.culture == 'Hebrew'){
-        this.audioService.setAudio("../../assets/attention.task.audio/How many eggs.m4a");
-      }else{
-        this.audioService.setAudio("../../assets/attention.task.audio/How many eggs-Arabic.m4a");
-      }
+      this.audioService.setAudio(`../../assets/values-ranking/attention/${this.culture}/Eggs.m4a`);      
       this.playerSubscription$ = this.audioService.getPlayerStatus().subscribe();
 
     }
@@ -58,19 +56,15 @@ export class AttentiontaskComponent implements OnInit {
       return this.culture == 'Hebrew'
     }
   
-    isArabicCulture() : boolean{
-     return this.culture == 'Arabic'
-   }
+    isNotJewishCulture() : boolean{
+      return this.culture !== 'Hebrew'
+    }
     counterUp(){
       if(this.counter == 0){
         if(this.creds.attention1){
           this.counter++;
           this.displayErrorMessage = false;
-          if(this.culture == 'Hebrew'){
-            this.audioService.setAudio("../../assets/attention.task.audio/How many ducks.m4a");
-          }else{
-            this.audioService.setAudio("../../assets/attention.task.audio/How many ducks-Arabic.m4a");
-          }
+          this.audioService.setAudio(`../../assets/values-ranking/attention/${this.culture}/Ducks.m4a`);      
           this.playerSubscription$ = this.audioService.getPlayerStatus().subscribe();
         } else {
           this.displayErrorMessage = true;

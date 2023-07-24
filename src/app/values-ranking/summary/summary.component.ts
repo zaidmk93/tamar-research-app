@@ -51,9 +51,7 @@ export class SummaryComponent implements OnInit {
 
   explenation() {
     this.audioService.setAudio(
-      `../../assets/values-ranking/guidance_aud/${
-        this.culture === 'Hebrew' ? 'heb' : 'arab'
-      }/inst-end-explenation-${this.dataService.gender}.mp3`
+      `../../assets/values-ranking/guidance_aud/${this.culture}/inst-end-explenation-${this.dataService.gender}.mp3`
     );
     setTimeout(() => {
       this.$audio = this.audioService.getPlayerStatus().subscribe((res) => {
@@ -74,16 +72,12 @@ export class SummaryComponent implements OnInit {
       return;
     }
 
-    console.log( `../../assets/values-ranking/guidance_aud/${
-      this.culture === 'Hebrew' ? 'heb' : 'arab'
-    }/inst-${subStage}-${this.dataService.gender}-exit.${
+    console.log( `../../assets/values-ranking/guidance_aud/${this.culture}/inst-${subStage}-${this.dataService.gender}-exit.${
       this.culture === 'Hebrew' && subStage === 2 ? 'mpeg' : 'mp3'
     }`);
 
     this.audioService.setAudio(
-      `../../assets/values-ranking/guidance_aud/${
-        this.culture === 'Hebrew' ? 'heb' : 'arab'
-      }/inst-${subStage}-${this.dataService.gender}-exit.${
+      `../../assets/values-ranking/guidance_aud/${this.culture}/inst-${subStage}-${this.dataService.gender}-exit.${
         this.culture === 'Hebrew' && subStage === 2 ? 'mpeg' : 'mp3'
       }`
     );

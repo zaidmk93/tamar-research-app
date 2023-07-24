@@ -1,0 +1,291 @@
+{
+	"start" : {
+		"title_start": "Entrance",
+		"the_group": "Group",
+		"write_group_number": "Enter the number of group according to your religion:",
+		"jewish":"1- Judaism",
+		"islam": "2- Islam",
+		"christ": "3- Christianity",
+		"drozi": "4- Druze",
+		"boy": "Male",
+		"participant_number": "Number of the participants",
+		"insert_age": "Please enter your child age",
+		"boy_or_girl": "Male or Female ?",
+		"enter_game": "Entrance to the Value Application",
+		
+		"error_group_number": "Wrong number of group",
+		"please_insert_age": "Please enter your child age in numbers",
+		"please_insert_child_num": "Please enter your child number in munbers"
+	},
+	
+	"Attention1": {
+		"egges_q": "How many eggs are in the picture?",
+		"ducks_q": "How many ducks are in the water?",
+		"error_select": "Please answer the question",
+		"continue":"Agree"	
+	},
+	
+	"Attention2":{
+		"bees_q": "How many bees are in the picture?",
+		"error_select":"Please answer the question",
+		"continue":"Agree"
+	},
+	
+	"pyramid": {
+		"important": "Most important",
+		"not_important": "not at all important",
+		"go_back":"Back"
+		
+	},
+	
+	"M": {
+		"opening_stages": [
+			{
+				"subtitle": "We are going on a fantasy journey.<br>This is about what is important in your life.<br>It is about which goals you have for your life; that is where you want to be in life."
+			},
+			{
+				"imgLink": "../../assets/values-ranking/values_img/kid.png",
+				"subtitle": "This person with the striped cap and the grey top. Imagine that this is you!."
+			},
+			{
+				"subtitle": "Perhaps, it is not that easy to imagine this."
+			},
+			{
+				"subtitle": "It may be that you don’t wear such a grey top and such a striped cap..."
+			},
+			{
+				"subtitle": "Don’t care about that."
+			},
+			{
+				"subtitle": "Just imagine that this is you."	
+			},
+			{
+				"subtitle": "Now think of yourself!"
+			},
+			{
+				"subtitle": "Imagine how you would like to be in your future life."
+			},
+			{
+				"subtitle": "Which goals do you want to achieve?"	
+			},
+			{
+				"subtitle": "In front of you, you also see some small pictures. Each picture has a title."		
+			},
+			{
+				"subtitle": "Look at the pictures."
+			},
+			{
+				"subtitle": "you will be able to find that person in them."
+			},
+			{
+				"subtitle": "Let's go over them one by one."
+			},
+			{
+				"subtitle": "And you can already start thinking about what is more important to you in life and what is less important."			
+			}
+		],
+		
+		"continue_butt": "Continue",
+		
+		"opening2_stages": [
+			{
+				"subtitle": "Well done! We will now play the game again with different pictures. We will go over them one by one."
+			},
+			{
+				"subtitle": "Imagine again that you are this person with the gray shirt.",
+				"imgLink": "../../assets/values-ranking/values_img/kid.png"
+			},
+			{
+				"subtitle": "And that you are the one doing all of these things."
+			}
+		],
+		
+		"pbvs": [
+			{
+				"text": "to be rich and powerful"
+			},
+			{
+				"text": "to be the best"
+			},
+			{
+				"text": "to enjoy life"
+			},
+			{
+				"text": "to do exciting things"
+			},
+			{
+				"text": "to discover new things"
+			},
+			{
+				"text": "to be safe"	
+			},
+			{
+				"text": "to follow the rules"
+			},
+			{
+				"text": "to think of God"
+			},
+			{
+				"text": "to help others"	
+			},
+			{
+				"text": "to make new friends"		
+			},
+			{
+				"text": "to be the leader"
+			},
+			{
+				"text": "to show what I can do"
+			},
+			{
+				"text": "to have a good time"
+			},
+			{
+				"text": "to experience adventures"			
+			},
+			{
+				"text": "to have imagination"			
+			},
+			{
+				"text": "to be protected"			
+			},
+			{
+				"text": "to be like everyone else"			
+			},
+			{
+				"text": "to learn something from the past"			
+			},
+			{
+				"text": "to make others happy"			
+			},
+			{
+				"text": "to care for nature"			
+			}
+		]
+	},
+	"F": {
+		"opening_stages": [
+			{
+				"subtitle": "We are going on a fantasy journey.<br>This is about what is important in your life.<br>It is about which goals you have for your life; that is where you want to be in life."
+			},
+			{
+				"imgLink": "../../assets/values-ranking/values_img/kid.png",
+				"subtitle": "This person with the striped cap and the grey top. Imagine that this is you!."
+			},
+			{
+				"subtitle": "Perhaps, it is not that easy to imagine this."
+			},
+			{
+				"subtitle": "It may be that you don’t wear such a grey top and such a striped cap..."
+			},
+			{
+				"subtitle": "Don’t care about that."
+			},
+			{
+				"subtitle": "Just imagine that this is you."	
+			},
+			{
+				"subtitle": "Now think of yourself!"
+			},
+			{
+				"subtitle": "Imagine how you would like to be in your future life."
+			},
+			{
+				"subtitle": "Which goals do you want to achieve?"	
+			},
+			{
+				"subtitle": "In front of you, you also see some small pictures. Each picture has a title."		
+			},
+			{
+				"subtitle": "Look at the pictures."
+			},
+			{
+				"subtitle": "you will be able to find that person in them."
+			},
+			{
+				"subtitle": "Let's go over them one by one."
+			},
+			{
+				"subtitle": "And you can already start thinking about what is more important to you in life and what is less important."			
+			}
+		],
+		
+		"continue_butt": "Continue",
+		
+		"opening2_stages": [
+			{
+				"subtitle": "Well done! We will now play the game again with different pictures. We will go over them one by one."
+			},
+			{
+				"subtitle": "Imagine again that you are this person with the gray shirt.",
+				"imgLink": "../../assets/values-ranking/values_img/kid.png"
+			},
+			{
+				"subtitle": "And that you are the one doing all of these things."
+			}
+		],
+		
+		"pbvs": [
+			{
+				"text": "to be rich and powerful"
+			},
+			{
+				"text": "to be the best"
+			},
+			{
+				"text": "to enjoy life"
+			},
+			{
+				"text": "to do exciting things"
+			},
+			{
+				"text": "to discover new things"
+			},
+			{
+				"text": "to be safe"	
+			},
+			{
+				"text": "to follow the rules"
+			},
+			{
+				"text": "to think of God"
+			},
+			{
+				"text": "to help others"	
+			},
+			{
+				"text": "to make new friends"		
+			},
+			{
+				"text": "to be the leader"
+			},
+			{
+				"text": "to show what I can do"
+			},
+			{
+				"text": "to have a good time"
+			},
+			{
+				"text": "to experience adventures"			
+			},
+			{
+				"text": "to have imagination"			
+			},
+			{
+				"text": "to be protected"			
+			},
+			{
+				"text": "to be like everyone else"			
+			},
+			{
+				"text": "to learn something from the past"			
+			},
+			{
+				"text": "to make others happy"			
+			},
+			{
+				"text": "to care for nature"			
+			}
+		]
+	}
+}

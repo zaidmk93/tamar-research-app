@@ -221,9 +221,7 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
   playSound() {
     clearTimeout(this.idleTimer);
     const createSoundLink = (num: number): string => {
-      return `../../assets/values-ranking/guidance_aud/${
-        this.culture === 'Hebrew' ? 'heb' : 'arab'
-      }/inst-${num}-${this.isMale ? 'M' : 'F'}.mp3`;
+      return `../../assets/values-ranking/guidance_aud/${this.culture}/inst-${num}-${this.isMale ? 'M' : 'F'}.mp3`;
     };
 
 

@@ -41,18 +41,14 @@ export class ValueDialogComponent implements OnInit {
     this.value = value;
     this.ref = this.dialog.open(this.template, this.config);
     this.audioService.setAudio(
-      `../../assets/values-ranking/values_aud/${
-        this.dataService.culture === 'Hebrew' ? 'heb' : 'arab'
-      }/chosen-${this.dataService.gender}.mp3`
+      `../../assets/values-ranking/values_aud/${this.dataService.culture}/chosen-${this.dataService.gender}.mp3`
     );
     setTimeout(() => {
       this.$audio = this.audioService.getPlayerStatus().subscribe((res) => {
         if (res === 'ended') {
           this.$audio.unsubscribe();
           this.audioService.setAudio(
-            `../../assets/values-ranking/values_aud/${
-              this.dataService.culture === 'Hebrew' ? 'heb' : 'arab'
-            }/${value.audioLink}`
+            `../../assets/values-ranking/values_aud/${this.dataService.culture}/${value.audioLink}`
           );
           if (this.dataService.firstTimeV) {
             this.dataService.firstTimeV = false;
@@ -61,9 +57,7 @@ export class ValueDialogComponent implements OnInit {
                 if (res === 'ended') {
                   this.$audio.unsubscribe();
                   this.audioService.setAudio(
-                    `../../assets/values-ranking/guidance_aud/${
-                      this.dataService.culture === 'Hebrew' ? 'heb' : 'arab'
-                    }/inst-v-explenation-${this.dataService.gender}.mp3`
+                    `../../assets/values-ranking/guidance_aud/${this.dataService.culture}/inst-v-explenation-${this.dataService.gender}.mp3`
                   );
                 }
               });

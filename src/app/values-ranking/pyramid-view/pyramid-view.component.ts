@@ -99,9 +99,7 @@ export class PyramidViewComponent implements OnInit {
     this.values = values;
     this.ref = this.dialog.open(this.template, this.config);
     this.audioService.setAudio(
-      `../../assets/values-ranking/values_aud/${
-        this.dataService.culture === 'Hebrew' ? 'heb' : 'arab'
-      }/check-${this.dataService.gender}.mp3`
+      `../../assets/values-ranking/values_aud/${this.dataService.culture}/check-${this.dataService.gender}.mp3`
     );
   }
 

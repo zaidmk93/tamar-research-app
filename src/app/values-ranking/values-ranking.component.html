@@ -1,4 +1,4 @@
-<div class="containter">
+<div class="vr-containter" [class] = "style_lang_direction_class">
     <app-rank-set1 *ngIf="scene == 3" [culture]="this.dataService.applanguages1" (gotRanking)="scene3($event)">
     </app-rank-set1>
     <app-rank-set2 *ngIf="scene == 5" [culture]="this.dataService.applanguages1" (gotRanking)="scene5($event)">
@@ -10,7 +10,7 @@
     <app-menu2 *ngIf = "scene == 12" (gotCreds)="scene12($event)"></app-menu2>
     <!-- <app-demographic [culture]="this.dataService.applanguages1" *ngIf = "scene == 10" (gotCreds)="scene10($event)"></app-demographic> -->
     <app-Attention-task3-from [culture]="this.dataService.applanguages1" *ngIf="scene == 13" (gotCreds)="scene13($event)"></app-Attention-task3-from>
-    <div class="padding" *ngIf="[0, 1, 2, 4, 7].includes(scene)">
+    <div class="vr-padding" *ngIf="[0, 1, 2, 4, 7].includes(scene)">
         <app-rotate-screen *ngIf="scene == 0" [culture]="this.dataService.applanguages1" (gotCreds)="scene1($event)"></app-rotate-screen>
         <app-entering-form *ngIf="scene == 1" [culture]="this.dataService.applanguages1" (gotCreds)="scene1($event)"></app-entering-form>
         <app-values-set1 *ngIf="scene == 2" [culture]="this.dataService.applanguages1" (openingEnded)="scene2($event)">

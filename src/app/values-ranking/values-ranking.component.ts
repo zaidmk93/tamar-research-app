@@ -182,8 +182,27 @@ export class ValuesRankingComponent implements OnInit {
       this.dataService.lab = creds.lab;
   }
 
+  style_lang_direction_class = 'right-dir';
+  lang_direction(){
+    switch(this.dataService.applanguages1){
+      case "Arabic": {
+        this.style_lang_direction_class = 'right-dir';
+          break;
+      }
+      case "Hebrew": {
+        this.style_lang_direction_class = 'right-dir';
+          break;
+      }
+      default: {
+        this.style_lang_direction_class = 'left-dir';
+      }
+    }
+  }
+
   scene9(creds: Credentials){
     this.dataService.applanguages1 = creds.applanguages1;
+    this.dataService.pickJsonByLang();
+    this.lang_direction();
     this.dataService.applanguages2 = null;
 
     if (this.dataService.applanguages1  == 'Hebrew' ||

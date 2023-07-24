@@ -40,10 +40,10 @@
           </div>
     </div>
 
-      <div *ngIf="isArabicCulture()" >
+      <div *ngIf="isNotJewishCulture()" >
         <div *ngIf="counter == 0">
           <td style="width:10%">
-            <h1 style="text-align: center; ">{{'كم عدد البيض في الصورة ؟ '}}</h1>
+            <h1 style="text-align: center; ">{{this.dataService.json_data.Attention1.egges_q}}</h1>
           </td>
           <img class="img-agg" src="../../../assets/attention.task.images/agg.png" width="500" class="center" >
             <form>
@@ -63,7 +63,7 @@
 
         <div *ngIf="counter == 1">
           <td style="width:10%">
-            <h1 style="text-align: center;">{{'كم عدد البطات في الصورة ؟'}}</h1>
+            <h1 style="text-align: center;">{{this.dataService.json_data.Attention1.ducks_q}}</h1>
           </td>
           <img class="img-agg" src="../../../assets/attention.task.images/duck.png" width="500" class="center">
                 <form>
@@ -84,8 +84,8 @@
 </div>
 
   <div>
-    <p *ngIf="displayErrorMessage == true" class="errorRed">{{culture == 'Hebrew' ? 'נא לענות על השאלה' : 'الرجاء الإجابة على السؤال'}}</p>
-  <button mat-raised-button color="primary" (click) = "counterUp()" >{{culture == 'Hebrew' ? 'המשך' : 'موافق/ة'}} </button>
+    <p *ngIf="displayErrorMessage == true" class="errorRed">{{culture == 'Hebrew' ? 'נא לענות על השאלה' : this.dataService.json_data.Attention1.error_select}}</p>
+    <button mat-raised-button color="primary" (click) = "counterUp()">{{culture == 'Hebrew' ? 'המשך' : this.dataService.json_data.Attention1.continue}} </button>
 </div>
   
  

@@ -208,9 +208,7 @@ export class RankSet2Component implements OnInit, AfterViewInit, OnDestroy {
     });
     clearTimeout(this.idleTimer);
     const createSoundLink = (num: number): string => {
-      return `../../assets/values-ranking/guidance_aud/${
-        this.culture === 'Hebrew' ? 'heb' : 'arab'
-      }/inst-p${num}-${this.isMale ? 'M' : 'F'}.mp3`;
+      return `../../assets/values-ranking/guidance_aud/${this.culture}/inst-p${num}-${this.isMale ? 'M' : 'F'}.mp3`;
     };
     const titles = (num: number): string => {
       const titlesDict = [

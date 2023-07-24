@@ -41,11 +41,11 @@ export class ValuesSet2Component implements OnInit {
     if (this.culture === 'Hebrew') {
       this.subtitle = `כל הכבוד!<br>עכשיו נשחק שוב את המשחק עם תמונות אחרות.<br>נעבור על התמונות אחת - אחת`;
       this.audioService.setAudio(
-        `../../assets/values-ranking/values_aud/heb/opening2-${this.dataService.gender}.wav`
+        `../../assets/values-ranking/values_aud/${this.culture}/opening2-${this.dataService.gender}.wav`
       );
 
       this.audioService.getTimeElapsed().subscribe((res) => {
-        this.opening(res);
+        this.openingHeb(res);
       });
       
        
@@ -53,15 +53,11 @@ export class ValuesSet2Component implements OnInit {
       this.$audio = this.audioService.getPlayerStatus().subscribe((res) => {
         if (res === 'ended') {
           this.vs2Stage += 1;
-          this.introduceValues();
+          this.introduceValuesHeb();
         }
       });
     } else {
-      if (this.dataService.gender === 'M') {
-        this.openingArabMale(31);
-      } else {
-        this.openingArabFemale(31);
-      }
+      this.opening(0);
     }
   }
 
@@ -69,7 +65,7 @@ export class ValuesSet2Component implements OnInit {
     this.$audio.unsubscribe();
   }
 
-  introduceValues() {
+  introduceValuesHeb() {
     let curVal: Pbvs;
     switch (this.vs2Stage) {
       case 2: {
@@ -118,15 +114,13 @@ export class ValuesSet2Component implements OnInit {
     }
     this.imgLink = `../../assets/values-ranking/values_img/${curVal.imgLink}`;
     this.audioService.setAudio(
-      `../../assets/values-ranking/values_aud/${
-        this.culture === 'Hebrew' ? 'heb' : 'arab'
-      }/${curVal.audioLink}`
+      `../../assets/values-ranking/values_aud/${this.culture}/${curVal.audioLink}`
     );
     this.subtitle = curVal.text;
     return 0;
   }
 
-  opening(time: string) {
+  openingHeb(time: string) {
     switch (time) {
       case '00:06': {
         this.imgLink = '../../assets/values-ranking/values_img/kid.png';
@@ -146,140 +140,53 @@ export class ValuesSet2Component implements OnInit {
     }
   }
 
-  openingArabMale(subStage: number) {
+  opening(subStage: number) {
     switch (subStage) {
-      case 31: {
-        this.subtitle = `هيا بنا ننطلق في رحلة خيالية أخرى، فيها صور جديدة.
-        هيا نمر على الصور صورةً صورة.`;
-        break;
-      }
-      case 32: {
-        this.imgLink = '../../assets/values-ranking/values_img/kid.png';
-        this.subtitle =
-          'تخيل مرة أخرى أنك الطفل الذي في الصورة صاحب السترة الرمادية،';
-        break;
-      }
-      case 33: {
-        this.subtitle = 'وأنك الذي يفعل كل الأشياء التي في الصور';
-        break;
-      }
-      case 34: {
-        this.$audio = this.audioService.getPlayerStatus().subscribe((res) => {
-          if (res === 'ended') {
-            this.vs2Stage += 1;
-            this.introduceValuesArab();
-          }
-        });
-        return 0;
-      }
-    }
-    this.audioService.setAudio(
-      `../../assets/values-ranking/values_aud/arab/M/${subStage}.mp3`
-    );
-    setTimeout(() => {
-      this.$audio = this.audioService.getPlayerStatus().subscribe((res) => {
-        if (res === 'ended') {
-          this.$audio.unsubscribe();
-          subStage += 1;
-          this.openingArabMale(subStage);
-        }
-      });
-    }, 500);
-  }
-
-  openingArabFemale(subStage: number) {
-    switch (subStage) {
-      case 31: {
-        this.subtitle = `هيا بنا ننطلق في رحلة خيالية أخرى، فيها صور جديدة.
-        هيا نمر على الصور صورةً صورة.`;
-        break;
-      }
-      case 32: {
-        this.imgLink = '../../assets/values-ranking/values_img/kid.png';
-        this.subtitle =
-          'مرة أخرى تخيلي أنكِ الفتاة التي في الصورة صاحبة السترة الرمادية.';
-        break;
-      }
-      case 33: {
-        this.subtitle = 'وأنك التي تفعل كل الأشياء التي في الصور.';
-        break;
-      }
-      case 34: {
-        this.$audio = this.audioService.getPlayerStatus().subscribe((res) => {
-          if (res === 'ended') {
-            this.vs2Stage += 1;
-            this.introduceValuesArab();
-          }
-        });
-        return 0;
-      }
-    }
-    this.audioService.setAudio(
-      `../../assets/values-ranking/values_aud/arab/F/${subStage}.mp3`
-    );
-    setTimeout(() => {
-      this.$audio = this.audioService.getPlayerStatus().subscribe((res) => {
-        if (res === 'ended') {
-          this.$audio.unsubscribe();
-          subStage += 1;
-          this.openingArabFemale(subStage);
-        }
-      });
-    }, 500);
-  }
-
-  introduceValuesArab() {
-    let curVal: Pbvs;
-    switch (this.vs2Stage) {
-      case 2: {
-        curVal = this.dataService.pbvs11;
+      case 1: {
+        this.imgLink = this.dataService.json_data[this.dataService.gender].opening2_stages[subStage].imgLink;
+        this.subtitle = this.dataService.json_data[this.dataService.gender].opening2_stages[subStage].subtitle;
         break;
       }
       case 3: {
-        curVal = this.dataService.pbvs12;
-        break;
+        this.$audio = this.audioService.getPlayerStatus().subscribe((res) => {
+          if (res === 'ended') {
+            this.vs2Stage += 1;
+            this.introduceValues();
+          }
+        });
+        return 0;
       }
-      case 4: {
-        curVal = this.dataService.pbvs13;
-        break;
+      default: {
+        this.subtitle = this.dataService.json_data[this.dataService.gender].opening2_stages[subStage].subtitle;
       }
-      case 5: {
-        curVal = this.dataService.pbvs14;
-        break;
-      }
-      case 6: {
-        curVal = this.dataService.pbvs15;
-        break;
-      }
-      case 7: {
-        curVal = this.dataService.pbvs16;
-        break;
-      }
-      case 8: {
-        curVal = this.dataService.pbvs17;
-        break;
-      }
-      case 9: {
-        curVal = this.dataService.pbvs18;
-        break;
-      }
-      case 10: {
-        curVal = this.dataService.pbvs19;
-        break;
-      }
-      case 11: {
-        curVal = this.dataService.pbvs20;
-        break;
-      }
+    }
+    this.audioService.setAudio(
+      `../../assets/values-ranking/values_aud/${this.culture}/${this.dataService.gender}/${subStage+31}.mp3`
+    );
+    setTimeout(() => {
+      this.$audio = this.audioService.getPlayerStatus().subscribe((res) => {
+        if (res === 'ended') {
+          this.$audio.unsubscribe();
+          subStage += 1;
+          this.opening(subStage);
+        }
+      });
+    }, 500);
+  }
+
+  introduceValues() {
+    let curVal: Pbvs;
+    switch (this.vs2Stage) {
       case 12: {
         return 0;
+      }
+      default: {
+        curVal = this.dataService['pbvs'+ (this.vs2Stage+9)];
       }
     }
     this.imgLink = `../../assets/values-ranking/values_img/${curVal.imgLink}`;
     this.audioService.setAudio(
-      `../../assets/values-ranking/values_aud/${
-        this.culture === 'Hebrew' ? 'heb' : 'arab'
-      }/${curVal.audioLink}`
+      `../../assets/values-ranking/values_aud/${this.culture}/${curVal.audioLink}`
     );
     this.subtitle = curVal.text;
     return 0;

@@ -1,19 +1,19 @@
 <div class="main-div">
     <mat-card style="padding: 40px; max-width: 600px; align-items: center;">
         <mat-card-content>
-            <h2 class="example-h2">{{this.culture === 'Hebrew' ? 'כניסה' : 'الدخول'}}</h2>
+            <h2 class="example-h2">{{this.culture === 'Hebrew' ? 'כניסה' : this.dataService.json_data.start.title_start}}</h2>
             
             <hr>
             <table>
                 <tr>
                     <td>
-                        <b>{{this.culture === 'Hebrew' ? 'קבוצה' : ' المجموعة'}}</b>
+                        <b>{{this.culture === 'Hebrew' ? 'קבוצה' : this.dataService.json_data.start.the_group}}</b>
                         <br>
-                        <p class="ask-parag">{{this.culture === 'Hebrew' ? 'תקליד/י את מספר הקבוצה לפי הדת שלך:' : 'ادخل/ي رقم المجموعة بحسب ديانتك:'}}</p>
-                        <p class="option-parag">{{this.culture === 'Hebrew' ? '1- יהדות' : '1- اليهودية'}}</p>
-                        <p class="option-parag">{{this.culture === 'Hebrew' ? '2- אסלאם' : '2- الاسلام'}}</p>
-                        <p class="option-parag">{{this.culture === 'Hebrew' ? '3- נצרות' : '3- المسيحية'}}</p>
-                        <p class="option-parag">{{this.culture === 'Hebrew' ? '4- דרוזית' : '4- درزية'}}</p>
+                        <p class="ask-parag">{{this.culture === 'Hebrew' ? 'תקליד/י את מספר הקבוצה לפי הדת שלך:' : this.dataService.json_data.start.write_group_number}}</p>
+                        <p class="option-parag">{{this.culture === 'Hebrew' ? '1- יהדות' : this.dataService.json_data.start.jewish}}</p>
+                        <p class="option-parag">{{this.culture === 'Hebrew' ? '2- אסלאם' : this.dataService.json_data.start.islam}}</p>
+                        <p class="option-parag">{{this.culture === 'Hebrew' ? '3- נצרות' : this.dataService.json_data.start.christ}}</p>
+                        <p class="option-parag">{{this.culture === 'Hebrew' ? '4- דרוזית' : this.dataService.json_data.start.drozi}}</p>
                     </td>
                     <td style="width:20px;"></td>
                     <td>
@@ -24,11 +24,11 @@
                 </tr>
                 <tr>
                     <td>
-                        <b>{{this.culture === 'Hebrew' ? 'ילד' : 'ولد'}}</b>
+                        <!-- <b>{{this.culture === 'Hebrew' ? 'ילד' : this.dataService.json_data.start.boy}}</b> -->
                         <br>
                         <span *ngIf="withChildNumberFlag; else PID">
-                            {{this.culture === 'Hebrew' ? 'מספר הנבדק' : 'رقم المشترك/ة'}}</span>
-                        <ng-template #PID><span>{{this.culture === 'Hebrew' ? 'תקליד/י את גיל הילד/ה' : 'أدخل/ي جيل ابنك/ابنتك'}}</span></ng-template>
+                            {{this.culture === 'Hebrew' ? 'מספר הנבדק' : this.dataService.json_data.start.participant_number}}</span>
+                        <ng-template #PID><span>{{this.culture === 'Hebrew' ? 'תקליד/י את גיל הילד/ה' : this.dataService.json_data.start.insert_age}}</span></ng-template>
                     </td>
                     <td style="width:20px;"></td>
                     <td>
@@ -41,7 +41,7 @@
                     <td>
                         <br>
                         <span>
-                            {{this.culture === 'Hebrew' ? 'תקליד/י את גיל הילד/ה' : 'أدخل/ي جيل ابنك/ابنتك'}}</span>
+                            {{this.culture === 'Hebrew' ? 'תקליד/י את גיל הילד/ה' : this.dataService.json_data.start.insert_age}}</span>
                     </td>
                     <td style="width:20px;"></td>
                     <td>
@@ -52,7 +52,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <b>{{this.culture === 'Hebrew' ? 'בן או בת?' : 'ولد أو بنت ؟'}}</b>
+                        <b>{{this.culture === 'Hebrew' ? 'בן או בת?' : this.dataService.json_data.start.boy_or_girl}}</b>
                     </td>
                     <td></td>
                     <td>
@@ -76,22 +76,21 @@
                 </tr>
             </table>
             <button mat-raised-button color="primary" (click)="start()">{{this.culture === 'Hebrew' ? 'היכנסו למשחק' :
-                'الدخول إلى اللعبة'}}</button>
+                this.dataService.json_data.start.enter_game}}</button>
             <p *ngIf="invalidSchoolIDFlag" style="color:red; font-weight: bold;">
-                {{this.culture === 'Hebrew' ? 'מספר הקבוצה אינו מתאים' :
-                'رقم المجموعة غير ملائم'}}
+                {{this.culture === 'Hebrew' ? 'מספר הקבוצה אינו מתאים' :  this.dataService.json_data.start.error_group_number}}
             </p>
 
             <p *ngIf="withThreeInputsFlag && invalidChildAgeFlag" style="color:red; font-weight: bold;">
-                {{this.culture === 'Hebrew' ? 'נא להכניס גיל הילד/ה המתאים במספרים' : 'الرجاء إدخال جيل الطفل/ة الملائم بالارقام'}}
+                {{this.culture === 'Hebrew' ? 'נא להכניס גיל הילד/ה המתאים במספרים' : this.dataService.json_data.start.please_insert_age}}
             </p>
 
             <p *ngIf="invalidChildIDFlag" style="color:red; font-weight: bold;">
                 <span *ngIf="withChildNumberFlag; else ChildId">
-                    {{this.culture === 'Hebrew' ? 'נא להכניס מספר הילד/ה המתאים במספרים' : 'الرجاء إدخال رقم الطفل/ة الملائم بالارقام'}}
+                    {{this.culture === 'Hebrew' ? 'נא להכניס מספר הילד/ה המתאים במספרים' : this.dataService.json_data.start.please_insert_child_num}}
                 </span>
                 <ng-template #ChildId><span>
-                    {{this.culture === 'Hebrew' ? 'נא להכניס גיל הילד/ה המתאים במספרים' : 'الرجاء إدخال جيل الطفل/ة الملائم بالارقام'}}
+                    {{this.culture === 'Hebrew' ? 'נא להכניס גיל הילד/ה המתאים במספרים' : this.dataService.json_data.start.please_insert_age}}
                 </span></ng-template>
             </p>
         </mat-card-content>

@@ -55,12 +55,7 @@ export class Attentiontask3Component implements OnInit {
      
           
     ngOnInit(): void {
-      if(this.isJewishCulture()){
-        this.audioService.setAudio("../../assets/attention.task3.audio/How many bees.m4a");
-      }
-      else{
-        this.audioService.setAudio("../../assets/attention.task3.audio/How many bees-Arabic.m4a");
-      }
+      this.audioService.setAudio(`../../assets/values-ranking/attention/${this.culture}/Bees.m4a`);      
       this.playerSubscription$ = this.audioService.getPlayerStatus().subscribe();
       this.route.queryParams.subscribe((params) => {
         
@@ -71,8 +66,8 @@ export class Attentiontask3Component implements OnInit {
     return this.culture == 'Hebrew'
   }
 
-  isArabicCulture() : boolean{
-   return this.culture == 'Arabic'
+  isNotJewishCulture() : boolean{
+   return this.culture !== 'Hebrew'
  }
      
 

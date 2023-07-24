@@ -3,7 +3,7 @@
     <table class="pyramid-table">
       <tr class="pyramid-row">
         <td style="width:37%">
-          <h1 style="text-align: center;">{{this.culture === 'Hebrew' ? 'חשוב מאוד' : 'مهمّ جدًّا'}}</h1>
+          <h1 style="text-align: center;">{{this.culture === 'Hebrew' ? 'חשוב מאוד' : this.dataService.json_data.pyramid.important}}</h1>
         </td>
         <td class="pyramid-cell">
           <div class="pyramid-square">
@@ -114,7 +114,7 @@
       <tr class="pyramid-row">
         <td style="width:37%" class="done-right-container">
           <div>
-            <h1 style="text-align: center;" class="title-not-necessarily">{{this.culture === 'Hebrew' ? 'כלל לא חשוב' : 'غير مهمّ أبدًا'}}</h1>
+            <h1 style="text-align: center;" class="title-not-necessarily">{{this.culture === 'Hebrew' ? 'כלל לא חשוב' : this.dataService.json_data.pyramid.not_important}}</h1>
           </div>
           <div class="done-button">
             <button mat-button color="warn" (click)="confirm()">

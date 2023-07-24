@@ -11,7 +11,7 @@
                 <h1 [innerHTML]="this.subtitle" style="text-align: center;"></h1>
             </div>
             <button *ngIf="stage==12" mat-raised-button color="primary"
-                (click)="this.openingEnded.emit(true);">{{this.culture === 'Hebrew' ? 'המשך' : this.dataService.gender === 'M' ? 'استمر' : 'استمري'}}</button>
+                (click)="this.openingEnded.emit(true);">{{this.culture === 'Hebrew' ? 'המשך' : this.dataService.json_data[this.dataService.gender].continue_butt}}</button>
         </mat-card-content>
     </mat-card>
 </div>

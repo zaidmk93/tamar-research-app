@@ -1,9 +1,22 @@
-.containter {
+.vr-containter {
   width: 100vw;
   height: 100vh;
   background-color: skyblue;
 }
 
-.padding {
+.vr-padding {
   padding: 10vh;
+}
+
+
+.right-dir{
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: embed;
+}
+
+.left-dir {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: embed;
 }
