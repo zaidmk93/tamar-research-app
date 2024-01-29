@@ -248,7 +248,7 @@ export class DataService extends BasicData {
     console.log(secondType);
     this.pbvs8.imgLink = `val4${culture === 'Hebrew' ? 'Hebrew' : secondType || ''}.png`;
     console.log(this.pbvs8.imgLink);
-    if(culture=== 'Arabic' || culture === 'Hebrew')
+    if(culture === 'Hebrew')
       this.pbvs9.imgLink = `val5${culture}.png`;
     if (culture !== 'Hebrew') {
       for(let i=0; i<= 19; i++){
