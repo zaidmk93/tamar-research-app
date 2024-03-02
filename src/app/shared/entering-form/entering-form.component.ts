@@ -19,7 +19,7 @@ export class EnteringFormComponent implements OnInit {
   ]);
   childID = new FormControl('', [
     Validators.required,
-    (this.dataService.lab === 'texas' || this.dataService.lab === 'AyshehSchool') ? Validators.pattern('[A-z]*[0-9]*[٠-٩]*[A-z]*') : Validators.pattern('[0-9]*[٠-٩]*'),
+    (this.dataService.lab === 'texas' || this.dataService.lab === 'AyshehSchool' || this.dataService.lab === 'ProjectMapatz') ? Validators.pattern('[A-z]*[0-9]*[٠-٩]*[A-z]*') : Validators.pattern('[0-9]*[٠-٩]*'),
   ]);
   childage = new FormControl('', [
     Validators.required,
@@ -67,7 +67,7 @@ export class EnteringFormComponent implements OnInit {
     this.invalidChildAgeFlag = status;
   }
 
-  withThreeInputs = ['musuem', 'AyshehSchool'];
+  withThreeInputs = ['musuem', 'AyshehSchool', 'ProjectMapatz'];
   withChildNumber = this.withThreeInputs.concat(['texas', 'rotem']);
 
   withThreeInputsFlag = this.withThreeInputs.includes(this.dataService.lab);
