@@ -94,6 +94,7 @@ export class ValuesRankingComponent implements OnInit {
       this.dataService.schoolID = creds.schoolID;
       this.dataService.childID = creds.childID;
       this.dataService.childage = creds.childage;
+      this.dataService.childageInMonths = creds.childageInMonths;      
       this.scene = 2;
       this.checkIfUserAlreadySubmittedAndSubmit();
     }
@@ -205,8 +206,8 @@ export class ValuesRankingComponent implements OnInit {
     this.lang_direction();
     this.dataService.applanguages2 = null;
 
-    if (this.dataService.applanguages1  == 'Hebrew' ||
-     this.dataService.applanguages1  == 'Arabic'){
+    if (this.dataService.applanguages1  === 'Hebrew' ||
+     this.dataService.applanguages1  === 'Arabic'){
       if(creds.applanguages1 == "Arabic"){
         this.scene = 12;
       }else{
@@ -225,6 +226,7 @@ export class ValuesRankingComponent implements OnInit {
     this.dataService.parentage = creds.parentage;
     this.dataService.childgender = creds.childgender;
     this.dataService.childage = creds.childage;
+    this.dataService.childageInMonths = creds.childageInMonths;
     this.dataService.monthchild = creds.monthchild;
     this.dataService.classs = creds.classs;
     this.dataService.living = creds.living;
@@ -336,6 +338,7 @@ export class ValuesRankingComponent implements OnInit {
       applanguages1: this.dataService.applanguages1,
       applanguages2: this.dataService.applanguages2,
       childage : this.dataService.childage,
+      childageInMonths : this.dataService.childageInMonths,
       monthchild: this.dataService.monthchild,
       classs : this.dataService.classs,
       living : this.dataService.living,
@@ -440,6 +443,7 @@ export class ValuesRankingComponent implements OnInit {
     attention2: ${this.finalData.attention2},
     attention3: ${this.finalData.attention3},
     childage: ${this.finalData.childage},
+    childageInMonths: ${this.finalData.childageInMonths},
     IP: "${this.finalData.user_ip}"
     is_done: "${this.finalData.is_done}"
     last_update_time: "${this.finalData.last_update_time}"`;
@@ -505,6 +509,7 @@ export class ValuesRankingComponent implements OnInit {
       applanguages1: this.dataService.applanguages1,
       applanguages2: this.dataService.applanguages2,
       childage : this.dataService.childage,
+      childageInMonths : this.dataService.childageInMonths,
       monthchild: this.dataService.monthchild,
       classs : this.dataService.classs,
       living : this.dataService.living,
@@ -540,6 +545,7 @@ export class ValuesRankingComponent implements OnInit {
             living : "${finalData.living}",
             classs : "${finalData.classs}",
             childage: ${finalData.childage},
+            childageInMonths: ${finalData.childageInMonths},
             monthchild: "${finalData.monthchild}",
             languages: "${finalData.languages}",
             extralanguage: "${finalData.extralanguage}",

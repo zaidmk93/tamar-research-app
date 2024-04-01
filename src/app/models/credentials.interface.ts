@@ -6,6 +6,7 @@ export interface Credentials {
   parents: string;
   parentage: string;
   childage: string;
+  childageInMonths: string;
   monthchild: string;
   classs: string;
   living: string;

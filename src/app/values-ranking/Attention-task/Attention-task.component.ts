@@ -24,6 +24,7 @@ export class AttentiontaskComponent implements OnInit {
       parents: '',
       parentage: '',
       childage: '',
+      childageInMonths: '',
       monthchild: '',
       classs: '',
       living: '',
@@ -48,7 +49,7 @@ export class AttentiontaskComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-      this.audioService.setAudio(`../../assets/values-ranking/attention/${this.culture}/Eggs.m4a`);      
+      this.audioService.setAudio(`../../assets/values-ranking/attention/${this.culture}/Eggs.mp3`);      
       this.playerSubscription$ = this.audioService.getPlayerStatus().subscribe();
 
     }
@@ -64,7 +65,7 @@ export class AttentiontaskComponent implements OnInit {
         if(this.creds.attention1){
           this.counter++;
           this.displayErrorMessage = false;
-          this.audioService.setAudio(`../../assets/values-ranking/attention/${this.culture}/Ducks.m4a`);      
+          this.audioService.setAudio(`../../assets/values-ranking/attention/${this.culture}/Ducks.mp3`);      
           this.playerSubscription$ = this.audioService.getPlayerStatus().subscribe();
         } else {
           this.displayErrorMessage = true;

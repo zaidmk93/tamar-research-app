@@ -22,6 +22,7 @@ export class MenuComponent implements OnInit {
     parents: '',
     parentage: '',
     childage: '',
+    childageInMonths: '',
     monthchild: '',
     classs: '',
     living: '',

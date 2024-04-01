@@ -1,5 +1,6 @@
 import * as Arabic from '../../../assets/Jsons/Arabic.json';
 import * as English from '../../../assets/Jsons/English.json';
+import * as Estonian from '../../../assets/Jsons/Estonian.json';
 
 export class BasicData {
   dataId:string = "-1";
@@ -14,6 +15,7 @@ export class BasicData {
   parents: string;
   parentage: string;
   childage: string = '0';
+  childageInMonths: string = '0';
   monthchild: string;
   classs: string;
   living: string;
@@ -237,7 +239,10 @@ export class DataService extends BasicData {
       }
       case "English": {
         this.json_data = English['default'];
-        
+        break;
+      }
+      case "Estonian": {
+        this.json_data = Estonian['default'];
         break;
       }
     }
@@ -246,7 +251,7 @@ export class DataService extends BasicData {
   setCulture(culture, secondType) {
     this.culture = culture;
     console.log(secondType);
-    this.pbvs8.imgLink = `val4${culture === 'Hebrew' ? 'Hebrew' : secondType || ''}.png`;
+    this.pbvs8.imgLink = `val4${culture === 'Hebrew' ? 'Hebrew' : secondType || ''}${culture === 'Estonian' ? 'Estonian' : ''}.png`;
     console.log(this.pbvs8.imgLink);
     if(culture === 'Hebrew')
       this.pbvs9.imgLink = `val5${culture}.png`;

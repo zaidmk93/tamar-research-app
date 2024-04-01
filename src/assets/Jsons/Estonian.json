@@ -1,0 +1,290 @@
+{
+	"start" : {
+		"title_start": "Avaleht",
+		"the_group": "Rühm",
+		"write_group_number": "Sisesta rühmanumber oma religiooni järgi:",
+		"jewish":"1- Judaism",
+		"islam": "2- Islam",
+		"christ": "3- Kristlus",
+		"drozi": "4- Druusi",
+		"other": "5- muud",
+		"boy": "Mees",
+		"participant_number": "Osaleja number/kood", 
+		"insert_age": "Lapse vanus",
+		"insert_age_years": "aastat",
+		"insert_age_months": "kuud",
+		"boy_or_girl": "Poiss või tüdruk ?",
+		"enter_game": "Sisene väärtuste äppi",
+		
+		"error_group_number": "Viga rühma numbris",
+		"please_insert_age": "Palun kirjuta lapse vanus numbrina",
+		"please_insert_child_num": "Palun kirjuta lapse number/kood numbrina"
+	},
+	
+	"Attention": {
+		"egges_q": "Mitu muna on pildil?",
+		"ducks_q": "Mitu parti on vees?",
+		"bees_q": "Mitu mesilast on pildil?",
+		"select_dropdown": "vali",
+		"error_select": "Palun vasta!",
+		"continue":"Nõus"	
+	},
+	
+	"pyramid": {
+		"important": "Kõige olulisem",
+		"not_important": "Ei ole üldse oluline",
+		"go_back":"Back Tagasi"
+		
+	},
+	
+	"M": {
+		"opening_stages": [
+			{
+				"subtitle": "Me rändame nüüd fantaasiamaailma.<br>See on sellest, mis on sinu elus oluline.<br>See on sellest, millised eesmärgid sul elus on ; see tähendab kus sa tahaksid oma elus olla."
+			},
+			{
+				"imgLink": "../../assets/values-ranking/values_img/kid.png",
+				"subtitle": "Kujuta ette, et see triibulise mütsi ja halli särgiga laps oled Sina!"
+			},
+			{
+				"subtitle": "Sul võib olla raske seda ette kujutada."
+			},
+			{
+				"subtitle": "Sul võibolla isegi ei ole sellist mütsi ja halli särki nagu pildil on..."
+			},
+			{
+				"subtitle": "Ära tee sellest välja."
+			},
+			{
+				"subtitle": "Kujuta lihtsalt ette, et see oled Sina."	
+			},
+			{
+				"subtitle": "Nüüd mõtle endast!"
+			},
+			{
+				"subtitle": "Kujuta ette, milline Sa tahaksid tulevikus olla."
+			},
+			{
+				"subtitle": "Milliseid eesmärke sa tahaksid saavutada?"	
+			},
+			{
+				"subtitle": "Sa näed nüüd enda ees palju pilte ja  võid tahta olla nagu tema."		
+			},
+			{
+				"subtitle": "Vaata neid pilte."
+			},
+			{
+				"subtitle": "Võibolla Sa leiad lapse, kelle moodi sa tahaksid olla."
+			},
+			{
+				"subtitle": "Vaatame need pildid ükshaaval läbi."
+			},
+			{
+				"subtitle": "Sa võid juba hakata mõtlema sellest, mis on Sinu jaoks Sinu elus olulisem ja mis ei ole nii oluline."			
+			}
+		],
+		
+		"continue_butt": "Jätka",
+		
+		"opening2_stages": [
+			{
+				"subtitle": "Tubli! Me mängime nüüd seda mängu teiste piltidega uuesti. Me vaatame pildid ükshaaval läbi."
+			},
+			{
+				"subtitle": "Kujuta nüüd uuesti ette, et Sina oled see halli särgiga laps.",
+				"imgLink": "../../assets/values-ranking/values_img/kid.png"
+			},
+			{
+				"subtitle": "Ja sina oled see, kes kõiki neid asju teeb."
+			}
+		],
+		
+		"pbvs": [
+			{
+				"text": "Olla rikas ja võimas"
+			},
+			{
+				"text": "Olla parim"
+			},
+			{
+				"text": "Elu nautida"
+			},
+			{
+				"text": "Teha põnevaid asju"
+			},
+			{
+				"text": "Avastada midagi uut"
+			},
+			{
+				"text": "Olla ohtude eest kaitstud"	
+			},
+			{
+				"text": "Pidada kinni reeglitest"
+			},
+			{
+				"text": "Hoida oma maa kombeid"
+			},
+			{
+				"text": "Teisi aidata"	
+			},
+			{
+				"text": "Leida uusi sõpru"		
+			},
+			{
+				"text": "Olla eestvedaja"
+			},
+			{
+				"text": "Näidata teistele, mis ma oskan teha"
+			},
+			{
+				"text": "Elust rõõmu tunda"
+			},
+			{
+				"text": "Seigelda"			
+			},
+			{
+				"text": "Omada kujutlusvõimet"			
+			},
+			{
+				"text": "Olla kaitstud"			
+			},
+			{
+				"text": "Olla samasugune nagu teised"			
+			},
+			{
+				"text": "Uurida, kuidas vanasti elati"			
+			},
+			{
+				"text": "Teisi inimesi õnnelikuks teha"			
+			},
+			{
+				"text": "Hoida loodust"			
+			}
+		]
+	},
+	"F": {
+		"opening_stages": [
+			{
+				"subtitle": "Me rändame nüüd fantaasiamaailma.<br>See on sellest, mis on sinu elus oluline.<br>See on sellest, millised eesmärgid sul elus on ; see tähendab kus sa tahaksid oma elus olla."
+			},
+			{
+				"imgLink": "../../assets/values-ranking/values_img/kid.png",
+				"subtitle": "Kujuta ette, et see triibulise mütsi ja halli särgiga laps oled Sina!"
+			},
+			{
+				"subtitle": "Sul võib olla raske seda ette kujutada."
+			},
+			{
+				"subtitle": "Sul võibolla isegi ei ole sellist mütsi ja halli särki nagu pildil on..."
+			},
+			{
+				"subtitle": "Ära tee sellest välja."
+			},
+			{
+				"subtitle": "Kujuta lihtsalt ette, et see oled Sina."	
+			},
+			{
+				"subtitle": "Nüüd mõtle endast!"
+			},
+			{
+				"subtitle": "Kujuta ette, milline Sa tahaksid tulevikus olla."
+			},
+			{
+				"subtitle": "Milliseid eesmärke sa tahaksid saavutada?"	
+			},
+			{
+				"subtitle": "Sa näed nüüd enda ees palju pilte ja  võid tahta olla nagu tema."		
+			},
+			{
+				"subtitle": "Vaata neid pilte."
+			},
+			{
+				"subtitle": "Võibolla Sa leiad lapse, kelle moodi sa tahaksid olla."
+			},
+			{
+				"subtitle": "Vaatame need pildid ükshaaval läbi."
+			},
+			{
+				"subtitle": "Sa võid juba hakata mõtlema sellest, mis on Sinu jaoks Sinu elus olulisem ja mis ei ole nii oluline."			
+			}
+		],
+		
+		"continue_butt": "Jätka",
+		
+		"opening2_stages": [
+			{
+				"subtitle": "Tubli! Me mängime nüüd seda mängu teiste piltidega uuesti. Me vaatame pildid ükshaaval läbi."
+			},
+			{
+				"subtitle": "Kujuta nüüd uuesti ette, et Sina oled see halli särgiga laps.",
+				"imgLink": "../../assets/values-ranking/values_img/kid.png"
+			},
+			{
+				"subtitle": "Ja sina oled see, kes kõiki neid asju teeb."
+			}
+		],
+		
+		"pbvs": [
+			{
+				"text": "Olla rikas ja võimas"
+			},
+			{
+				"text": "Olla parim"
+			},
+			{
+				"text": "Elu nautida"
+			},
+			{
+				"text": "Teha põnevaid asju"
+			},
+			{
+				"text": "Avastada midagi uut"
+			},
+			{
+				"text": "Olla ohtude eest kaitstud"	
+			},
+			{
+				"text": "Pidada kinni reeglitest"
+			},
+			{
+				"text": "Hoida oma maa kombeid"
+			},
+			{
+				"text": "Teisi aidata"	
+			},
+			{
+				"text": "Leida uusi sõpru"		
+			},
+			{
+				"text": "Olla eestvedaja"
+			},
+			{
+				"text": "Näidata teistele, mis ma oskan teha"
+			},
+			{
+				"text": "Elust rõõmu tunda"
+			},
+			{
+				"text": "Seigelda"			
+			},
+			{
+				"text": "Omada kujutlusvõimet"			
+			},
+			{
+				"text": "Olla kaitstud"			
+			},
+			{
+				"text": "Olla samasugune nagu teised"			
+			},
+			{
+				"text": "Uurida, kuidas vanasti elati"			
+			},
+			{
+				"text": "Teisi inimesi õnnelikuks teha"			
+			},
+			{
+				"text": "Hoida loodust"			
+			}
+		]
+	}
+}

@@ -28,6 +28,33 @@ td {
   padding-bottom: 13px;
 }
 
+.schoolID-input-container{
+  text-align: center;
+}
+
+.child-id-input-container {
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep .mat-form-field-infix {
+  max-width: 123px !important;
+}
+
+::ng-deep .mat-form-field {
+  text-align: center !important;
+}
+
+.age-under-input {
+  text-align: center;
+  margin-top: -18px;
+  padding-top: 0;
+}
+
+.noPadding {
+  padding-bottom: 0;
+}
+
 mat-radio-button {
   color: primary;
 }

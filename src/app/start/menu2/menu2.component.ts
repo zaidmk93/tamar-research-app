@@ -16,6 +16,7 @@ export class Menu2Component implements OnInit {
     parents: '',
     parentage: '',
     childage: '',
+    childageInMonths: '',
     monthchild: '',
     classs: '',
     living: '',

@@ -17,6 +17,7 @@ export class LabComponent implements OnInit {
     parents: '',
     parentage: '',
     childage: '',
+    childageInMonths: '',
     monthchild: '',
     classs: '',
     living: '',

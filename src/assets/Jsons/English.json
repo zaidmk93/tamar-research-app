@@ -7,9 +7,12 @@
 		"islam": "2- Islam",
 		"christ": "3- Christianity",
 		"drozi": "4- Druze",
+		"other": "5- Other",
 		"boy": "Male",
 		"participant_number": "Number of the participant", 
 		"insert_age": "Please enter your child age",
+		"insert_age_years": "years",
+		"insert_age_months": "months",
 		"boy_or_girl": "Male or Female ?",
 		"enter_game": "Entrance to the Value Application",
 		
@@ -18,17 +21,13 @@
 		"please_insert_child_num": "Please enter your child number in munbers"
 	},
 	
-	"Attention1": {
+	"Attention": {
 		"egges_q": "How many eggs are in the picture?",
 		"ducks_q": "How many ducks are in the water?",
+		"bees_q": "How many bees are in the picture?",
+		"select_dropdown": "select",
 		"error_select": "Please answer the question",
 		"continue":"Agree"	
-	},
-	
-	"Attention2":{
-		"bees_q": "How many bees are in the picture?",
-		"error_select":"Please answer the question",
-		"continue":"Agree"
 	},
 	
 	"pyramid": {

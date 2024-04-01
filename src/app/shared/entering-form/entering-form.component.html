@@ -14,30 +14,33 @@
                         <p class="option-parag">{{this.culture === 'Hebrew' ? '2- אסלאם' : this.dataService.json_data.start.islam}}</p>
                         <p class="option-parag">{{this.culture === 'Hebrew' ? '3- נצרות' : this.dataService.json_data.start.christ}}</p>
                         <p class="option-parag">{{this.culture === 'Hebrew' ? '4- דרוזית' : this.dataService.json_data.start.drozi}}</p>
+                        <p class="option-parag">{{this.culture === 'Hebrew' ? '5- אחר' : this.dataService.json_data.start.other}}</p>
                     </td>
                     <td style="width:20px;"></td>
-                    <td>
+                    <td class="schoolID-input-container">
                         <mat-form-field class="example-full-width">
                             <input [formControl]="schoolID" matInput>
                         </mat-form-field>
                     </td>
                 </tr>
-                <tr>
+                <tr *ngIf="withThreeInputsFlag || withChildNumberFlag;">
                     <td>
                         <!-- <b>{{this.culture === 'Hebrew' ? 'ילד' : this.dataService.json_data.start.boy}}</b> -->
                         <br>
-                        <span *ngIf="withChildNumberFlag; else PID">
+                        <span>
                             {{this.culture === 'Hebrew' ? 'מספר הנבדק' : this.dataService.json_data.start.participant_number}}</span>
-                        <ng-template #PID><span>{{this.culture === 'Hebrew' ? 'תקליד/י את גיל הילד/ה' : this.dataService.json_data.start.insert_age}}</span></ng-template>
+                        <!-- <ng-template #PID><span>{{this.culture === 'Hebrew' ? 'תקליד/י את גיל הילד/ה' : this.dataService.json_data.start.insert_age}}</span></ng-template> -->
                     </td>
                     <td style="width:20px;"></td>
-                    <td>
-                        <mat-form-field class="example-full-width">
-                            <input [formControl]="childID" matInput>
-                        </mat-form-field>
-                    </td>
+                        <td>
+                            <div class="child-id-input-container">
+                                    <mat-form-field class="example-full-width">
+                                        <input [formControl]="childID" matInput>
+                                    </mat-form-field>
+                            </div>
+                        </td>
                 </tr>
-                <tr *ngIf="withThreeInputsFlag">
+                <tr *ngIf="withThreeInputsFlag || !withChildNumberFlag">
                     <td>
                         <br>
                         <span>
@@ -45,10 +48,23 @@
                     </td>
                     <td style="width:20px;"></td>
                     <td>
-                        <mat-form-field class="example-full-width">
-                            <input [formControl]="childage" matInput>
-                        </mat-form-field>
+                        <div class="child-id-input-container">
+                            <div>
+                                <mat-form-field class="example-full-width">
+                                    <input [formControl]="childage" matInput>
+                                </mat-form-field>
+                                <h5 class="age-under-input">{{this.culture === 'Hebrew' ? 'שנים' : this.dataService.json_data.start.insert_age_years}}</h5>
+                            </div>
+                            <td style="width: 10px;"></td>
+                            <div>
+                                <mat-form-field class="example-full-width">
+                                    <input [formControl]="childageInMonths" matInput>
+                                </mat-form-field>
+                                <h5 class="age-under-input">{{this.culture === 'Hebrew' ? 'חודשים' : this.dataService.json_data.start.insert_age_months}}</h5>
+                            </div>
+                        </div>
                     </td>
+                    
                 </tr>
                 <tr>
                     <td>

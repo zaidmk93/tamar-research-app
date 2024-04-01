@@ -77,6 +77,7 @@ export class DemographicComponent{
     parents: '',
     parentage: '',
     childage: '',
+    childageInMonths: '',
     monthchild: '',
     classs: '',
     living: '',

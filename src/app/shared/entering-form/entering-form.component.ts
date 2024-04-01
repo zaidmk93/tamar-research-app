@@ -25,6 +25,9 @@ export class EnteringFormComponent implements OnInit {
     Validators.required,
     Validators.pattern('[0-9]*[٠-٩]*'),
   ]);
+  childageInMonths = new FormControl('', [
+    Validators.pattern('[0-9]*[٠-٩]*'),
+  ]);
   creds: Credentials = {
     schoolID: '',
     childID: 'a',
@@ -33,6 +36,7 @@ export class EnteringFormComponent implements OnInit {
     parents: '',
     parentage: '',
     childage: '',
+    childageInMonths: '',
     monthchild: '',
     classs: '',
     living: '',
@@ -77,7 +81,7 @@ export class EnteringFormComponent implements OnInit {
     this.updateFlags(false);
     if (!!this.schoolID.errors || this.schoolID.value === 0) {
       this.invalidSchoolIDFlag = true;
-    } else if (!!this.childID.errors || this.childID.value === 0) {
+    } else if ((this.withThreeInputsFlag || this.withChildNumberFlag) && !!this.childID.errors || this.childID.value === 0) {
       this.invalidChildIDFlag = true;
     } else if (this.withThreeInputsFlag && !!this.childage.errors || this.childage.value === 0){
       this.invalidChildAgeFlag = true;
@@ -85,6 +89,10 @@ export class EnteringFormComponent implements OnInit {
       this.creds.schoolID = this.schoolID.value;
       this.creds.childID = this.childID.value;
       this.creds.childage = this.childage.value || null;
+      this.creds.childageInMonths = this.childageInMonths.value || null;
+      if(!this.withChildNumberFlag) {
+        this.creds.childID = this.childage.value;
+      }
       this.updateFlags(false);
       this.gotCreds.emit(this.creds);
     }

@@ -28,6 +28,7 @@ export class Attentiontask3Component implements OnInit {
        parents: '',
        parentage: '',
        childage: '',
+       childageInMonths: '',
        monthchild: '',
        classs: '',
        living: '',
@@ -55,7 +56,7 @@ export class Attentiontask3Component implements OnInit {
      
           
     ngOnInit(): void {
-      this.audioService.setAudio(`../../assets/values-ranking/attention/${this.culture}/Bees.m4a`);      
+      this.audioService.setAudio(`../../assets/values-ranking/attention/${this.culture}/Bees.mp3`);      
       this.playerSubscription$ = this.audioService.getPlayerStatus().subscribe();
       this.route.queryParams.subscribe((params) => {
         
