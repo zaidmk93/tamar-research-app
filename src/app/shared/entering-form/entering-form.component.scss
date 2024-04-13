@@ -32,6 +32,11 @@ td {
   text-align: center;
 }
 
+.radio-button{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .child-id-input-container {
   display: flex;
   justify-content: center;
@@ -53,6 +58,16 @@ td {
 
 .noPadding {
   padding-bottom: 0;
+}
+
+.enter-game-button{
+  display: block;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.enter-game-button:hover {
+  background-color: #673ab7b0;
 }
 
 mat-radio-button {

@@ -3,6 +3,12 @@ import { FormControl, Validators } from '@angular/forms';
 import { Credentials } from '../../models';
 import { DataService } from '../services/data.service';
 
+
+interface Religions {
+  name: string;
+  value: string;
+ }
+
 @Component({
   selector: 'app-entering-form',
   templateUrl: './entering-form.component.html',
@@ -13,10 +19,11 @@ export class EnteringFormComponent implements OnInit {
   @Output() gotCreds: EventEmitter<Credentials> = new EventEmitter<
     Credentials
   >();
-  schoolID = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[0-9]*[٠-٩]*'),
-  ]);
+
+  religions: Religions[];
+
+  schoolID;
+
   childID = new FormControl('', [
     Validators.required,
     (this.dataService.lab === 'texas' || this.dataService.lab === 'AyshehSchool' || this.dataService.lab === 'ProjectMapatz') ? Validators.pattern('[A-z]*[0-9]*[٠-٩]*[A-z]*') : Validators.pattern('[0-9]*[٠-٩]*'),
@@ -63,12 +70,63 @@ export class EnteringFormComponent implements OnInit {
 
   constructor(public dataService: DataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.religions = this.culture !== 'Hebrew' ? [
+      {
+        name: this.dataService.json_data.start.jewish,
+        value: this.dataService.json_data.start.jewish
+      },
+      {
+        name: this.dataService.json_data.start.islam,
+        value: this.dataService.json_data.start.islam
+      },
+      {
+        name: this.dataService.json_data.start.christ,
+        value: this.dataService.json_data.start.christ
+      },
+      {
+        name: this.dataService.json_data.start.drozi,
+        value: this.dataService.json_data.start.drozi
+      },
+      {
+        name: this.dataService.json_data.start.other,
+        value: this.dataService.json_data.start.other
+      }
+     ] :
+     [
+      {
+        value: "יהדות",
+        name: "יהדות"
+      },
+      {
+        value: "אסלאם",
+        name: "אסלאם"
+      },
+      {
+        value: "נצרות",
+        name: "נצרות"
+      },
+      {
+        value: "דרוזית",
+        name: "דרוזית"
+      },
+      {
+        value: "אחר",
+        name: "אחר"
+      }
+     ];
+  }
 
   updateFlags(status: boolean){
     this.invalidSchoolIDFlag = status;
     this.invalidChildIDFlag = status;
     this.invalidChildAgeFlag = status;
+  }
+
+
+  onRadioChange(religion: Religions) {
+    this.schoolID = religion.value;
   }
 
   withThreeInputs = ['musuem', 'AyshehSchool', 'ProjectMapatz'];
@@ -79,14 +137,14 @@ export class EnteringFormComponent implements OnInit {
 
   start(): Credentials | void {
     this.updateFlags(false);
-    if (!!this.schoolID.errors || this.schoolID.value === 0) {
+    if (this.schoolID === undefined) {
       this.invalidSchoolIDFlag = true;
     } else if ((this.withThreeInputsFlag || this.withChildNumberFlag) && !!this.childID.errors || this.childID.value === 0) {
       this.invalidChildIDFlag = true;
-    } else if (this.withThreeInputsFlag && !!this.childage.errors || this.childage.value === 0){
+    } else if ((!this.withChildNumberFlag || this.withThreeInputsFlag) && (!!this.childage.errors || this.childage.value === 0)){
       this.invalidChildAgeFlag = true;
     } else {
-      this.creds.schoolID = this.schoolID.value;
+      this.creds.schoolID = this.schoolID;
       this.creds.childID = this.childID.value;
       this.creds.childage = this.childage.value || null;
       this.creds.childageInMonths = this.childageInMonths.value || null;

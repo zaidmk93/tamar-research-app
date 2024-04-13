@@ -3,11 +3,11 @@
 		"title_start": "Avaleht",
 		"the_group": "Rühm",
 		"write_group_number": "Sisesta rühmanumber oma religiooni järgi:",
-		"jewish":"1- Judaism",
-		"islam": "2- Islam",
-		"christ": "3- Kristlus",
-		"drozi": "4- Druusi",
-		"other": "5- muud",
+		"jewish":"Judaism",
+		"islam": "Islam",
+		"christ": "Kristlus",
+		"drozi": "Druusi",
+		"other": "muu",
 		"boy": "Mees",
 		"participant_number": "Osaleja number/kood", 
 		"insert_age": "Lapse vanus",
@@ -16,7 +16,7 @@
 		"boy_or_girl": "Poiss või tüdruk ?",
 		"enter_game": "Sisene väärtuste äppi",
 		
-		"error_group_number": "Viga rühma numbris",
+		"error_group_number": "Palun vali rühm",
 		"please_insert_age": "Palun kirjuta lapse vanus numbrina",
 		"please_insert_child_num": "Palun kirjuta lapse number/kood numbrina"
 	},
@@ -31,7 +31,7 @@
 	},
 	
 	"pyramid": {
-		"important": "Kõige olulisem",
+		"important": "Väga oluline",
 		"not_important": "Ei ole üldse oluline",
 		"go_back":"Back Tagasi"
 		
@@ -40,7 +40,7 @@
 	"M": {
 		"opening_stages": [
 			{
-				"subtitle": "Me rändame nüüd fantaasiamaailma.<br>See on sellest, mis on sinu elus oluline.<br>See on sellest, millised eesmärgid sul elus on ; see tähendab kus sa tahaksid oma elus olla."
+				"subtitle": "Me rändame nüüd fantaasiamaailma.<br>Me tahame teada saada, mis on Sinu elus oluline,<br>millised eesmärgid Sul elus on,<br>kus Sa tahaksid oma elus olla."
 			},
 			{
 				"imgLink": "../../assets/values-ranking/values_img/kid.png",
@@ -137,7 +137,7 @@
 				"text": "Näidata teistele, mis ma oskan teha"
 			},
 			{
-				"text": "Elust rõõmu tunda"
+				"text": "Mõnusalt aega veeta"
 			},
 			{
 				"text": "Seigelda"			
@@ -259,10 +259,10 @@
 				"text": "Olla eestvedaja"
 			},
 			{
-				"text": "Näidata teistele, mis ma oskan teha"
+				"text": "Näidata teistele, mida ma oskan teha"
 			},
 			{
-				"text": "Elust rõõmu tunda"
+				"text": "Mõnusalt aega veeta"
 			},
 			{
 				"text": "Seigelda"			

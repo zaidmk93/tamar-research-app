@@ -10,18 +10,16 @@
                         <b>{{this.culture === 'Hebrew' ? 'קבוצה' : this.dataService.json_data.start.the_group}}</b>
                         <br>
                         <p class="ask-parag">{{this.culture === 'Hebrew' ? 'תקליד/י את מספר הקבוצה לפי הדת שלך:' : this.dataService.json_data.start.write_group_number}}</p>
-                        <p class="option-parag">{{this.culture === 'Hebrew' ? '1- יהדות' : this.dataService.json_data.start.jewish}}</p>
-                        <p class="option-parag">{{this.culture === 'Hebrew' ? '2- אסלאם' : this.dataService.json_data.start.islam}}</p>
-                        <p class="option-parag">{{this.culture === 'Hebrew' ? '3- נצרות' : this.dataService.json_data.start.christ}}</p>
-                        <p class="option-parag">{{this.culture === 'Hebrew' ? '4- דרוזית' : this.dataService.json_data.start.drozi}}</p>
-                        <p class="option-parag">{{this.culture === 'Hebrew' ? '5- אחר' : this.dataService.json_data.start.other}}</p>
+                        
+                        <div *ngFor="let opt of religions; let i=index">
+                            <label class="radio-inline">
+                              <input type="radio" [value]="opt.value" class="radio-button" name="Religion"
+                              (change)="onRadioChange(opt)"/>
+                              {{opt.name}}
+                            </label>
+                          </div>
                     </td>
                     <td style="width:20px;"></td>
-                    <td class="schoolID-input-container">
-                        <mat-form-field class="example-full-width">
-                            <input [formControl]="schoolID" matInput>
-                        </mat-form-field>
-                    </td>
                 </tr>
                 <tr *ngIf="withThreeInputsFlag || withChildNumberFlag;">
                     <td>
@@ -51,14 +49,14 @@
                         <div class="child-id-input-container">
                             <div>
                                 <mat-form-field class="example-full-width">
-                                    <input [formControl]="childage" matInput>
+                                    <input [formControl]="childage" type="number" matInput>
                                 </mat-form-field>
                                 <h5 class="age-under-input">{{this.culture === 'Hebrew' ? 'שנים' : this.dataService.json_data.start.insert_age_years}}</h5>
                             </div>
                             <td style="width: 10px;"></td>
                             <div>
                                 <mat-form-field class="example-full-width">
-                                    <input [formControl]="childageInMonths" matInput>
+                                    <input [formControl]="childageInMonths" type="number" max="12" min="0" matInput>
                                 </mat-form-field>
                                 <h5 class="age-under-input">{{this.culture === 'Hebrew' ? 'חודשים' : this.dataService.json_data.start.insert_age_months}}</h5>
                             </div>
@@ -91,13 +89,13 @@
                     </td>
                 </tr>
             </table>
-            <button mat-raised-button color="primary" (click)="start()">{{this.culture === 'Hebrew' ? 'היכנסו למשחק' :
+            <button mat-raised-button color="primary" class="enter-game-button" (click)="start()">{{this.culture === 'Hebrew' ? 'היכנסו למשחק' :
                 this.dataService.json_data.start.enter_game}}</button>
             <p *ngIf="invalidSchoolIDFlag" style="color:red; font-weight: bold;">
-                {{this.culture === 'Hebrew' ? 'מספר הקבוצה אינו מתאים' :  this.dataService.json_data.start.error_group_number}}
+                {{this.culture === 'Hebrew' ? 'נא בחר/י קבוצה' :  this.dataService.json_data.start.error_group_number}}
             </p>
 
-            <p *ngIf="withThreeInputsFlag && invalidChildAgeFlag" style="color:red; font-weight: bold;">
+            <p *ngIf="(!invalidChildIDFlag || this.withThreeInputsFlag) && invalidChildAgeFlag" style="color:red; font-weight: bold;">
                 {{this.culture === 'Hebrew' ? 'נא להכניס גיל הילד/ה המתאים במספרים' : this.dataService.json_data.start.please_insert_age}}
             </p>
 

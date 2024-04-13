@@ -3,11 +3,11 @@
 		"title_start": "Entrance",
 		"the_group": "Group",
 		"write_group_number": "Enter the number of group according to your religion:",
-		"jewish":"1- Judaism",
-		"islam": "2- Islam",
-		"christ": "3- Christianity",
-		"drozi": "4- Druze",
-		"other": "5- Other",
+		"jewish": "Judaism",
+		"islam": "Islam",
+		"christ": "Christianity",
+		"drozi": "Druze",
+		"other": "Other",
 		"boy": "Male",
 		"participant_number": "Number of the participant", 
 		"insert_age": "Please enter your child age",
@@ -16,9 +16,9 @@
 		"boy_or_girl": "Male or Female ?",
 		"enter_game": "Entrance to the Value Application",
 		
-		"error_group_number": "Wrong number of group",
+		"error_group_number": "Please select a group",
 		"please_insert_age": "Please enter your child age in numbers",
-		"please_insert_child_num": "Please enter your child number in munbers"
+		"please_insert_child_num": "Please enter your child number in numbers"
 	},
 	
 	"Attention": {
