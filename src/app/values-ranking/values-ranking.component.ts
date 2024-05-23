@@ -33,6 +33,7 @@ export class ValuesRankingComponent implements OnInit {
   scene = 0;
   creds: Credentials;
   isLandscape: boolean = false;
+  labsWithNoDetailsPage = ['EllaDaniel'];
 
   constructor(
     public dataService: DataService,
@@ -211,10 +212,18 @@ export class ValuesRankingComponent implements OnInit {
       if(creds.applanguages1 == "Arabic"){
         this.scene = 12;
       }else{
-        this.scene = 11;
+        this.nextToDetailsPage();
       }
     } else {
       this.scene = 1;
+    }
+  }
+
+  nextToDetailsPage(){
+    if (this.labsWithNoDetailsPage.includes(this.dataService.lab)){
+      this.scene = 1;
+    } else {
+      this.scene = 11;
     }
   }
 
@@ -246,8 +255,7 @@ export class ValuesRankingComponent implements OnInit {
 
   scene12(creds: Credentials){
     this.dataService.applanguages2 = creds.applanguages2;
-    this.scene = 11;
- 
+    this.nextToDetailsPage();
   }
   scene13(creds: Credentials){
     this.dataService.attention3 = creds.attention3;
