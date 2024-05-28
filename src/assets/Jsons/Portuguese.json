@@ -1,0 +1,290 @@
+{
+	"start" : {
+		"title_start": "Entrada",
+		"the_group": "Grupo",
+		"write_group_number": "Digite o número do grupo de acordo com sua religião:",
+		"jewish": "Judeu",
+		"islam": "Muçulmano",
+		"christ": "Cristão",
+		"drozi": "Religiões de Matriz Africana",
+		"other": "outro",
+		"boy": "Masculino",
+		"participant_number": "Número do participante", 
+		"insert_age": "Por favor entre a idade da criança",
+		"insert_age_years": "anos",
+		"insert_age_months": "meses",
+		"boy_or_girl": "Masculino ou Feminino?",
+		"enter_game": "Entrada na Aplicação do Questionário de Valor",
+		
+		"error_group_number": "Número errado do grupo",
+		"please_insert_age": "Por favor insira a idade da criança em números",
+		"please_insert_child_num": "Por favor, insira o número da criança em números"
+	},
+	
+	"Attention": {
+		"egges_q": "Quantos ovos têm na gravura?",
+		"ducks_q": "Quantos patos estão na água?",
+		"bees_q": "Quantas abelhas estão na gravura?",
+		"select_dropdown": "selecione",
+		"error_select": "Por favor, responda à questão",
+		"continue":"Concordo"	
+	},
+	
+	"pyramid": {
+		"important": "Mais importante",
+		"not_important": "Nada importante",
+		"go_back":"Voltar"
+		
+	},
+	
+	"M": {
+		"opening_stages": [
+			{
+				"subtitle": "Estamos embarcando em uma jornada de fantasia.<br>Trata-se do que é importante em sua vida<br>Trata-se de quais objetivos você tem para sua vida; é onde você quer estar na vida."
+			},
+			{
+				"imgLink": "../../assets/values-ranking/values_img/kid.png",
+				"subtitle": "Imagine que essa pessoa com o chapéu listrado e camisa cinza é você!"
+			},
+			{
+				"subtitle": "Pode ser difícil para você imaginar."
+			},
+			{
+				"subtitle": "Você pode nem ter uma boina ou camisa cinza, como da gravura..."
+			},
+			{
+				"subtitle": "Mas isso não importa."
+			},
+			{
+				"subtitle": "Imagine que este é você."	
+			},
+			{
+				"subtitle": "Agora pense em você!"
+			},
+			{
+				"subtitle": "Imagine como você gostaria de ser no futuro."
+			},
+			{
+				"subtitle": "Quais objetivos você deseja alcançar?"	
+			},
+			{
+				"subtitle": "Veremos muitas gravuras juntos e você pode querer ficar igual ao seu cabelo."		
+			},
+			{
+				"subtitle": "Veja as gravuras."
+			},
+			{
+				"subtitle": "Talvez você veja o garoto que queria ser."
+			},
+			{
+				"subtitle": "Vamos analisá-los um por um."
+			},
+			{
+				"subtitle": "E você já pode começar a pensar no que é mais importante para você na vida e no que é menos importante."			
+			}
+		],
+		
+		"continue_butt": "Continua",
+		
+		"opening2_stages": [
+			{
+				"subtitle": "Muito bem! Agora vamos jogar novamente com imagens diferentes. Iremos examiná-las uma por uma."
+			},
+			{
+				"subtitle": "Imagine novamente que você é essa pessoa de camisa cinza.",
+				"imgLink": "../../assets/values-ranking/values_img/kid.png"
+			},
+			{
+				"subtitle": "E que é você quem está fazendo todas essas coisas."
+			}
+		],
+		
+		"pbvs": [
+			{
+				"text": "Ser rico e poderoso"
+			},
+			{
+				"text": "Ser o melhor"
+			},
+			{
+				"text": "Aproveitar a vida"
+			},
+			{
+				"text": "Fazer coisas emocionantes"
+			},
+			{
+				"text": "Descobrir coisas novas"
+			},
+			{
+				"text": "Estar seguro"	
+			},
+			{
+				"text": "Seguir as regras"
+			},
+			{
+				"text": "Pensar em Deus"
+			},
+			{
+				"text": "Ajudar os outros"	
+			},
+			{
+				"text": "Fazer novos amigos"		
+			},
+			{
+				"text": "Ser o líder"
+			},
+			{
+				"text": "Mostrar o que posso fazer"
+			},
+			{
+				"text": "Se divertir"
+			},
+			{
+				"text": "Experimentar novas aventuras"			
+			},
+			{
+				"text": "Ter imaginação"			
+			},
+			{
+				"text": "Ser protegido por outros"			
+			},
+			{
+				"text": "Ser como todo mundo"			
+			},
+			{
+				"text": "Aprender com as coisas passadas"			
+			},
+			{
+				"text": "Fazer os outros felizes"			
+			},
+			{
+				"text": "Cuidar da natureza"			
+			}
+		]
+	},
+	"F": {
+		"opening_stages": [
+			{
+				"subtitle": "Estamos embarcando em uma jornada de fantasia.<br>Trata-se do que é importante em sua vida<br>Trata-se de quais objetivos você tem para sua vida; é onde você quer estar na vida."
+			},
+			{
+				"imgLink": "../../assets/values-ranking/values_img/kid.png",
+				"subtitle": "Imagine que essa pessoa com o chapéu listrado e camisa cinza é você!"
+			},
+			{
+				"subtitle": "Pode ser difícil para você imaginar."
+			},
+			{
+				"subtitle": "Você pode nem ter uma boina ou camisa cinza, como da gravura..."
+			},
+			{
+				"subtitle": "Mas isso não importa."
+			},
+			{
+				"subtitle": "Imagine que este é você."	
+			},
+			{
+				"subtitle": "Agora pense em você!"
+			},
+			{
+				"subtitle": "Imagine como você gostaria de ser no futuro."
+			},
+			{
+				"subtitle": "Quais objetivos você deseja alcançar?"	
+			},
+			{
+				"subtitle": "Veremos muitas gravuras juntos e você pode querer ficar igual ao seu cabelo."		
+			},
+			{
+				"subtitle": "Veja as gravuras."
+			},
+			{
+				"subtitle": "Talvez você veja o garoto que queria ser."
+			},
+			{
+				"subtitle": "Vamos analisá-los um por um."
+			},
+			{
+				"subtitle": "E você já pode começar a pensar no que é mais importante para você na vida e no que é menos importante."			
+			}
+		],
+		
+		"continue_butt": "Continua",
+		
+		"opening2_stages": [
+			{
+				"subtitle": "Muito bem! Agora vamos jogar novamente com imagens diferentes. Iremos examiná-las uma por uma."
+			},
+			{
+				"subtitle": "Imagine novamente que você é essa pessoa de camisa cinza.",
+				"imgLink": "../../assets/values-ranking/values_img/kid.png"
+			},
+			{
+				"subtitle": "E que é você quem está fazendo todas essas coisas."
+			}
+		],
+		
+		"pbvs": [
+			{
+				"text": "Ser rica e poderosa"
+			},
+			{
+				"text": "Ser a melhor"
+			},
+			{
+				"text": "Aproveitar a vida"
+			},
+			{
+				"text": "Fazer coisas emocionantes"
+			},
+			{
+				"text": "Descobrir coisas novas"
+			},
+			{
+				"text": "Estar segura"	
+			},
+			{
+				"text": "Seguir as regras"
+			},
+			{
+				"text": "Pensar em Deus"
+			},
+			{
+				"text": "Ajudar os outros"	
+			},
+			{
+				"text": "Fazer novos amigos"		
+			},
+			{
+				"text": "Ser a líder"
+			},
+			{
+				"text": "Mostrar o que posso fazer"
+			},
+			{
+				"text": "Se divertir"
+			},
+			{
+				"text": "Experimentar novas aventuras"			
+			},
+			{
+				"text": "Ter imaginação"			
+			},
+			{
+				"text": "Ser protegida por outros"			
+			},
+			{
+				"text": "Ser como todo mundo"			
+			},
+			{
+				"text": "Aprender com as coisas passadas"			
+			},
+			{
+				"text": "Fazer os outros felizes"			
+			},
+			{
+				"text": "Cuidar da natureza"			
+			}
+		]
+	}
+}

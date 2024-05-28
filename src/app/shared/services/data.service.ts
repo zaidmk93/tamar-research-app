@@ -1,6 +1,7 @@
 import * as Arabic from '../../../assets/Jsons/Arabic.json';
 import * as English from '../../../assets/Jsons/English.json';
 import * as Estonian from '../../../assets/Jsons/Estonian.json';
+import * as Portuguese from '../../../assets/Jsons/Portuguese.json';
 
 export class BasicData {
   dataId:string = "-1";
@@ -243,6 +244,10 @@ export class DataService extends BasicData {
       }
       case "Estonian": {
         this.json_data = Estonian['default'];
+        break;
+      }
+      case "Portuguese": {
+        this.json_data = Portuguese['default'];
         break;
       }
     }
