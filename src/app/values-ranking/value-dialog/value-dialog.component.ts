@@ -25,7 +25,8 @@ export class ValueDialogComponent implements OnInit {
     hasBackdrop: true,
     backdropClass: '',
   };
-  @Output() clicked: EventEmitter<Pbvs> = new EventEmitter();
+  @Output() confirmClicked: EventEmitter<Pbvs> = new EventEmitter();
+  @Output() cancelClicked: EventEmitter<Pbvs> = new EventEmitter();
   value: Pbvs;
   $audio: Subscription;
 
@@ -69,13 +70,13 @@ export class ValueDialogComponent implements OnInit {
   }
 
   confirm() {
-    this.clicked.emit(this.value);
+    this.confirmClicked.emit(this.value);
     this.$audio.unsubscribe();
     this.close();
   }
 
   cancel() {
-    this.clicked.emit(null);
+    this.cancelClicked.emit(this.value);
     this.$audio.unsubscribe();
     this.close();
   }

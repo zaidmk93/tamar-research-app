@@ -3,6 +3,7 @@ import * as English from '../../../assets/Jsons/English.json';
 import * as Estonian from '../../../assets/Jsons/Estonian.json';
 import * as Portuguese from '../../../assets/Jsons/Portuguese.json';
 
+
 export class BasicData {
   dataId:string = "-1";
   is_done: boolean = false;
@@ -35,6 +36,10 @@ export class BasicData {
   attention3:string = '0';
   gender: 'M' | 'F' = 'M';
   culture: 'Hebrew' | 'Arabic';
+  firstPyramidStartTime: number = 0;
+  secondPyramidStartTime: number = 0;
+  TimeTakenToCompleteFirstPyramid: String = '';
+  TimeTakenToCompleteSecondPyramid: String = '';
 
   json_data;
 
@@ -45,8 +50,10 @@ export class BasicData {
     audioLink: '',
     rank: 0,
     isStock: true,
-    
-  };
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
 
 
   pbvs2: Pbvs = {
@@ -56,7 +63,10 @@ export class BasicData {
     audioLink: 'val2.mp3',
     rank: 0,
     isStock: true,
-  };
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
   pbvs3: Pbvs = {
     valNum: 6,
     text: 'להנות מהחיים',
@@ -64,7 +74,10 @@ export class BasicData {
     audioLink: 'val6.mp3',
     rank: 0,
     isStock: true,
-  };
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
   pbvs4: Pbvs = {
     valNum: 7,
     text: 'לעשות דברים מרגשים',
@@ -72,7 +85,10 @@ export class BasicData {
     audioLink: 'val7.mp3',
     rank: 0,
     isStock: true,
-  };
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
   pbvs5: Pbvs = {
     valNum: 8,
     text: 'לגלות לבד דברים חדשים',
@@ -80,7 +96,10 @@ export class BasicData {
     audioLink: 'val8.mp3',
     rank: 0,
     isStock: true,
-  };
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
   pbvs6: Pbvs = {
     valNum: 1,
     text: 'לשמור על הבטיחות ',
@@ -88,7 +107,10 @@ export class BasicData {
     audioLink: 'val1.mp3',
     rank: 0,
     isStock: true,
-  };
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
   pbvs7: Pbvs = {
     valNum: 0,
     text: 'לשמור על הכללים',
@@ -96,7 +118,10 @@ export class BasicData {
     audioLink: 'val0.mp3',
     rank: 0,
     isStock: true,
-  };
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
   pbvs8: Pbvs = {
     valNum: 4,
     text: 'להתפלל לאלוהים',
@@ -104,6 +129,10 @@ export class BasicData {
     audioLink: 'val4.mp3',
     rank: 0,
     isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
   };
   pbvs9: Pbvs = {
     valNum: 5,
@@ -112,7 +141,10 @@ export class BasicData {
     audioLink: 'val5.mp3',
     rank: 0,
     isStock: true,
-  };
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
   pbvs10: Pbvs = {
     valNum: 9,
     text: 'להיות חבר של ילדים מכל הסוגים',
@@ -120,6 +152,10 @@ export class BasicData {
     audioLink: 'val9.mp3',
     rank: 0,
     isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
   };
   pbvs11: Pbvs = {
     valNum: 12,
@@ -128,6 +164,10 @@ export class BasicData {
     audioLink: '',
     rank: 0,
     isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
   };
   pbvs12: Pbvs = {
     valNum: 10,
@@ -136,6 +176,10 @@ export class BasicData {
     audioLink: '',
     rank: 0,
     isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
   };
   pbvs13: Pbvs = {
     valNum: 11,
@@ -144,6 +188,10 @@ export class BasicData {
     audioLink: 'val11.mp3',
     rank: 0,
     isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
   };
   pbvs14: Pbvs = {
     valNum: 13,
@@ -152,6 +200,10 @@ export class BasicData {
     audioLink: 'val13.mp3',
     rank: 0,
     isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
   };
   pbvs15: Pbvs = {
     valNum: 14,
@@ -160,6 +212,10 @@ export class BasicData {
     audioLink: 'val14.mp3',
     rank: 0,
     isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
   };
   pbvs16: Pbvs = {
     valNum: 18,
@@ -168,6 +224,10 @@ export class BasicData {
     audioLink: '',
     rank: 0,
     isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
   };
   pbvs17: Pbvs = {
     valNum: 15,
@@ -176,6 +236,10 @@ export class BasicData {
     audioLink: 'val15.mp3',
     rank: 0,
     isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
   };
   pbvs18: Pbvs = {
     valNum: 19,
@@ -184,6 +248,10 @@ export class BasicData {
     audioLink: 'val19.mp3',
     rank: 0,
     isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
   };
   pbvs19: Pbvs = {
     valNum: 16,
@@ -192,6 +260,10 @@ export class BasicData {
     audioLink: 'val16.mp3',
     rank: 0,
     isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
   };
   pbvs20: Pbvs = {
     valNum: 17,
@@ -200,6 +272,10 @@ export class BasicData {
     audioLink: 'val17.mp3',
     rank: 0,
     isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
   };
 
   currentStage: number = 0;
@@ -288,6 +364,10 @@ export class DataService extends BasicData {
   }
 }
 
+export interface ValueChoosingAnalytics {
+  last_selected_time: number;
+  levels_moved: String;
+}
 export interface Pbvs {
   valNum: number;
   text: string;
@@ -295,6 +375,7 @@ export interface Pbvs {
   audioLink: string;
   rank: number;
   isStock: boolean;
+  analytics: ValueChoosingAnalytics
 }
 
 export class DemographicData{

@@ -161,6 +161,7 @@ export class RankSet2Component implements OnInit, AfterViewInit, OnDestroy {
 
   valueClick(val: Pbvs) {
     if (!this.calculating) {
+      val.analytics.last_selected_time = new Date().getTime();
       clearTimeout(this.idleTimer);
       this.unsubscribe(this.playerSubscription$);
       this.valueDialog.open(val);
@@ -173,6 +174,7 @@ export class RankSet2Component implements OnInit, AfterViewInit, OnDestroy {
     val.isStock = false;
     this.orderedValues[this.valuesStages[this.stage - 2]] = val;
     val.rank = this.getRank(this.valuesStages[this.stage - 2]);
+    this.calculateReactionTime(val, 'Confirmed');
     this.playSound();
     if (this.stage >= 7) {
       const subscription = this.audioService.getPlayerStatus();
@@ -199,6 +201,21 @@ export class RankSet2Component implements OnInit, AfterViewInit, OnDestroy {
     } else {
       this.calculating = false;
     }
+  }
+
+  calculateReactionTime(val: Pbvs, reactionValue){
+    const rankWithRTime = val.rank.toString() + ' (' + (((new Date().getTime()) - (val.analytics.last_selected_time)) / 1000).toString() + ' , ' + reactionValue + ')';
+    if (val.analytics.levels_moved == null)
+      val.analytics.levels_moved = rankWithRTime;
+    else 
+    val.analytics.levels_moved = val.analytics.levels_moved + ',' + rankWithRTime;
+  }
+
+  valueCancelled(val: Pbvs){
+    val.rank = this.getRank(this.valuesStages[this.stage + 1 - 2]);
+    this.calculateReactionTime(val,'cancelled')
+    val.rank = 0;
+    this.playSound()
   }
 
   playSound() {
@@ -288,6 +305,8 @@ export class RankSet2Component implements OnInit, AfterViewInit, OnDestroy {
       case 1: {
         this.title = titles(1);
         this.audioService.setAudio(createSoundLink(1));
+        if (this.dataService.secondPyramidStartTime == 0)
+          this.dataService.secondPyramidStartTime = new Date().getTime();
         this.calculating = false;
         this.playerSubscription$ = this.audioService
           .getPlayerStatus()
@@ -465,6 +484,8 @@ export class RankSet2Component implements OnInit, AfterViewInit, OnDestroy {
   }
 
   nextScene() {
+    if (this.dataService.secondPyramidStartTime > 0)
+      this.dataService.TimeTakenToCompleteSecondPyramid = (((new Date().getTime()) - this.dataService.secondPyramidStartTime) / 1000).toString();
     var dt2 : number = Date.now();
     var diffMins = (dt2 - this.dt1);
     this.gotRanking.emit(true);

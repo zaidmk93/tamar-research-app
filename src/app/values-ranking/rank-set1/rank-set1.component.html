@@ -1,5 +1,5 @@
 <div class="containter" *ngIf="stage<=11">
-    <app-value-dialog #valueDialog (clicked)="$event == null ? playSound() : valueConfirmed($event)"></app-value-dialog>
+    <app-value-dialog #valueDialog (cancelClicked)="valueCancelled($event)" (confirmClicked)="valueConfirmed($event)"></app-value-dialog>
     <app-pyramid-view #pyramidView [setValues]="orderedValues" [culture]="culture"
         (clicked)="$event ? nextScene() : stepback()"></app-pyramid-view>
     <div class="values-container">

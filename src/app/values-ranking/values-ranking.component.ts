@@ -363,6 +363,25 @@ export class ValuesRankingComponent implements OnInit {
       attention3 : this.dataService.attention3,
       user_ip : this.dataService.userip,
       last_update_time: new Date().toISOString(),
+      TimeTakenToCompleteFirstPyramid: this.dataService.TimeTakenToCompleteFirstPyramid,
+      TimeTakenToCompleteSecondPyramid: this.dataService.TimeTakenToCompleteSecondPyramid,
+      rich_strong_1_levels_move: this.dataService.pbvs1.analytics.levels_moved,
+      succeed_more_2_levels_move: this.dataService.pbvs2.analytics.levels_moved,
+      enjoy_life_3_levels_move: this.dataService.pbvs3.analytics.levels_moved,
+      exciting_things_4_levels_move: this.dataService.pbvs4.analytics.levels_moved,
+      learn_new_5_levels_move: this.dataService.pbvs5.analytics.levels_moved,
+      care_for_myself_6_levels_move: this.dataService.pbvs6.analytics.levels_moved,
+      keep_rules_7_levels_move: this.dataService.pbvs7.analytics.levels_moved,
+      pray_god_8_levels_move: this.dataService.pbvs8.analytics.levels_moved,
+      help_others_9_levels_move: this.dataService.pbvs9.analytics.levels_moved,
+      be_friend_10_levels_move: this.dataService.pbvs10.analytics.levels_moved,
+      be_leader_11_levels_move: this.dataService.pbvs11.analytics.levels_moved,
+      show_everyone_12_levels_move: this.dataService.pbvs12.analytics.levels_moved,
+      have_fun_13_levels_move: this.dataService.pbvs13.analytics.levels_moved,
+      adventures_14_levels_move: this.dataService.pbvs14.analytics.levels_moved,
+      imagine_15_levels_move: this.dataService.pbvs15.analytics.levels_moved,
+      be_protected_16_levels_move: this.dataService.pbvs16.analytics.levels_moved,
+      like_everyone_17_levels_move: this.dataService.pbvs17.analytics.levels_moved,
     };
   }
 
@@ -454,7 +473,27 @@ export class ValuesRankingComponent implements OnInit {
     childageInMonths: ${this.finalData.childageInMonths},
     IP: "${this.finalData.user_ip}"
     is_done: "${this.finalData.is_done}"
-    last_update_time: "${this.finalData.last_update_time}"`;
+    last_update_time: "${this.finalData.last_update_time}"
+    RT_FirstPyramid: "${this.finalData.TimeTakenToCompleteFirstPyramid}"
+    RT_SecondPyramid: "${this.finalData.TimeTakenToCompleteSecondPyramid}"
+    rich_strong_1_levels_move: "${this.finalData.rich_strong_1_levels_move}"
+    succeed_more_2_levels_move: "${this.finalData.succeed_more_2_levels_move}"
+    enjoy_life_3_levels_move: "${this.finalData.enjoy_life_3_levels_move}"
+    exciting_things_4_levels_move: "${this.finalData.exciting_things_4_levels_move}"
+    learn_new_5_levels_move: "${this.finalData.learn_new_5_levels_move}"
+    care_for_myself_6_levels_move: "${this.finalData.care_for_myself_6_levels_move}"
+    keep_rules_7_levels_move: "${this.finalData.keep_rules_7_levels_move}"
+    pray_god_8_levels_move: "${this.finalData.pray_god_8_levels_move}"
+    help_others_9_levels_move: "${this.finalData.help_others_9_levels_move}"
+    be_friend_10_levels_move: "${this.finalData.be_friend_10_levels_move}"
+    be_leader_11_levels_move: "${this.finalData.be_leader_11_levels_move}"
+    show_everyone_12_levels_move: "${this.finalData.show_everyone_12_levels_move}"
+    have_fun_13_levels_move: "${this.finalData.have_fun_13_levels_move}"
+    adventures_14_levels_move: "${this.finalData.adventures_14_levels_move}"
+    imagine_15_levels_move: "${this.finalData.imagine_15_levels_move}"
+    be_protected_16_levels_move: "${this.finalData.be_protected_16_levels_move}"
+    like_everyone_17_levels_move: "${this.finalData.like_everyone_17_levels_move}"
+    `;
   }
   
   

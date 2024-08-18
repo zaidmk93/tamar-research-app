@@ -169,6 +169,8 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
 
   valueClick(val: Pbvs) {
     if (!this.calculating) {
+      val.analytics.last_selected_time = new Date().getTime();
+
       clearTimeout(this.idleTimer);
       this.unsubscribe(this.playerSubscription$);
       this.valueDialog.open(val);
@@ -181,7 +183,7 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
     val.isStock = false;
     this.orderedValues[this.valuesStages[this.stage - 2]] = val;
     val.rank = this.getRank(this.valuesStages[this.stage - 2]);
-
+    this.calculateReactionTime(val, 'Confirmed');
     this.nextStage();
     const subscription = this.audioService.getPlayerStatus();
     if (this.stage >= 7) {
@@ -216,6 +218,21 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
         });
       }
     }
+  }
+
+  calculateReactionTime(val: Pbvs, reactionValue){
+    const rankWithRTime = val.rank.toString() + ' (' + (((new Date().getTime()) - (val.analytics.last_selected_time)) / 1000).toString() + ' , ' + reactionValue + ')';
+    if (val.analytics.levels_moved == null)
+      val.analytics.levels_moved = rankWithRTime;
+    else 
+    val.analytics.levels_moved = val.analytics.levels_moved + ',' + rankWithRTime;
+  }
+
+  valueCancelled(val: Pbvs){
+    val.rank = this.getRank(this.valuesStages[this.stage + 1 - 2]);
+    this.calculateReactionTime(val,'cancelled')
+    val.rank = 0;
+    this.playSound()
   }
 
   playSound() {
@@ -308,6 +325,8 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
             clearTimeout(this.idleTimer);
             if (res === 'ended') {
               this.calculating = false;
+              if (this.dataService.firstPyramidStartTime == 0)
+                this.dataService.firstPyramidStartTime = new Date().getTime();
               this.playerSubscription$.unsubscribe();
               this.idleTimer = setTimeout(() => {
                 if (this.stage === 1) {
@@ -480,6 +499,8 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
   }
 
   nextScene() {
+    if (this.dataService.firstPyramidStartTime > 0)
+      this.dataService.TimeTakenToCompleteFirstPyramid = (((new Date().getTime()) - this.dataService.firstPyramidStartTime) / 1000).toString();
     var dt2 : number = Date.now();
     var diffMins = (dt2 - this.dt1);
     this.gotRanking.emit(true);
