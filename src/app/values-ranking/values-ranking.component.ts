@@ -296,7 +296,7 @@ export class ValuesRankingComponent implements OnInit {
 
     this.http
       .get<any>(
-        `https://research.hasura.app/api/rest/user-data-by-ip/${this.dataService.userip}`,
+        `https://research.hasura.app/api/rest/Tamar-user-data-by-ip/${this.dataService.userip}`,
         {
           headers,
         }
@@ -409,7 +409,7 @@ export class ValuesRankingComponent implements OnInit {
     this.fetchData();
     const reqBody = {
       query: `mutation updateData {
-        update_research_by_pk(pk_columns: {id: "${this.finalData.dataId}"},
+        update_tamar_research_by_pk(pk_columns: {id: "${this.finalData.dataId}"},
           _set: {
             ${this.dataString()}
           }) {
@@ -432,9 +432,9 @@ export class ValuesRankingComponent implements OnInit {
       )
       .subscribe({
         next: (data) => {
-          if (!!data.data?.update_research_by_pk) {
+          if (!!data.data?.update_tamar_research_by_pk) {
             this.dataService.dataSavedFlag = true;
-            const res = data.data.update_research_by_pk;
+            const res = data.data.update_tamar_research_by_pk;
             console.log(`Input saved under ID ${res.id} on ${res.init_time}`);
             this.dataService.dataId = res.id || "-1";
             this.cacheService.save({
@@ -510,9 +510,9 @@ export class ValuesRankingComponent implements OnInit {
     imagine_15_levels_move: "${this.finalData.imagine_15_levels_move}"
     be_protected_16_levels_move: "${this.finalData.be_protected_16_levels_move}"
     like_everyone_17_levels_move: "${this.finalData.like_everyone_17_levels_move}"
-    appeared_pyramid: "${this.finalData.appearedpyramid}"
-    prize_donated: "${this.finalData.prizeDonated}"
-    snake_score: "${this.finalData.snakeScore}"
+    appeared_pyramid: "${this.finalData.appeared_pyramid}"
+    prize_donated: "${this.finalData.prize_donated}"
+    snake_score: "${this.finalData.snake_score}"
     `;
   }
   
@@ -520,7 +520,7 @@ export class ValuesRankingComponent implements OnInit {
   calculateData() {
     const reqBody = {
       query: `mutation insertData {
-        insert_research_one(
+        insert_tamar_research_one(
           object: {
             ${this.dataString()}
           }
@@ -544,9 +544,9 @@ export class ValuesRankingComponent implements OnInit {
       )
       .subscribe({
         next: (data) => {
-          if (!!data.data?.insert_research_one) {
+          if (!!data.data?.insert_tamar_research_one) {
             this.dataService.dataSavedFlag = true;
-            const res = data.data.insert_research_one;
+            const res = data.data.insert_tamar_research_one;
             console.log(`Input saved under ID ${res.id} on ${res.init_time}`);
             this.dataService.dataId = res.id || "-1";
             this.cacheService.save({
@@ -595,7 +595,7 @@ export class ValuesRankingComponent implements OnInit {
     };
     const reqBody = {
       query: `mutation insertData {
-        insert_research_one(
+        insert_tamar_research_one(
           object: {
             lab : ${finalData.lab},
             applanguages1 : ${finalData.applanguages1},
@@ -638,9 +638,9 @@ export class ValuesRankingComponent implements OnInit {
       )
       .subscribe({
         next: (data) => {
-          if (!!data.data?.insert_research_one) {
+          if (!!data.data?.insert_tamar_research_one) {
             this.dataService.dataSavedFlag = true;
-            const res = data.data.insert_research_one;
+            const res = data.data.insert_tamar_research_one;
             console.log(`Input saved under ID ${res.id} on ${res.init_time}`);
           } else {
             console.error('Error saving task data!');
