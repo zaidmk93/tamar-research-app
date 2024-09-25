@@ -40,33 +40,40 @@ export class BasicData {
   secondPyramidStartTime: number = 0;
   TimeTakenToCompleteFirstPyramid: String = '';
   TimeTakenToCompleteSecondPyramid: String = '';
-
+  appearedpyramid: String = '';
+  prizeDonated: string = '';
+  snakeScore: string = '';
+  
   json_data;
 
-  pbvs1: Pbvs = {
-    valNum: 3,
-    text: '',
-    imgLink: 'val3.png',
-    audioLink: '',
+  
+  
+  pbvs1: Pbvs = {  // instead pbvs19
+    valNum: 16,
+    text: 'לשמח אחרים',
+    imgLink: 'val16.png',
+    audioLink: 'val16.mp3',
     rank: 0,
     isStock: true,
     analytics: {
       last_selected_time: null,
       levels_moved: null
-    }  };
+    }
+  };
 
-
-  pbvs2: Pbvs = {
-    valNum: 2,
-    text: 'להצליח יותר מאחרים',
-    imgLink: 'val2.png',
-    audioLink: 'val2.mp3',
+  pbvs2: Pbvs = {  // instead pbvs20
+    valNum: 17,
+    text: 'לשמור על הטבע',
+    imgLink: 'val17.png',
+    audioLink: 'val17.mp3',
     rank: 0,
     isStock: true,
     analytics: {
       last_selected_time: null,
       levels_moved: null
-    }  };
+    }
+  };
+  
   pbvs3: Pbvs = {
     valNum: 6,
     text: 'להנות מהחיים',
@@ -159,7 +166,7 @@ export class BasicData {
   };
   pbvs11: Pbvs = {
     valNum: 12,
-    text: '',
+    text: '',             // changing for girl or boy in the next code pbvs11
     imgLink: 'val12.png',
     audioLink: '',
     rank: 0,
@@ -171,7 +178,7 @@ export class BasicData {
   };
   pbvs12: Pbvs = {
     valNum: 10,
-    text: '',
+    text: '',             // changing for girl or boy in the next code pbvs12
     imgLink: 'val10.png',
     audioLink: '',
     rank: 0,
@@ -219,7 +226,7 @@ export class BasicData {
   };
   pbvs16: Pbvs = {
     valNum: 18,
-    text: '',
+    text: '',             // changing for girl or boy in the next code pbvs16
     imgLink: 'val18.png',
     audioLink: '',
     rank: 0,
@@ -253,30 +260,30 @@ export class BasicData {
       levels_moved: null
     }
   };
-  pbvs19: Pbvs = {
-    valNum: 16,
-    text: 'לשמח אחרים',
-    imgLink: 'val16.png',
-    audioLink: 'val16.mp3',
+  pbvs19: Pbvs = { // instead pbvs1
+    valNum: 3,
+    text: 'להיות עשיר וחזק', // if for girl, there is a code that changing it
+    imgLink: 'val3.png',
+    audioLink: '',
     rank: 0,
     isStock: true,
     analytics: {
       last_selected_time: null,
       levels_moved: null
-    }
-  };
-  pbvs20: Pbvs = {
-    valNum: 17,
-    text: 'לשמור על הטבע',
-    imgLink: 'val17.png',
-    audioLink: 'val17.mp3',
+    }  };
+
+    
+  pbvs20: Pbvs = { // instead pbvs2
+    valNum: 2,
+    text: 'להצליח יותר מאחרים',
+    imgLink: 'val2.png',
+    audioLink: 'val2.mp3',
     rank: 0,
     isStock: true,
     analytics: {
       last_selected_time: null,
       levels_moved: null
-    }
-  };
+    }  };
 
   currentStage: number = 0;
   currentScene: number = 0;
@@ -288,8 +295,8 @@ export class BasicData {
 export class DataService extends BasicData {
   setGender(gender: 'M' | 'F') {
     this.gender = gender;
-    this.pbvs1.text = gender === 'M' ? 'להיות עשיר וחזק' : 'להיות עשירה וחזקה';
-    this.pbvs1.audioLink = `val3-${gender}.mp3`;
+    this.pbvs19.text = gender === 'M' ? 'להיות עשיר וחזק' : 'להיות עשירה וחזקה';
+    this.pbvs19.audioLink = `val3-${gender}.mp3`;
     this.pbvs10.text =
       gender === 'M'
         ? 'להיות חבר של ילדים מכל הסוגים'
@@ -340,8 +347,8 @@ export class DataService extends BasicData {
       for(let i=0; i<= 19; i++){
         this['pbvs' + (i+1)].text = this.json_data[this.gender].pbvs[i].text;
       }
-      this.pbvs1.audioLink = `${this.gender}/15.mp3`;
-      this.pbvs2.audioLink = `${this.gender}/16.mp3`;
+      this.pbvs19.audioLink = `${this.gender}/15.mp3`;
+      this.pbvs20.audioLink = `${this.gender}/16.mp3`;
       this.pbvs3.audioLink = `${this.gender}/17.mp3`;
       this.pbvs4.audioLink = `${this.gender}/18.mp3`;
       this.pbvs5.audioLink = `${this.gender}/19.mp3`;
@@ -358,8 +365,8 @@ export class DataService extends BasicData {
       this.pbvs16.audioLink = `${this.gender}/39.mp3`;
       this.pbvs17.audioLink = `${this.gender}/40.mp3`;
       this.pbvs18.audioLink = `${this.gender}/41.mp3`;
-      this.pbvs19.audioLink = `${this.gender}/42.mp3`;
-      this.pbvs20.audioLink = `${this.gender}/43.mp3`;
+      this.pbvs1.audioLink = `${this.gender}/42.mp3`;
+      this.pbvs2.audioLink = `${this.gender}/43.mp3`;
     }
   }
 }

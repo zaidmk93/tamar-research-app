@@ -13,6 +13,7 @@ import { RankSet1Component } from './values-ranking/rank-set1/rank-set1.componen
 import { ValuesSet2Component } from './values-ranking/values-set2/values-set2.component';
 import { RankSet2Component } from './values-ranking/rank-set2/rank-set2.component';
 import { SummaryComponent } from './values-ranking/summary/summary.component';
+import { SnakeGameComponent } from './values-ranking/snake-game/snake_game.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ValueDialogComponent } from './values-ranking/value-dialog/value-dialog.component';
@@ -39,6 +40,7 @@ import { DataService } from './shared/services/data.service';
     ValuesSet2Component,
     RankSet2Component,
     SummaryComponent,
+    SnakeGameComponent,
     ValueDialogComponent,
     PyramidViewComponent,
     ConcentComponent,

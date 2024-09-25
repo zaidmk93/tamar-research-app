@@ -1,59 +1,23 @@
 <div class="container">
-    <div class="text-div" *ngIf="randomView">
-        <h1 style="text-align: center;">
-            {{culture === 'Hebrew' ? 'כלל לא חשוב' : this.dataService.json_data.pyramid.not_important}}
-        </h1>
-    </div>
-    <div class="values-div" *ngIf="randomView">
-        <mat-card class="sum-card">
-            <img class="sum-img" [src]="'../../assets/values-ranking/values_img/'+not2.imgLink">
-            <p>
-                {{not2.text}}
-            </p>
-        </mat-card>
-        <mat-card class="sum-card">
-            <img class="sum-img" [src]="'../../assets/values-ranking/values_img/'+not1.imgLink">
-            <p>
-                {{not1.text}}
-            </p>
-        </mat-card>
-    </div>
-    <div class="text-div">
-        <h1 style="text-align: center;">
-            {{culture === 'Hebrew' ? 'חשוב מאוד' : this.dataService.json_data.pyramid.important}}
-        </h1>
-    </div>
-    <div class="values-div">
-        <mat-card class="sum-card">
-            <img class="sum-img" [src]="'../../assets/values-ranking/values_img/'+very2.imgLink">
-            <p>
-                {{very2.text}}
-            </p>
-        </mat-card>
-        <mat-card class="sum-card">
-            <img class="sum-img" [src]="'../../assets/values-ranking/values_img/'+very1.imgLink">
-            <p>
-                {{very1.text}}
-            </p>
-        </mat-card>
-    </div>
-    <div class="text-div" *ngIf="!randomView">
-        <h1 style="text-align: center;">
-            {{culture === 'Hebrew' ? 'כלל לא חשוב' : this.dataService.json_data.pyramid.not_important}}
-        </h1>
-    </div>
-    <div class="values-div" *ngIf="!randomView">
-        <mat-card class="sum-card">
-            <img class="sum-img" [src]="'../../assets/values-ranking/values_img/'+not2.imgLink">
-            <p>
-                {{not2.text}}
-            </p>
-        </mat-card>
-        <mat-card class="sum-card">
-            <img class="sum-img" [src]="'../../assets/values-ranking/values_img/'+not1.imgLink">
-            <p>
-                {{not1.text}}
-            </p>
-        </mat-card>
-    </div>
+    <h1 *ngIf="submited">{{culture == 'Hebrew' ? '!תודה' : 'Thank You!'}}</h1>
+
+    <h1 *ngIf="!submited">{{culture == 'Hebrew' ? 'אנא סמני האם הילד' : 'Please select if the child'}}</h1>
+
+    <form *ngIf="!submited" (ngSubmit)="ending()">
+        <label>
+            <input type="radio" [(ngModel)]="selectedOption" name="prize" value="yes">{{culture == 'Hebrew' ? 'תרם את הפרס לילד אחר' : 'Donate the prize to another child'}}
+            <label for="yesChoice"></label>
+        </label>
+
+        <label>
+            <input type="radio" [(ngModel)]="selectedOption" name="prize" value="no">{{culture == 'Hebrew' ? 'לקח את הפרס לעצמו' : 'Took the prize for himself'}}
+        </label>
+
+        <button class="mat-raised-button" [disabled]="!selectedOption" class="nextButton" type="submit">{{culture == 'Hebrew' ? 'המשך' : 'Start'}}</button>
+    </form>
+
+    <!-- <div *ngIf="true" class="nextButton">
+        <button id="nextButton" (click)="ending()">{{culture == 'Hebrew' ? 'המשך' : 'Next'}}</button>
+    </div> -->
+</div>
     <!-- <button mat-raised-button color="primary" (click)="start()">{{culture == 'Hebrew' ? 'המשך' : 'موافق/ة'}} </button> -->

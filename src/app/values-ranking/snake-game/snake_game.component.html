@@ -1,0 +1,41 @@
+<div class="container">
+    <div *ngIf="!game_started">
+        <h1>{{culture == 'Hebrew' ? 'עכשיו נשחק במשחק' : 'Now lets play a game'}}</h1>
+        <h2>{{culture == 'Hebrew' ? '"כשאתה מוכן לחץ "המשך' : 'When you ready, press "Start"'}}</h2>
+
+        <button (click)="startGame()">{{culture == 'Hebrew' ? 'המשך' : 'Start'}}</button>
+    </div>
+    <div *ngIf="game_started" class="cells" [ngStyle]="ngStyleCells">
+        <div
+            class="cell"
+            [ngStyle]="ngStyleCell(idx)"
+            *ngFor="let cell of cells; let idx = index"
+        ></div>
+    </div>
+    
+    <div *ngIf="game_started">Length: {{ this.snake.tail.length + 1 }}</div>
+    <div *ngIf="game_started">
+    Time Played: {{ (this.time * this.timestep) / 1000 | number : '1.0-0' }} s
+    </div>
+    <!-- <div *ngIf="dead">
+    You died.
+    </div> -->
+
+    <div *ngIf="game_started && !dead" class="controls">
+        <div class="up-button">
+            <button id="upButton" (click)="moveUp()">Up</button>
+        </div>
+        <div class="bottom-buttons">
+            <button id="leftButton" (click)="moveLeft()">Left</button>
+            <button id="downButton" (click)="moveDown()">Down</button>
+            <button id="rightButton" (click)="moveRight()">Right</button>
+        </div>
+    </div>
+
+    <div *ngIf="game_started && dead" class="nextButton">
+        <button id="nextButton" (click)="gameEnded()">{{culture == 'Hebrew' ? 'המשך' : 'Next'}}</button>
+    </div>
+    
+    
+    <!-- <button mat-raised-button color="primary" (click)="start()">{{culture == 'Hebrew' ? 'המשך' : 'موافق/ة'}} </button> -->
+</div>

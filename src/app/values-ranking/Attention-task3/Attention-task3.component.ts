@@ -43,6 +43,9 @@ export class Attentiontask3Component implements OnInit {
        lab: '',
        applanguages1: '',
        applanguages2: '',
+       prizeDonated: '',
+       appearedpyramid:'',
+       snakeScore:''
      };
     flag = false;
     playerSubscription$: Subscription;

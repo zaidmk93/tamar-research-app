@@ -39,6 +39,9 @@ export class AttentiontaskComponent implements OnInit {
       lab: '',
       applanguages1: '',
       applanguages2: '',
+      prizeDonated: '',
+      appearedpyramid:'',
+       snakeScore:''
     };
     playerSubscription$: Subscription;
     displayErrorMessage: boolean = false;

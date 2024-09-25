@@ -34,6 +34,7 @@ export class ValuesRankingComponent implements OnInit {
   creds: Credentials;
   isLandscape: boolean = false;
   labsWithNoDetailsPage = ['EllaDaniel'];
+  randomPyramidNum = 0;
 
   constructor(
     public dataService: DataService,
@@ -61,20 +62,26 @@ export class ValuesRankingComponent implements OnInit {
       this.dataService.lab = params.get('id');
     });
 
+    // if(this.dataService.appearedpyramid)
+    //   this.randomPyramidNum = +this.dataService.appearedpyramid; // the + converting from string to int
+    // else {
+      this.randomPyramidNum = Math.floor(Math.random() * 2); // 0 or 1
+    // }
+
     // rotate screen worning. resolves on rotate or 10 sec delay
-    if (this.scene === 0) {
-      if (window.innerWidth >= window.innerHeight) {
-        if (this.scene === 0) {
-          this.scene = 1;
-        }
-      } else {
-        setTimeout(() => {
-          if (this.scene === 0) {
-            this.scene = 1;
-          }
-        }, 10000);
-      }
-    }
+    // if (this.scene === 0) {
+    //   if (window.innerWidth >= window.innerHeight) {
+    //     if (this.scene === 0) {
+    //       this.scene = 1;
+    //     }
+    //   } else {
+    //     setTimeout(() => {
+    //       if (this.scene === 0) {
+    //         this.scene = 1;
+    //       }
+    //     }, 10000);
+    //   }
+    // }
    }
 
   scene1(creds: Credentials) {
@@ -95,19 +102,78 @@ export class ValuesRankingComponent implements OnInit {
       this.dataService.schoolID = creds.schoolID;
       this.dataService.childID = creds.childID;
       this.dataService.childage = creds.childage;
-      this.dataService.childageInMonths = creds.childageInMonths;      
-      this.scene = 2;
+      this.dataService.childageInMonths = creds.childageInMonths;
+      // this.creds.appearedpyramid = '';
+      this.dataService.appearedpyramid = '' + this.randomPyramidNum;
+      this.scene = 3;  //changed
       this.checkIfUserAlreadySubmittedAndSubmit();
     }
     this.dataService.currentScene = this.scene;
   }
 
-  scene2(endFlag: boolean) {
+  // scene2(endFlag: boolean) {
+  //   if (endFlag) {
+  //     this.dataService.currentStage = 1;
+  //     this.scene = 3;
+  //     this.dataService.currentScene = this.scene;
+  //   }
+  //   this.cacheService.save({
+  //     key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
+  //     data: getCacheData(this.dataService),
+  //   });
+  //   this.updateData();
+  // }
+
+  scene3(endFlag: boolean) {
     if (endFlag) {
       this.dataService.currentStage = 1;
-      this.scene = 3;
+      this.scene = 6; //changed
       this.dataService.currentScene = this.scene;
+      this.cacheService.save({
+        key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
+        data: getCacheData(this.dataService),
+      });
     }
+    this.updateData();
+  }
+
+  // scene4(endFlag: boolean) {
+  //   if (endFlag) {
+  //     this.dataService.currentStage = 1;
+  //     this.scene = 5;
+  //     this.dataService.currentScene = this.scene;
+  //     this.cacheService.save({
+  //       key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
+  //       data: getCacheData(this.dataService),
+  //     });
+  //   }
+  //   this.updateData();
+  // }
+
+  // scene5(endFlag: boolean) {
+  //   if (endFlag) {
+  //     this.scene = 13;
+  //     this.dataService.currentScene = this.scene;
+  //     this.cacheService.save({
+  //       key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
+  //       data: getCacheData(this.dataService),
+  //     });
+  //   }
+  //   this.updateData();
+  // }
+
+  scene6(creds: Credentials){
+    this.scene = 7;
+    this.dataService.snakeScore = creds.snakeScore;
+    this.updateData();
+  }
+  
+  scene7(creds: Credentials){  // for summery
+    this.dataService.currentScene = this.scene;
+    if(this.dataService.is_done)
+      return;
+    this.dataService.is_done = true;
+    this.dataService.prizeDonated = creds.prizeDonated;
     this.cacheService.save({
       key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
       data: getCacheData(this.dataService),
@@ -115,69 +181,17 @@ export class ValuesRankingComponent implements OnInit {
     this.updateData();
   }
 
-  scene3(endFlag: boolean) {
-    if (endFlag) {
-      this.dataService.currentStage = 1;
-      this.scene = 7;
-      this.dataService.currentScene = this.scene;
-      this.cacheService.save({
-        key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
-        data: getCacheData(this.dataService),
-      });
-    }
-    this.updateData();
-  }
-
-  scene4(endFlag: boolean) {
-    if (endFlag) {
-      this.dataService.currentStage = 1;
-      this.scene = 5;
-      this.dataService.currentScene = this.scene;
-      this.cacheService.save({
-        key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
-        data: getCacheData(this.dataService),
-      });
-    }
-    this.updateData();
-  }
-
-  scene5(endFlag: boolean) {
-    if (endFlag) {
-      this.scene = 13;
-      this.dataService.currentScene = this.scene;
-      this.cacheService.save({
-        key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
-        data: getCacheData(this.dataService),
-      });
-    }
-    this.updateData();
-  }
-  scene6(endFlag: boolean){
-    if (endFlag) {
-      this.dataService.currentScene = this.scene;
-      if(this.dataService.is_done)
-        return;
-      this.dataService.is_done = true;
-      this.cacheService.save({
-        key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
-        data: getCacheData(this.dataService),
-      });
-      this.updateData();
-    }
-  
-}
-
-  scene7(openingEnded: Credentials){
-      this.scene = 4;
-      this.dataService.attention1 = openingEnded.attention1;
-      this.dataService.attention2 = openingEnded.attention2;
-      this.dataService.currentScene = this.scene;
-      this.cacheService.save({
-        key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
-        data: getCacheData(this.dataService),
-      });
-      this.updateData();
-  }
+  // scene7(openingEnded: Credentials){
+  //     this.scene = 4;
+  //     this.dataService.attention1 = openingEnded.attention1;
+  //     this.dataService.attention2 = openingEnded.attention2;
+  //     this.dataService.currentScene = this.scene;
+  //     this.cacheService.save({
+  //       key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
+  //       data: getCacheData(this.dataService),
+  //     });
+  //     this.updateData();
+  // }
 
   scene8(creds: Credentials){
       this.scene = 9;
@@ -265,7 +279,7 @@ export class ValuesRankingComponent implements OnInit {
   }
 
 
-  // need to make the get data (excel) to get by lastUpdate (after some months - or update all the lastupdated to be iniatedtime)
+  // need to make the get data (excel) to get by lastUpdate (after some months / or update all the lastupdated to be iniatedtime)
   checkIfUserAlreadySubmittedAndSubmit(){
     const limitedLabsForOneSubmit = [
       // 'aysheh',
@@ -319,8 +333,8 @@ export class ValuesRankingComponent implements OnInit {
       schoolID: this.dataService.schoolID,
       childID: this.dataService.childID,
       gender: this.dataService.gender,
-      rich_strong_1: this.dataService.pbvs1.rank,
-      succeed_more_2: this.dataService.pbvs2.rank,
+      rich_strong_1: this.dataService.pbvs19.rank,
+      succeed_more_2: this.dataService.pbvs20.rank,
       enjoy_life_3: this.dataService.pbvs3.rank,
       exciting_things_4: this.dataService.pbvs4.rank,
       learn_new_5: this.dataService.pbvs5.rank,
@@ -337,8 +351,8 @@ export class ValuesRankingComponent implements OnInit {
       be_protected_16: this.dataService.pbvs16.rank,
       like_everyone_17: this.dataService.pbvs17.rank,
       learn_what_was_18: this.dataService.pbvs18.rank,
-      keep_others_happy_19: this.dataService.pbvs19.rank,
-      keep_nature_20: this.dataService.pbvs20.rank,
+      keep_others_happy_19: this.dataService.pbvs1.rank,
+      keep_nature_20: this.dataService.pbvs2.rank,
       lab : this.dataService.lab,
       parents : this.dataService.parents,
       parentage : this.dataService.parentage,
@@ -365,8 +379,8 @@ export class ValuesRankingComponent implements OnInit {
       last_update_time: new Date().toISOString(),
       TimeTakenToCompleteFirstPyramid: this.dataService.TimeTakenToCompleteFirstPyramid,
       TimeTakenToCompleteSecondPyramid: this.dataService.TimeTakenToCompleteSecondPyramid,
-      rich_strong_1_levels_move: this.dataService.pbvs1.analytics.levels_moved,
-      succeed_more_2_levels_move: this.dataService.pbvs2.analytics.levels_moved,
+      rich_strong_1_levels_move: this.dataService.pbvs19.analytics.levels_moved,
+      succeed_more_2_levels_move: this.dataService.pbvs20.analytics.levels_moved,
       enjoy_life_3_levels_move: this.dataService.pbvs3.analytics.levels_moved,
       exciting_things_4_levels_move: this.dataService.pbvs4.analytics.levels_moved,
       learn_new_5_levels_move: this.dataService.pbvs5.analytics.levels_moved,
@@ -382,6 +396,9 @@ export class ValuesRankingComponent implements OnInit {
       imagine_15_levels_move: this.dataService.pbvs15.analytics.levels_moved,
       be_protected_16_levels_move: this.dataService.pbvs16.analytics.levels_moved,
       like_everyone_17_levels_move: this.dataService.pbvs17.analytics.levels_moved,
+      appeared_pyramid: this.dataService.appearedpyramid,
+      prize_donated: this.dataService.prizeDonated,
+      snake_score: this.dataService.snakeScore,
     };
   }
 
@@ -493,6 +510,9 @@ export class ValuesRankingComponent implements OnInit {
     imagine_15_levels_move: "${this.finalData.imagine_15_levels_move}"
     be_protected_16_levels_move: "${this.finalData.be_protected_16_levels_move}"
     like_everyone_17_levels_move: "${this.finalData.like_everyone_17_levels_move}"
+    appeared_pyramid: "${this.finalData.appearedpyramid}"
+    prize_donated: "${this.finalData.prizeDonated}"
+    snake_score: "${this.finalData.snakeScore}"
     `;
   }
   

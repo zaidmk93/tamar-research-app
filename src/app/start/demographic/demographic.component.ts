@@ -95,6 +95,9 @@ export class DemographicComponent{
     attention1: '',
     attention2: '',
     attention3:'',
+    prizeDonated: '',
+    appearedpyramid:'',
+    snakeScore:''
   };
   
   invalidchildgenderFlag = false;

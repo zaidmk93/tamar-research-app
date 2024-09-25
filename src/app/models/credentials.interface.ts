@@ -24,4 +24,7 @@ export interface Credentials {
   attention1:string;
   attention2:string;
   attention3:string;
+  prizeDonated:string;
+  appearedpyramid:string;
+  snakeScore:string;
 }

@@ -61,7 +61,9 @@ export class EnteringFormComponent implements OnInit {
     attention1:'',
     attention2:'',
     attention3:'',
-    
+    prizeDonated: '',
+    appearedpyramid:'',
+    snakeScore:''
   };
   invalidSchoolIDFlag = false;
   invalidChildIDFlag = false;
