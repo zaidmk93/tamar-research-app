@@ -87,7 +87,7 @@ export class SnakeGameComponent implements OnInit {
       setTimeout(() => {
         this.goStep();
         // this.dead = this.snake.checkDead();
-        if((this.time * this.timestep) / 1000 > 2) {
+        if((this.time * this.timestep) / 1000 > 120) {
           this.dead = true;
 
         }
