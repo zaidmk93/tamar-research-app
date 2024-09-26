@@ -105,24 +105,24 @@ export class ValuesRankingComponent implements OnInit {
       this.dataService.childageInMonths = creds.childageInMonths;
       // this.creds.appearedpyramid = '';
       this.dataService.appearedpyramid = '' + this.randomPyramidNum;
-      this.scene = 3;  //changed
+      this.scene = 2;  //changed
       this.checkIfUserAlreadySubmittedAndSubmit();
     }
     this.dataService.currentScene = this.scene;
   }
 
-  // scene2(endFlag: boolean) {
-  //   if (endFlag) {
-  //     this.dataService.currentStage = 1;
-  //     this.scene = 3;
-  //     this.dataService.currentScene = this.scene;
-  //   }
-  //   this.cacheService.save({
-  //     key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
-  //     data: getCacheData(this.dataService),
-  //   });
-  //   this.updateData();
-  // }
+  scene2(endFlag: boolean) {
+    if (endFlag) {
+      this.dataService.currentStage = 1;
+      this.scene = 3;
+      this.dataService.currentScene = this.scene;
+    }
+    this.cacheService.save({
+      key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
+      data: getCacheData(this.dataService),
+    });
+    this.updateData();
+  }
 
   scene3(endFlag: boolean) {
     if (endFlag) {

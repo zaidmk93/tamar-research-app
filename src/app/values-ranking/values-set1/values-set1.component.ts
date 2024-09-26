@@ -78,43 +78,43 @@ export class ValuesSet1Component implements OnInit {
     let curVal: Pbvs;
     switch (this.stage) {
       case 2: {
-        curVal = this.dataService.pbvs1;
+        curVal = this.dataService['pbvs'+ (1 + (parseInt('' + this.dataService.appearedpyramid) * 10))];
         break;
       }
       case 3: {
-        curVal = this.dataService.pbvs2;
+        curVal = this.dataService['pbvs'+ (2 + (parseInt('' + this.dataService.appearedpyramid) * 10))];
         break;
       }
       case 4: {
-        curVal = this.dataService.pbvs3;
+        curVal = this.dataService['pbvs'+ (3 + (parseInt('' + this.dataService.appearedpyramid) * 10))];
         break;
       }
       case 5: {
-        curVal = this.dataService.pbvs4;
+        curVal = this.dataService['pbvs'+ (4 + (parseInt('' + this.dataService.appearedpyramid) * 10))];
         break;
       }
       case 6: {
-        curVal = this.dataService.pbvs5;
+        curVal = this.dataService['pbvs'+ (5 + (parseInt('' + this.dataService.appearedpyramid) * 10))];
         break;
       }
       case 7: {
-        curVal = this.dataService.pbvs6;
+        curVal = this.dataService['pbvs'+ (6 + (parseInt('' + this.dataService.appearedpyramid) * 10))];
         break;
       }
       case 8: {
-        curVal = this.dataService.pbvs7;
+        curVal = this.dataService['pbvs'+ (7 + (parseInt('' + this.dataService.appearedpyramid) * 10))];
         break;
       }
       case 9: {
-        curVal = this.dataService.pbvs8;
+        curVal = this.dataService['pbvs'+ (8 + (parseInt('' + this.dataService.appearedpyramid) * 10))];
         break;
       }
       case 10: {
-        curVal = this.dataService.pbvs9;
+        curVal = this.dataService['pbvs'+ (9 + (parseInt('' + this.dataService.appearedpyramid) * 10))];
         break;
       }
       case 11: {
-        curVal = this.dataService.pbvs10;
+        curVal = this.dataService['pbvs'+ (10 + (parseInt('' + this.dataService.appearedpyramid) * 10))];
         break;
       }
       case 12: {
@@ -137,7 +137,7 @@ export class ValuesSet1Component implements OnInit {
         return 0;
       }
       default: {
-        curVal = this.dataService['pbvs'+ (this.stage-1)];
+        curVal = this.dataService['pbvs'+ (this.stage-1 + (parseInt('' + this.dataService.appearedpyramid) * 10))];
       }
     }
     this.imgLink = `../../assets/values-ranking/values_img/${curVal.imgLink}`;

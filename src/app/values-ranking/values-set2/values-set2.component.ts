@@ -101,11 +101,11 @@ export class ValuesSet2Component implements OnInit {
         break;
       }
       case 10: {
-        curVal = this.dataService.pbvs1;
+        curVal = this.dataService.pbvs19;
         break;
       }
       case 11: {
-        curVal = this.dataService.pbvs2;
+        curVal = this.dataService.pbvs20;
         break;
       }
       case 12: {

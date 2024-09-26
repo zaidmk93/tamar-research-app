@@ -134,7 +134,7 @@ export class EnteringFormComponent implements OnInit {
   withChildNumber = this.withThreeInputs.concat(['texas', 'rotem', 'EllaDaniel']);
 
   withThreeInputsFlag = this.withThreeInputs.includes(this.dataService.lab) || true; // I added the || true to make it all the time true for now
-  withChildNumberFlag = this.withChildNumber.includes(this.dataService.lab);
+  withChildNumberFlag = this.withChildNumber.includes(this.dataService.lab) || true; // same
 
   start(): Credentials | void {
     this.updateFlags(false);

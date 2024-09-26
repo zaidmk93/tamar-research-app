@@ -16,11 +16,11 @@
     <div class="vr-padding" *ngIf="[0, 1, 2, 4, 7].includes(scene)">
         <!-- <app-rotate-screen *ngIf="scene == 0" [culture]="this.dataService.applanguages1" (gotCreds)="scene1($event)"></app-rotate-screen> -->
         <app-entering-form *ngIf="scene == 1" [culture]="this.dataService.applanguages1" (gotCreds)="scene1($event)"></app-entering-form>
-        <!-- <app-values-set1 *ngIf="scene == 2" [culture]="this.dataService.applanguages1" (openingEnded)="scene2($event)">
-        </app-values-set1> -->
+        <app-values-set1 *ngIf="scene == 2" [culture]="this.dataService.applanguages1" (openingEnded)="scene2($event)">
+        </app-values-set1>
         <!-- <app-Attention-task-from [culture]="this.dataService.applanguages1" *ngIf="scene == 7"  (openingEnded)="scene7($event)">
         </app-Attention-task-from> -->
-        <!-- <app-values-set2 *ngIf="scene == 4" [culture]="this.dataService.applanguages1" (openingEnded)="scene4($event)">
+        <!-- <app-values-set2 *ngIf="scene == 2 && randomPyramidNum == 1" [culture]="this.dataService.applanguages1" (openingEnded)="scene2($event)">
         </app-values-set2> -->
     </div>
 </div>
