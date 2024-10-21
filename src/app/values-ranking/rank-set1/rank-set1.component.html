@@ -1,8 +1,10 @@
 <div class="containter" *ngIf="stage<=11">
-    <app-value-dialog #valueDialog (cancelClicked)="valueCancelled($event)" (confirmClicked)="valueConfirmed($event)"></app-value-dialog>
-    <app-pyramid-view #pyramidView [setValues]="orderedValues" [culture]="culture"
+    <h1 class="thanks" *ngIf="pyramidSubmitted">{{culture == 'Hebrew' ? '!תודה' : 'Thank You!'}}</h1>
+
+    <app-value-dialog *ngIf="!pyramidSubmitted" #valueDialog (cancelClicked)="valueCancelled($event)" (confirmClicked)="valueConfirmed($event)"></app-value-dialog>
+    <app-pyramid-view *ngIf="!pyramidSubmitted" #pyramidView [setValues]="orderedValues" [culture]="culture"
         (clicked)="$event ? nextScene() : stepback()"></app-pyramid-view>
-    <div class="values-container">
+    <div *ngIf="!pyramidSubmitted" class="values-container">
         <div class="pyramid-container">
             <table class="pyramid-table">
                 <tr class="pyramid-row">

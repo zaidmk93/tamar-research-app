@@ -41,6 +41,7 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
   idleTimer;
   pyramidElementsStart = 0;
   pbvsArray = [];
+  pyramidSubmitted = false;
  
   orderedValues = {
     veryvery: null,
@@ -73,7 +74,6 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
     // 'timeset1',
     // 'timeset2',
   ];
-  dt1: number;
   getTime: any;
   // timeset1: number;
   constructor(
@@ -97,16 +97,12 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-   // var today = new Date();
-    //var dt1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     this.pyramidElementsStart = parseInt('' + this.dataService.appearedpyramid) * 10;
 
     for (let i = this.pyramidElementsStart + 1; i <= this.pyramidElementsStart + 10; i++) {
       this.pbvsArray.push(this.dataService['pbvs' + i]);
     }
 
-    this.dt1 = Date.now();
-    console.log(this.dt1)
     this.isMale = this.dataService.gender === 'M';
     this.nextStage();
   }
@@ -517,8 +513,7 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
   nextScene() {
     if (this.dataService.firstPyramidStartTime > 0)
       this.dataService.TimeTakenToCompleteFirstPyramid = (((new Date().getTime()) - this.dataService.firstPyramidStartTime) / 1000).toString();
-    var dt2 : number = Date.now();
-    var diffMins = (dt2 - this.dt1);
+    this.pyramidSubmitted = true;
     this.gotRanking.emit(true);
   }
 }
