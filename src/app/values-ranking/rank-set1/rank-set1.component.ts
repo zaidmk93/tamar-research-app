@@ -39,6 +39,8 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
   playerSubscription$: Subscription;
   playerworking$: Subscription;
   idleTimer;
+  pyramidElementsStart = 0;
+  pbvsArray = [];
  
   orderedValues = {
     veryvery: null,
@@ -97,10 +99,24 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
    // var today = new Date();
     //var dt1 = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    this.pyramidElementsStart = parseInt('' + this.dataService.appearedpyramid) * 10;
+
+    for (let i = this.pyramidElementsStart + 1; i <= this.pyramidElementsStart + 10; i++) {
+      this.pbvsArray.push(this.dataService['pbvs' + i]);
+    }
+
     this.dt1 = Date.now();
     console.log(this.dt1)
     this.isMale = this.dataService.gender === 'M';
     this.nextStage();
+  }
+
+  get pbvsRows() {
+    const rows = [];
+    for (let i = 0; i < this.pbvsArray.length; i += 4) {
+      rows.push(this.pbvsArray.slice(i, i + 4));
+    }
+    return rows;
   }
 
 
@@ -192,7 +208,7 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
         this.playerSubscription$ = subscription.subscribe((res) => {
           if (['ended', 'paused'].includes(res)) {
             this.playerSubscription$.unsubscribe();
-            for (let i = 1; i <= 10; i++) {
+            for (let i = this.pyramidElementsStart + 1; i <= this.pyramidElementsStart + 10; i++) {
               if (this.dataService['pbvs' + i].isStock) {
                 const value = this.dataService['pbvs' + i];
                 this.stage += 1;
@@ -454,7 +470,7 @@ export class RankSet1Component implements OnInit, AfterViewInit, OnDestroy {
   }
 
   updateValuesFromCache() {
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1 + this.pyramidElementsStart; i <= 10 + this.pyramidElementsStart; i++) {
       const value = this.dataService['pbvs' + i];
       if (value.rank !== null) {
         switch (value.rank) {

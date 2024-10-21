@@ -103,6 +103,7 @@ export class SnakeGameComponent implements OnInit {
 
   gameEnded(){
     this.creds.snakeScore = '' + (this.snake.tail.length + 1);
+    this.dataService.snakeScore = this.creds.snakeScore;
     this.gotCreds.emit(this.creds);
   }
 

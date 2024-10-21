@@ -2,8 +2,13 @@ import * as Arabic from '../../../assets/Jsons/Arabic.json';
 import * as English from '../../../assets/Jsons/English.json';
 import * as Estonian from '../../../assets/Jsons/Estonian.json';
 import * as Portuguese from '../../../assets/Jsons/Portuguese.json';
+import { Injectable, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-
+@Injectable({
+  providedIn: 'root'
+})
 export class BasicData {
   dataId:string = "-1";
   is_done: boolean = false;
@@ -43,8 +48,12 @@ export class BasicData {
   appearedpyramid: String = '';
   prizeDonated: string = '';
   snakeScore: string = '';
+  SecCondition: boolean = false;
   
   json_data;
+  private jsonPbvsUrl = '../../../assets/Jsons/pbvs.json';  // Path to your JSON file
+  pbvsList: Pbvs[] = [];
+
 
   
   
@@ -285,11 +294,135 @@ export class BasicData {
       levels_moved: null
     }  };
 
+  pbvs21: Pbvs = {
+    valNum: 3,
+    text: '',
+    imgLink: 'val3.png',
+    audioLink: '',
+    rank: 0,
+    isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
+
+
+  pbvs22: Pbvs = {
+    valNum: 2,
+    text: 'להצליח יותר מאחרים',
+    imgLink: 'val2.png',
+    audioLink: 'val2.mp3',
+    rank: 0,
+    isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
+  pbvs23: Pbvs = {
+    valNum: 6,
+    text: 'להנות מהחיים',
+    imgLink: 'val6.png',
+    audioLink: 'val6.mp3',
+    rank: 0,
+    isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
+  pbvs24: Pbvs = {
+    valNum: 7,
+    text: 'לעשות דברים מרגשים',
+    imgLink: 'val7.png',
+    audioLink: 'val7.mp3',
+    rank: 0,
+    isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
+  pbvs25: Pbvs = {
+    valNum: 8,
+    text: 'לגלות לבד דברים חדשים',
+    imgLink: 'val8.png',
+    audioLink: 'val8.mp3',
+    rank: 0,
+    isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
+  pbvs26: Pbvs = {
+    valNum: 1,
+    text: 'לשמור על הבטיחות ',
+    imgLink: 'val1.png',
+    audioLink: 'val1.mp3',
+    rank: 0,
+    isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
+  pbvs27: Pbvs = {
+    valNum: 0,
+    text: 'לשמור על הכללים',
+    imgLink: 'val0.png',
+    audioLink: 'val0.mp3',
+    rank: 0,
+    isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
+  pbvs28: Pbvs = {
+    valNum: 4,
+    text: 'להתפלל לאלוהים',
+    imgLink: 'val4Hebrew.png',
+    audioLink: 'val4.mp3',
+    rank: 0,
+    isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
+  };
+  pbvs29: Pbvs = {
+    valNum: 5,
+    text: 'לעזור לאחרים',
+    imgLink: 'val5.png',
+    audioLink: 'val5.mp3',
+    rank: 0,
+    isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }  };
+  pbvs30: Pbvs = {
+    valNum: 9,
+    text: 'להיות חבר של ילדים מכל הסוגים',
+    imgLink: 'val9.png',
+    audioLink: 'val9.mp3',
+    rank: 0,
+    isStock: true,
+    analytics: {
+      last_selected_time: null,
+      levels_moved: null
+    }
+  };
+
   currentStage: number = 0;
   currentScene: number = 0;
   firstTimeV = true;
 
-  constructor() {}
+  constructor(private http: HttpClient) {
+    this.getPbvsData().subscribe((data: Pbvs[]) => {
+      this.pbvsList = data;
+    })
+
+  }
+
+  getPbvsData(): Observable<Pbvs[]> {
+    return this.http.get<Pbvs[]>(this.jsonPbvsUrl);
+  }
 }
 
 export class DataService extends BasicData {
@@ -297,11 +430,18 @@ export class DataService extends BasicData {
     this.gender = gender;
     this.pbvs19.text = gender === 'M' ? 'להיות עשיר וחזק' : 'להיות עשירה וחזקה';
     this.pbvs19.audioLink = `val3-${gender}.mp3`;
+    this.pbvs21.text = gender === 'M' ? 'להיות עשיר וחזק' : 'להיות עשירה וחזקה';
+    this.pbvs21.audioLink = `val3-${gender}.mp3`;
     this.pbvs10.text =
       gender === 'M'
         ? 'להיות חבר של ילדים מכל הסוגים'
         : 'להיות חברה של ילדים מכל הסוגים';
     this.pbvs10.audioLink = `val9-${gender}.mp3`;
+    this.pbvs30.text =
+    gender === 'M'
+      ? 'להיות חבר של ילדים מכל הסוגים'
+      : 'להיות חברה של ילדים מכל הסוגים';
+    this.pbvs30.audioLink = `val9-${gender}.mp3`;
     this.pbvs11.text = gender === 'M' ? 'להיות המנהיג' : 'להיות המנהיגה';
     this.pbvs11.audioLink = `val12-${gender}.mp3`;
     this.pbvs12.text =
@@ -338,13 +478,14 @@ export class DataService extends BasicData {
 
   setCulture(culture, secondType) {
     this.culture = culture;
-    console.log(secondType);
     this.pbvs8.imgLink = `val4${culture === 'Hebrew' ? 'Hebrew' : secondType || ''}${culture === 'Estonian' ? 'Estonian' : ''}.png`;
-    console.log(this.pbvs8.imgLink);
-    if(culture === 'Hebrew')
+    this.pbvs28.imgLink = `val4${culture === 'Hebrew' ? 'Hebrew' : secondType || ''}${culture === 'Estonian' ? 'Estonian' : ''}.png`;
+    if(culture === 'Hebrew'){
       this.pbvs9.imgLink = `val5${culture}.png`;
+      this.pbvs29.imgLink = `val5${culture}.png`;
+    }
     if (culture !== 'Hebrew') {
-      for(let i=0; i<= 19; i++){
+      for(let i=0; i<= 29; i++){
         this['pbvs' + (i+1)].text = this.json_data[this.gender].pbvs[i].text;
       }
       this.pbvs19.audioLink = `${this.gender}/15.mp3`;
@@ -367,6 +508,16 @@ export class DataService extends BasicData {
       this.pbvs18.audioLink = `${this.gender}/41.mp3`;
       this.pbvs1.audioLink = `${this.gender}/42.mp3`;
       this.pbvs2.audioLink = `${this.gender}/43.mp3`;
+      this.pbvs21.audioLink = `${this.gender}/15.mp3`;
+      this.pbvs22.audioLink = `${this.gender}/16.mp3`;
+      this.pbvs23.audioLink = `${this.gender}/17.mp3`;
+      this.pbvs24.audioLink = `${this.gender}/18.mp3`;
+      this.pbvs25.audioLink = `${this.gender}/19.mp3`;
+      this.pbvs26.audioLink = `${this.gender}/20.mp3`;
+      this.pbvs27.audioLink = `${this.gender}/21.mp3`;
+      this.pbvs28.audioLink = `${this.gender}/22.mp3`;
+      this.pbvs29.audioLink = `${this.gender}/23.mp3`;
+      this.pbvs30.audioLink = `${this.gender}/24.mp3`;
     }
   }
 }

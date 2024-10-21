@@ -65,6 +65,7 @@ export class SummaryComponent implements OnInit {
 
   ending() {
     this.creds.prizeDonated = this.selectedOption;
+    this.dataService.prizeDonated = this.creds.prizeDonated;
     this.gotCreds.emit(this.creds);
     this.submited = true;
   }

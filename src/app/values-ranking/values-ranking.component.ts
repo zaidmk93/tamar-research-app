@@ -35,6 +35,7 @@ export class ValuesRankingComponent implements OnInit {
   isLandscape: boolean = false;
   labsWithNoDetailsPage = ['EllaDaniel'];
   randomPyramidNum = 0;
+  SecCondition:boolean = false;
 
   constructor(
     public dataService: DataService,
@@ -60,12 +61,18 @@ export class ValuesRankingComponent implements OnInit {
     
     this.route.paramMap.subscribe((params) => {
       this.dataService.lab = params.get('id');
+      this.dataService.SecCondition = this.route.snapshot.url.some(segment => segment.path === 'sec');
+      this.SecCondition = this.dataService.SecCondition;
     });
 
     // if(this.dataService.appearedpyramid)
     //   this.randomPyramidNum = +this.dataService.appearedpyramid; // the + converting from string to int
     // else {
-      this.randomPyramidNum = Math.floor(Math.random() * 2); // 0 or 1
+    if (this.SecCondition){
+      this.randomPyramidNum = 2;
+    } else {
+      this.randomPyramidNum = Math.floor(Math.random() * 3); // 0 or 1 or 2
+    }
     // }
 
     // rotate screen worning. resolves on rotate or 10 sec delay
@@ -164,7 +171,6 @@ export class ValuesRankingComponent implements OnInit {
 
   scene6(creds: Credentials){
     this.scene = 7;
-    this.dataService.snakeScore = creds.snakeScore;
     this.updateData();
   }
   
@@ -173,7 +179,6 @@ export class ValuesRankingComponent implements OnInit {
     if(this.dataService.is_done)
       return;
     this.dataService.is_done = true;
-    this.dataService.prizeDonated = creds.prizeDonated;
     this.cacheService.save({
       key: getCacheKey(this.dataService.schoolID, this.dataService.childID),
       data: getCacheData(this.dataService),
@@ -333,16 +338,16 @@ export class ValuesRankingComponent implements OnInit {
       schoolID: this.dataService.schoolID,
       childID: this.dataService.childID,
       gender: this.dataService.gender,
-      rich_strong_1: this.dataService.pbvs19.rank,
-      succeed_more_2: this.dataService.pbvs20.rank,
-      enjoy_life_3: this.dataService.pbvs3.rank,
-      exciting_things_4: this.dataService.pbvs4.rank,
-      learn_new_5: this.dataService.pbvs5.rank,
-      care_for_myself_6: this.dataService.pbvs6.rank,
-      keep_rules_7: this.dataService.pbvs7.rank,
-      pray_god_8: this.dataService.pbvs8.rank,
-      help_others_9: this.dataService.pbvs9.rank,
-      be_friend_10: this.dataService.pbvs10.rank,
+      rich_strong_1: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs21.rank : this.dataService.pbvs19.rank,
+      succeed_more_2: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs22.rank : this.dataService.pbvs20.rank,
+      enjoy_life_3: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs23.rank : this.dataService.pbvs3.rank,
+      exciting_things_4: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs24.rank : this.dataService.pbvs4.rank,
+      learn_new_5: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs25.rank : this.dataService.pbvs5.rank,
+      care_for_myself_6: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs26.rank : this.dataService.pbvs6.rank,
+      keep_rules_7: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs27.rank : this.dataService.pbvs7.rank,
+      pray_god_8: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs28.rank : this.dataService.pbvs8.rank,
+      help_others_9: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs29.rank : this.dataService.pbvs9.rank,
+      be_friend_10: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs30.rank : this.dataService.pbvs10.rank,
       be_leader_11: this.dataService.pbvs11.rank,
       show_everyone_12: this.dataService.pbvs12.rank,
       have_fun_13: this.dataService.pbvs13.rank,
@@ -379,16 +384,16 @@ export class ValuesRankingComponent implements OnInit {
       last_update_time: new Date().toISOString(),
       TimeTakenToCompleteFirstPyramid: this.dataService.TimeTakenToCompleteFirstPyramid,
       TimeTakenToCompleteSecondPyramid: this.dataService.TimeTakenToCompleteSecondPyramid,
-      rich_strong_1_levels_move: this.dataService.pbvs19.analytics.levels_moved,
-      succeed_more_2_levels_move: this.dataService.pbvs20.analytics.levels_moved,
-      enjoy_life_3_levels_move: this.dataService.pbvs3.analytics.levels_moved,
-      exciting_things_4_levels_move: this.dataService.pbvs4.analytics.levels_moved,
-      learn_new_5_levels_move: this.dataService.pbvs5.analytics.levels_moved,
-      care_for_myself_6_levels_move: this.dataService.pbvs6.analytics.levels_moved,
-      keep_rules_7_levels_move: this.dataService.pbvs7.analytics.levels_moved,
-      pray_god_8_levels_move: this.dataService.pbvs8.analytics.levels_moved,
-      help_others_9_levels_move: this.dataService.pbvs9.analytics.levels_moved,
-      be_friend_10_levels_move: this.dataService.pbvs10.analytics.levels_moved,
+      rich_strong_1_levels_move: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs21.analytics.levels_moved : this.dataService.pbvs19.analytics.levels_moved,
+      succeed_more_2_levels_move: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs22.analytics.levels_moved : this.dataService.pbvs20.analytics.levels_moved,
+      enjoy_life_3_levels_move: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs23.analytics.levels_moved : this.dataService.pbvs3.analytics.levels_moved,
+      exciting_things_4_levels_move: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs24.analytics.levels_moved : this.dataService.pbvs4.analytics.levels_moved,
+      learn_new_5_levels_move: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs25.analytics.levels_moved : this.dataService.pbvs5.analytics.levels_moved,
+      care_for_myself_6_levels_move: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs26.analytics.levels_moved : this.dataService.pbvs6.analytics.levels_moved,
+      keep_rules_7_levels_move: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs27.analytics.levels_moved : this.dataService.pbvs7.analytics.levels_moved,
+      pray_god_8_levels_move: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs28.analytics.levels_moved : this.dataService.pbvs8.analytics.levels_moved,
+      help_others_9_levels_move: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs29.analytics.levels_moved : this.dataService.pbvs9.analytics.levels_moved,
+      be_friend_10_levels_move: this.dataService.appearedpyramid === '2' ? this.dataService.pbvs30.analytics.levels_moved : this.dataService.pbvs10.analytics.levels_moved,
       be_leader_11_levels_move: this.dataService.pbvs11.analytics.levels_moved,
       show_everyone_12_levels_move: this.dataService.pbvs12.analytics.levels_moved,
       have_fun_13_levels_move: this.dataService.pbvs13.analytics.levels_moved,

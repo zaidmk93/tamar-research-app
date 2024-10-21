@@ -159,118 +159,17 @@
                     </h1>
                 </button>
             </div> -->
-            <table class="stock-table" *ngIf="stage<10">
-                <tr class="stock-row">
-                    <td class="stock-cell">
-                        <mat-card class="stock-card" *ngIf="dataService.pbvs4.isStock"
-                            (click)="valueClick(dataService.pbvs4)">
-                            <img class="stock-img"
-                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs4.imgLink">
-                            <div class="text">
-                                {{dataService.pbvs4.text}}
-                            </div>
-                        </mat-card>
-                    </td>
-                    <td class="stock-cell">
-                        <mat-card class="stock-card" *ngIf="dataService.pbvs3.isStock"
-                            (click)="valueClick(dataService.pbvs3)">
-                            <img class="stock-img"
-                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs3.imgLink">
-                            <div class="text">
-                                {{dataService.pbvs3.text}}
-                            </div>
-                        </mat-card>
-                    </td>
-                    <td class="stock-cell">
-                        <mat-card class="stock-card" *ngIf="dataService.pbvs2.isStock"
-                            (click)="valueClick(dataService.pbvs2)">
-                            <img class="stock-img"
-                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs2.imgLink">
-                            <div class="text">
-                                {{dataService.pbvs2.text}}
-                            </div>
-                        </mat-card>
-                    </td>
-                    <td class="stock-cell">
-                        <mat-card class="stock-card" *ngIf="dataService.pbvs1.isStock"
-                            (click)="valueClick(dataService.pbvs1)">
-                            <img class="stock-img"
-                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs1.imgLink">
-                            <div class="text">
-                                {{dataService.pbvs1.text}}
-                            </div>
-                        </mat-card>
-                    </td>
-                </tr>
-                <tr class="stock-row">
-                    <td class="stock-cell">
-                        <mat-card class="stock-card" *ngIf="dataService.pbvs8.isStock"
-                            (click)="valueClick(dataService.pbvs8)">
-                            <img class="stock-img"
-                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs8.imgLink">
-                            <div class="text">
-                                {{dataService.pbvs8.text}}
-                            </div>
-                        </mat-card>
-                    </td>
-                    <td class="stock-cell">
-                        <mat-card class="stock-card" *ngIf="dataService.pbvs7.isStock"
-                            (click)="valueClick(dataService.pbvs7)">
-                            <img class="stock-img"
-                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs7.imgLink">
-                            <div class="text">
-                                {{dataService.pbvs7.text}}
-                            </div>
-                        </mat-card>
-                    </td>
-                    <td class="stock-cell">
-                        <mat-card class="stock-card" *ngIf="dataService.pbvs6.isStock"
-                            (click)="valueClick(dataService.pbvs6)">
-                            <img class="stock-img"
-                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs6.imgLink">
-                            <div class="text">
-                                {{dataService.pbvs6.text}}
-                            </div>
-                        </mat-card>
-                    </td>
-                    <td class="stock-cell">
-                        <mat-card class="stock-card" *ngIf="dataService.pbvs5.isStock"
-                            (click)="valueClick(dataService.pbvs5)">
-                            <img class="stock-img"
-                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs5.imgLink">
-                            <div class="text">
-                                {{dataService.pbvs5.text}}
-                            </div>
-                        </mat-card>
-                    </td>
-                </tr>
-                <tr class="stock-row">
-                    <td class="stock-cell">
 
-                    </td>
-                    <td class="stock-cell">
-
-                    </td>
-                    <td class="stock-cell">
-                        <mat-card class="stock-card" *ngIf="dataService.pbvs10.isStock"
-                            (click)="valueClick(dataService.pbvs10)">
-                            <img class="stock-img"
-                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs10.imgLink">
-                            <div class="text">
-                                {{dataService.pbvs10.text}}
-                            </div>
-                        </mat-card>
-                    </td>
-                    <td class="stock-cell">
-                        <mat-card class="stock-card" *ngIf="dataService.pbvs9.isStock"
-                            (click)="valueClick(dataService.pbvs9)">
-                            <img class="stock-img"
-                                [src]="'../../assets/values-ranking/values_img/'+dataService.pbvs9.imgLink">
-                            <div class="text">
-                                {{dataService.pbvs9.text}}
-                            </div>
-                        </mat-card>
-                    </td>
+            <table class="stock-table" *ngIf="stage < 10">
+                <tr class="stock-row" *ngFor="let row of pbvsRows">
+                  <td class="stock-cell" *ngFor="let pbvs of row">
+                    <mat-card class="stock-card" *ngIf="pbvs.isStock" (click)="valueClick(pbvs)">
+                      <img class="stock-img" [src]="'../../assets/values-ranking/values_img/' + pbvs.imgLink">
+                      <div class="text">
+                        {{ pbvs.text }}
+                      </div>
+                    </mat-card>
+                  </td>
                 </tr>
             </table>
         </div>

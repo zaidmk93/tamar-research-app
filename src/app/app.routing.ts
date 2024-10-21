@@ -15,6 +15,10 @@ const routes: Routes = [
     component: ValuesRankingComponent,
   },
   {
+    path: 'sec/v/:id',
+    component: ValuesRankingComponent,
+  },
+  {
     path: 'lab',
     component: LabComponent,
   },
